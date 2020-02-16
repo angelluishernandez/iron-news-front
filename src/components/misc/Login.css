@@ -4,17 +4,23 @@
 	text-align: center;
 	justify-content: center;
 	align-items: center;
-	background: rgb(185, 204, 237);
-	background: linear-gradient(
-		165deg,
-		rgba(185, 204, 237, 1) 5%,
-		rgba(246, 229, 245, 1) 100%
-	);
+	background: rgb(253,189,64);
+background: linear-gradient(165deg, rgba(253,189,64,1) 5%, rgba(236,139,67,1) 100%);
 
-	color: #d68189;
+	color: #D64D23;
 }
 #login-btn{
-  background: #d68189;
-  border: #d68189
+  background: #D64D23;
+  border: #D64D23
+
+}
+
+
+#signin-btn{
+	background: #D64D23;
+  border: #D64D23
+
+
+
 
 }

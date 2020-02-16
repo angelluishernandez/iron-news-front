@@ -14,52 +14,88 @@ class Login extends React.Component {
 		loading: false,
 	};
 
-	handleSubmit = event => {};
+	handleSubmit = event => {
+		event.preventDefault();
+		console.log(localStorage)
+		this.setState({ loading: true, error: false }, () => {
+			IronNewsService.login({ ...this.state.data }).then(
+				user => {
+					this.props.setUser(user);
+				},
+				() => {
+					this.setState({
+						error: true,
+						loading: false,
+					});
+				}
+			);
+		});
+	};
 
 	handleBlur = event => {};
 
-	handleChange = event => {};
+	handleChange = event => {
+		const { name, value } = event.target;
+		this.setState({
+			data: {
+				...this.state.data,
+				[name]: value,
+			},
+		});
+	};
 
 	render() {
 		const { data, error, loading } = this.state;
+		const errorClassName = error ? "is-invalid" : "";
 		return (
 			<div className="Login">
-			
 				<form className="mb-4" onSubmit={this.handleSubmit}>
 					<div className="mb-4">
 						<label htmlFor="email">Email</label>
 						<input
 							type="text"
-							className="form-control"
+							className={`form-control ${errorClassName}`}
 							id="email"
 							autoComplete="off"
 							value={data.email}
 							onBlur={this.handleBlur}
 							onChange={this.handleChange}
 							placeholder="Email"
+							name="email"
 						/>
 					</div>
 					<div className="mb-4">
 						<label htmlFor="password">Password</label>
 						<input
 							type="password"
-							className="form-control"
+							className={`form-control ${errorClassName}`}
 							id="password"
 							autoComplete="off"
 							value={data.password}
 							onBlur={this.handleBlur}
 							onChange={this.handleChange}
 							placeholder="Password"
+							name="password"
 						/>
 					</div>
-          <button className="btn btn-success" id="login-btn" onClick={this.handleSubmit}>
-            Log In
-
-          </button>
+					<button
+						className="btn btn-success mr-1"
+						id="login-btn"
+						disabled={loading}
+					>
+						Log In
+					</button>
+					<button
+						className="btn btn-success"
+						id="signin-btn"
+						
+					>
+						Sign In
+					</button>
 				</form>
 			</div>
 		);
 	}
 }
 
-export default Login;
+export default WithAuthConsumer(Login);

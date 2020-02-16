@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const http = axios.create({
-  baseURL: process.env.IRON_NEWS_API_URL, 
+  baseURL: "http://localhost:5000", 
   withCredentials: true
 })
 
@@ -17,7 +17,7 @@ http.interceptors.response.use(
   }
 )
 
-const login = ({email, password} )=> http.get("/login", {email, password})
+const login = ({email, password} )=> http.post("/login", {email, password})
 
 
 
