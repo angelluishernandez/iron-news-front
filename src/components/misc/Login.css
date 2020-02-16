@@ -1,0 +1,20 @@
+.Login {
+	height: 100vh;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background: rgb(185, 204, 237);
+	background: linear-gradient(
+		165deg,
+		rgba(185, 204, 237, 1) 5%,
+		rgba(246, 229, 245, 1) 100%
+	);
+
+	color: #d68189;
+}
+#login-btn{
+  background: #d68189;
+  border: #d68189
+
+}
