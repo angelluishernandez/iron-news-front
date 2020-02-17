@@ -1,5 +1,7 @@
 import React from "react";
 import customCategoriesArray from "../../constants/customCategories";
+import "./SigIn.css";
+import IronNewsService from "../../services/IronNewsService";
 
 class SignIn extends React.Component {
 	state = {
@@ -14,13 +16,53 @@ class SignIn extends React.Component {
 		},
 		error: false,
 		loading: true,
+		success: false,
 	};
 
+	handleChange = event => {
+		const { name, value } = event.target;
+
+		this.setState({
+			data: {
+				...this.state.data,
+				[name]: value,
+			},
+		});
+	};
+
+	handleSubmit = event => {
+		event.preventDefault();
+		const { data } = this.state;
+
+		const formData = new FormData();
+		formData.append("name", data.name);
+		formData.append("email", data.email);
+		formData.append("password", data.password);
+		formData.append("profilePic", data.profilePic);
+		formData.append("organization", data.organization);
+		formData.append("collaborators", data.collaborators);
+		formData.append("customCategories", data.customCategories);
+
+		this.setState({ loading: true, error: false }, () => {
+			IronNewsService.register({ formData })
+				.then(() => {
+					this.setState({
+						success: true,
+					});
+				})
+				.catch(() => {
+					this.setState({
+						error: true,
+						loading: false,
+					});
+				});
+		});
+	};
 	render() {
 		const { data, error, loading } = this.state;
 		const errorClassName = error ? "is-invalid" : "";
 		return (
-			<div className="Login">
+			<div className="Login pt-3 pb-1">
 				<form className="mb-4" onSubmit={this.handleSubmit}>
 					<div className="mb-4">
 						<label htmlFor="name">Name</label>
@@ -65,7 +107,7 @@ class SignIn extends React.Component {
 						<label htmlFor="profilePic">Profile pic</label>
 						<input
 							type="file"
-							className={`form-control ${errorClassName}`}
+							className={`form-control-file ${errorClassName}`}
 							autoComplete="off"
 							value={data.profilePic}
 							onBlur={this.handleBlur}
@@ -102,10 +144,12 @@ class SignIn extends React.Component {
 					</div>
 					<div className="mb-4">
 						<label htmlFor="organization">
-							Choose some categories
+							Choose your category
 							<select
 								onChange={this.handleChange}
 								value={data.customCategories}
+								className="custom-select custom-select-mg mt-3"
+								name="customCategories"
 							>
 								{customCategoriesArray.map((category, key) => {
 									return (
@@ -121,15 +165,14 @@ class SignIn extends React.Component {
 
 					<button
 						className="btn btn-success mr-1"
-						id="login-btn"
+						id="signin-btn2"
 						disabled={loading}
 					>
-						Log In
+						Sign in
 					</button>
 				</form>
 			</div>
 		);
 	}
 }
-
 export default SignIn;

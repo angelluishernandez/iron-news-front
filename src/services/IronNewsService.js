@@ -19,7 +19,7 @@ http.interceptors.response.use(
 
 const login = ({email, password})=> http.post("/login", {email, password})
 const logout = () => http.post("/logout")
-
+const register = (data) => http.post("/signin", data)
 /*
 TO-DO
 

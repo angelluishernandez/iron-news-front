@@ -26,13 +26,10 @@
 	right: 0;
 }
 
-#signin-btn {
+#signin-btn2 {
 	background: #d64d23;
 	border: 3px solid #7E3315;
-	display: flex;
-	justify-content: center;
-	bottom: 0;
-	
+
 	
 	
 }
