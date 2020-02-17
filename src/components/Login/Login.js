@@ -2,7 +2,7 @@ import React from "react";
 import IronNewsService from "../../services/IronNewsService";
 import { Link, Redirect } from "react-router-dom";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
-import "../misc/Login.css";
+import "./Login.css";
 
 class Login extends React.Component {
 	state = {
@@ -16,10 +16,11 @@ class Login extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		console.log(localStorage)
+
 		this.setState({ loading: true, error: false }, () => {
 			IronNewsService.login({ ...this.state.data }).then(
 				user => {
+					console.log(user);
 					this.props.setUser(user);
 				},
 				() => {
@@ -85,13 +86,12 @@ class Login extends React.Component {
 					>
 						Log In
 					</button>
-					<button
-						className="btn btn-success"
-						id="signin-btn"
-						
-					>
-						Sign In
-					</button>
+
+					<div className="register">
+						<Link to="/signin" className="btn btn-success" id="signin-btn">
+							Sign In
+						</Link>
+					</div>
 				</form>
 			</div>
 		);

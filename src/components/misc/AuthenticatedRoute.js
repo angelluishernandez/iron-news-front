@@ -1,16 +1,16 @@
-import React from "react"
+import React from "react";
 
-import {WithAuthConsumer} from "../../contexts/AuthContext"
-import { Redirect } from "react-router-dom"
-
+import { WithAuthConsumer } from "../../contexts/AuthContext";
+import { Redirect, Route } from "react-router-dom";
 
 const AuthenticatedRoute = (props) => {
-  if(!props.currentUser){
-    return <Redirect to="/login"/>
-  }else{
-    return <h1>Hola</h1>
-  }
+	if (!props.currentUser) {
+    console.log("there is a not a currentUse=> ", props.currentUser)
+		return <Redirect to="/login" />;
+	} else {
+    console.log("there is a currentUse=> ", props.currentUser)
+		return <Route {...props} />;
+	}
+};
 
-}
-
-export default AuthenticatedRoute
+export default WithAuthConsumer(AuthenticatedRoute)

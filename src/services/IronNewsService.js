@@ -17,11 +17,24 @@ http.interceptors.response.use(
   }
 )
 
-const login = ({email, password} )=> http.post("/login", {email, password})
+const login = ({email, password})=> http.post("/login", {email, password})
+const logout = () => http.post("/logout")
+
+/*
+TO-DO
+
+=> {/} => qué enseñar y como
+=> componentes de NAVBAR, SIDEBAR
+
+
+
+*/
 
 
 
 export default {
 
-  login
+  login,
+  logout, 
+  
 }
