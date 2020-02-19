@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
 import NavBar from "./components/NavBar/NavBar";
+import LatestNewsCard from "./components/LatestNewsCard/LatestNewsCard";
 
 function App() {
 	return (
@@ -17,6 +18,13 @@ function App() {
 				<AuthenticatedRoute exact path="/">
 					<Home />
 				</AuthenticatedRoute>
+
+
+				<AuthenticatedRoute exact path="/latestnews">
+					<LatestNewsCard />
+				</AuthenticatedRoute>
+
+
 				<Route exact path="/login" component={Login} />
 
 				<Route exact path="/signin" component={SignIn} />

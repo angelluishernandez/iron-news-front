@@ -20,6 +20,7 @@ const home = user => http.get("/", user);
 const login = ({ email, password }) => http.post("/login", { email, password });
 const logout = () => http.post("/logout");
 const register = data => http.post("/register", data);
+const getLatestNews = topic => http.get("/news/top-headlines", topic)
 /*
 TO-DO
 
@@ -34,5 +35,6 @@ export default {
 	login,
 	logout,
   register,
-  home
+	home, 
+	getLatestNews
 };
