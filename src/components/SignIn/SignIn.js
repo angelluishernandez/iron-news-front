@@ -9,7 +9,7 @@ class SignIn extends React.Component {
 			name: "",
 			email: "",
 			password: "",
-			profilePic: "",
+			profilePic: null,
 			organization: "",
 			collaborators: "",
 			customCategories: "",
@@ -20,12 +20,12 @@ class SignIn extends React.Component {
 	};
 
 	handleChange = event => {
-		const { name, value } = event.target;
-
+		const { name, value, files } = event.target;
+		console.log(files)
 		this.setState({
 			data: {
 				...this.state.data,
-				[name]: value,
+        [name]: files ? files[0] : value
 			},
 		});
 	};
@@ -34,18 +34,12 @@ class SignIn extends React.Component {
 		event.preventDefault();
 		const { data } = this.state;
 
-		const formData = new FormData();
-		formData.append("name", data.name);
-		formData.append("email", data.email);
-		formData.append("password", data.password);
-		formData.append("profilePic", data.profilePic);
-		formData.append("organization", data.organization);
-		formData.append("collaborators", data.collaborators);
-		formData.append("customCategories", data.customCategories);
+		console.log(data.profilePic)
 
 		this.setState({ loading: true, error: false }, () => {
-			IronNewsService.register({ formData })
+			IronNewsService.register(data)
 				.then(() => {
+					console.log("entra")
 					this.setState({
 						success: true,
 					});
@@ -108,11 +102,8 @@ class SignIn extends React.Component {
 						<input
 							type="file"
 							className={`form-control-file ${errorClassName}`}
-							autoComplete="off"
-							value={data.profilePic}
 							onBlur={this.handleBlur}
 							onChange={this.handleChange}
-							placeholder="Your password"
 							name="profilePic"
 						/>
 					</div>
@@ -166,7 +157,7 @@ class SignIn extends React.Component {
 					<button
 						className="btn btn-success mr-1"
 						id="signin-btn2"
-						disabled={loading}
+						disabled={!loading}
 					>
 						Sign in
 					</button>

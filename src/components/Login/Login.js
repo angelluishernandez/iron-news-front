@@ -48,6 +48,9 @@ class Login extends React.Component {
 	render() {
 		const { data, error, loading } = this.state;
 		const errorClassName = error ? "is-invalid" : "";
+		if(this.props.currentUser){
+			return <Redirect to="/"/>
+		}
 		return (
 			<div className="Login">
 				<form className="mb-4" onSubmit={this.handleSubmit}>
