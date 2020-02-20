@@ -20,21 +20,12 @@ const home = user => http.get("/", user);
 const login = ({ email, password }) => http.post("/login", { email, password });
 const logout = () => http.post("/logout");
 const register = data => http.post("/register", data);
-const getLatestNews = topic => http.get("/news/top-headlines", topic)
-/*
-TO-DO
-
-=> {/} => qué enseñar y como
-=> componentes de NAVBAR, SIDEBAR
-
-
-
-*/
+const getLatestNews = data => http.post("/news/top-headlines", data)
 
 export default {
 	login,
 	logout,
-  register,
-	home, 
-	getLatestNews
+	register,
+	home,
+	getLatestNews,
 };

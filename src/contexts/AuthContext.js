@@ -7,7 +7,7 @@ export class AuthContextProvider extends React.Component {
 	state = {
 		user: JSON.parse(localStorage.getItem("user")),
 	};
-	setUser = (user) => {
+	setUser = user => {
 		localStorage.setItem("user", user ? JSON.stringify(user) : null);
 		this.setState({
 			user,
@@ -30,14 +30,13 @@ export class AuthContextProvider extends React.Component {
 				{this.props.children}
 			</AuthContext.Provider>
 		);
-  }
-  
+	}
 }
 
-export const WithAuthConsumer = (WrappedComponent) => (props)=>
-(  <AuthContext.Consumer>
-    {(authProps) => (<WrappedComponent {...props} {...authProps}/>)}
-  </AuthContext.Consumer>
-)
+export const WithAuthConsumer = WrappedComponent => props => (
+	<AuthContext.Consumer>
+		{authProps => <WrappedComponent {...props} {...authProps} />}
+	</AuthContext.Consumer>
+);
 
-export default AuthContext
+export default AuthContext;

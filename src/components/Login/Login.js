@@ -20,7 +20,6 @@ class Login extends React.Component {
 		this.setState({ loading: true, error: false }, () => {
 			IronNewsService.login({ ...this.state.data }).then(
 				user => {
-					console.log(user);
 					this.props.setUser(user);
 				},
 				() => {
