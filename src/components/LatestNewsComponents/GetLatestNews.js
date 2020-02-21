@@ -6,9 +6,10 @@ import Card from "../UI/Card";
 
 class GetLatestNews extends React.Component {
 	state = {
+	
 		queryText: "",
 
-		articles: {},
+		articles: [],
 
 		loading: false,
 		error: true,
@@ -25,9 +26,9 @@ class GetLatestNews extends React.Component {
 		IronNewsService.getLatestNews({query})
 		
 			.then(articlesResp => {
-				console.log(this.state)
+				console.log(articlesResp.articles)
 				this.setState({
-					articles: articlesResp
+					articles: [...this.state.articles, articlesResp.articles]
 				});
 			
 			})
