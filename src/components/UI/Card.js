@@ -1,13 +1,13 @@
 import React from "react";
 
-const LatestNewsCard = ([ articles ]) => {
-	const articleHeadlines = articles.title
+const LatestNewsCard = ( props ) => {
+	
 	return (
 		<div className="LatestNewsCard">
 			<div className="card">
-				<img className="card-img-top" src="..." alt={articleHeadlines} />
+				<img className="card-img-top" src="..."  />
 				<div className="card-body">
-					<h5 className="card-title">{articleHeadlines}</h5>
+					<h5 className="card-title"></h5>
 					<p className="card-text">
 						This card has supporting text below as a natural lead-in to
 						additional content.
