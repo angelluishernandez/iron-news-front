@@ -18,12 +18,12 @@ state={
 	};
 
 	render() {
-		console.log(this.props);
 		return (
-			<div className="LatestNewsSearch">
+			<div className="LatestNewsSearch mb-4 col-sm-4 align-self-center">
 				<form onSubmit={this.handleSubmitSearch}>
 					<label htmlFor="search-box">Search the latest news</label>
 					<input
+					
 						type="text"
 						placeholder="Search news..."
 						className="form-control"

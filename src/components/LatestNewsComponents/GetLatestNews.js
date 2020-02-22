@@ -1,39 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import LatestNewsSearch from "./LatestNewsSearch";
 import IronNewsService from "../../services/IronNewsService";
 import Card from "../UI/Card";
+import { Link } from "react-router-dom";
 
 class GetLatestNews extends React.Component {
 	state = {
-	
-		queryText: "",
-
-		articles: [],
-
+		data: {
+			queryText: "",
+			articles: [],
+		},
 		loading: false,
 		error: true,
+		submited: false,
 	};
 
 	handleChange = query => {
-		console.log(this.state.queryText);
-		this.setState({
-			queryText: query,
-		});
+		this.setState(prevState => ({
+			data: {
+				...prevState.data,
+				queryText: query,
+			},
+		}));
 	};
-	handleSubmit(query) {
-	console.log("Entra. Esta es la query=> ", query)
-		IronNewsService.getLatestNews({query})
-		
-			.then(articlesResp => {
-				console.log(articlesResp.articles)
-				this.setState({
-					articles: [...this.state.articles, articlesResp.articles]
-				});
-			
+	handleSubmit = query => {
+		IronNewsService.getLatestNews({ query })
+			.then(responseArticles => {
+				console.log(responseArticles.articles);
+				this.setState(prevState => ({
+					data: {
+						...prevState.data,
+						articles: [...prevState.data.articles, responseArticles.articles],
+						submited: true,
+					},
+				}));
 			})
 			.catch(error => console.log(error));
-	}
+	};
 
 	render() {
 		return (
@@ -42,11 +45,16 @@ class GetLatestNews extends React.Component {
 					onSearchChange={this.handleChange}
 					onSubmitSearch={this.handleSubmit}
 				/>
-				<Card
-					articles={this.state.articles}
-					loading={this.state.loading}
-					error={this.state.error}
-				/>
+				<Card articles={this.state.data.articles}></Card>
+				{/* <div>
+					{this.state.submited && (
+						<Card
+							articles={this.state.data.articles}
+							loading={this.state.loading}
+							error={this.state.error}
+						/>
+					)}
+				</div> */}
 			</div>
 		);
 	}
