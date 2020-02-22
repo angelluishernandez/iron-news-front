@@ -7,12 +7,14 @@ import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
 import NavBar from "./components/NavBar/NavBar";
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
+import SideBar from "./components/UI/SideBarItems";
 
 function App() {
 	return (
 		<div className="App">
 			<AuthenticatedRoute>
-				<NavBar />
+				{/* <NavBar /> */}
+				<SideBar/>
 			</AuthenticatedRoute>
 			<Switch>
 				<AuthenticatedRoute exact path="/">
