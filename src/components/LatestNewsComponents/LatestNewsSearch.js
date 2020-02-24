@@ -1,5 +1,6 @@
 import React from "react";
-
+import"./LatestNews.css"
+import  Container  from "@material-ui/core/Container";
 class LatestNewsSearch extends React.Component {
 state={
 	query: ""
@@ -19,14 +20,17 @@ state={
 
 	render() {
 		return (
-			<div className="LatestNewsSearch mb-4 col-sm-4 align-self-center">
+
+			<div className="LatestNewsSearch col-5 align-self-center card m-5">
+			
 				<form onSubmit={this.handleSubmitSearch}>
+				<i className="far fa-newspaper mr-5 fa-3x"></i>
 					<label htmlFor="search-box">Search the latest news</label>
 					<input
 					
 						type="text"
 						placeholder="Search news..."
-						className="form-control"
+						className="form-control latest-news-search-box "
 						value={this.state.query}
 						name="query"
 						autoComplete="off"
@@ -34,6 +38,8 @@ state={
 					/>
 				</form>
 			</div>
+			
+		
 		);
 	}
 }

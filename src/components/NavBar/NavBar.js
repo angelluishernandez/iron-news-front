@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./NavBar.css";
 
@@ -10,7 +10,10 @@ class NavBar extends React.Component {
 
 	render() {
 		return (
-			<nav className="navbar bg-light navbar-expand-lg navbar-light bg-light" role="navigation">
+			<nav
+				className="navbar bg-light navbar-expand-lg navbar-light bg-light"
+				role="navigation"
+			>
 				<Link to="/">
 					<FontAwesomeIcon icon={faHome} /> IronNews
 				</Link>
@@ -45,6 +48,14 @@ class NavBar extends React.Component {
 						<li className="nav-item">
 							<Link className="nav-link disabled" to="/">
 								Disabled<span className="sr-only">(current)</span>
+							</Link>
+						</li>
+						<li>
+							<Link to="/logout">
+								{" "}
+								<button className="logout-button">
+									<FontAwesomeIcon icon={faLongArrowAltUp}/>
+								</button>
 							</Link>
 						</li>
 					</ul>

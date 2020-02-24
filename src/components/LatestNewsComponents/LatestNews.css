@@ -1,5 +1,21 @@
-.searchBox{
+.LatestNewsSearch {
+	background: rgb(224, 99, 43);
+	background: linear-gradient(
+		107deg,
+		rgba(224, 99, 43, 1) 4%,
+		rgba(225, 63, 97, 1) 78%
+	);
+	color: white;
+	height: 35vh;
+}
 
-
+.fa-newspaper {
+  color: #F5C279;
   
+}
+
+.latest-news-search-box{
+  background: #F47A86 !important;
+  border: #F47A86 !important;
+
 }

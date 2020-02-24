@@ -7,14 +7,14 @@ import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
 import NavBar from "./components/NavBar/NavBar";
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
-import SideBar from "./components/UI/SideBarItems";
-
+import SideBar from "./components/UI/SideBar";
+import ExpandSideBar from "./components/UI/ExpandSideBar";
 function App() {
 	return (
 		<div className="App">
 			<AuthenticatedRoute>
 				{/* <NavBar /> */}
-				<SideBar/>
+				<SideBar />
 			</AuthenticatedRoute>
 			<Switch>
 				<AuthenticatedRoute exact path="/">
@@ -22,8 +22,9 @@ function App() {
 				</AuthenticatedRoute>
 
 				<AuthenticatedRoute exact path="/latestnews">
-						<GetLatestNews/>
-					</AuthenticatedRoute>
+					<ExpandSideBar />
+					<GetLatestNews />
+				</AuthenticatedRoute>
 
 				<Route exact path="/login" component={Login} />
 

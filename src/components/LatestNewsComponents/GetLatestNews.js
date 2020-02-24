@@ -2,7 +2,6 @@ import React from "react";
 import LatestNewsSearch from "./LatestNewsSearch";
 import IronNewsService from "../../services/IronNewsService";
 import Card from "../UI/Card";
-import { Link } from "react-router-dom";
 
 class GetLatestNews extends React.Component {
 	state = {
