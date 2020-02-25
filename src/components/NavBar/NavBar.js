@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { faHome, faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./NavBar.css";
 
 class NavBar extends React.Component {
 	state = {};

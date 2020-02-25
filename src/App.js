@@ -9,27 +9,29 @@ import NavBar from "./components/NavBar/NavBar";
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
 import SideBar from "./components/UI/SideBar";
 import ExpandSideBar from "./components/UI/ExpandSideBar";
+import Layout from "./components/UI/Layout";
 function App() {
 	return (
 		<div className="App">
 			<AuthenticatedRoute>
-				{/* <NavBar /> */}
-				<SideBar />
+				<Layout>
+
+				</Layout>
 			</AuthenticatedRoute>
-			<Switch>
+			{/* <Switch>
 				<AuthenticatedRoute exact path="/">
 					<Home />
 				</AuthenticatedRoute>
 
 				<AuthenticatedRoute exact path="/latestnews">
-					<ExpandSideBar />
+					
 					<GetLatestNews />
 				</AuthenticatedRoute>
 
 				<Route exact path="/login" component={Login} />
 
 				<Route exact path="/signin" component={SignIn} />
-			</Switch>
+			</Switch> */}
 		</div>
 	);
 }

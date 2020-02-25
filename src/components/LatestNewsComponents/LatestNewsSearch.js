@@ -21,7 +21,7 @@ state={
 	render() {
 		return (
 
-			<div className="LatestNewsSearch col-5 align-self-center card m-5">
+			<div className="LatestNewsSearch col-5 align-self-center card">
 			
 				<form onSubmit={this.handleSubmitSearch}>
 				<i className="far fa-newspaper mr-5 fa-3x"></i>
