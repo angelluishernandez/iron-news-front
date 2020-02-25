@@ -1,13 +1,14 @@
-import React from "react"
+import React from "react";
+import "./SideBar.css";
+import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined';
+const ExpandSideBar = props => {
+	return (
+		<div className="sidebar-main ExpandSideBar" id="sidebar-main">
+			<MenuOutlinedIcon className="openbtn" onClick={props.handleOpen} aria-hidden="false">
+				{" "}
+			</MenuOutlinedIcon>
+		</div>
+	);
+};
 
-const ExpandSideBar = (props) => {
-  return(
-    <div className="sidebar-main" id="sidebar-main">
-    <button className="openbtn" onClick={props.handleClose}> Open Sidebar </button>
-  </div>
-
-  )
-}
-
-
-export default ExpandSideBar
+export default ExpandSideBar;

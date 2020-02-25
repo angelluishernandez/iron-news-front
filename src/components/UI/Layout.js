@@ -1,18 +1,27 @@
-import React from "react"
-import SideBarLogic from "../SideBar/SideBarLogic"
+import React from "react";
+import SideBar from "../UI/SideBar/SideBar"
+import NavBar from "../UI/NavBar/NavBar"
 
 
-const Layout = () => {
+class Layout extends React.Component {
+	openNav() {
+		document.getElementById("sidebar").style.width = "400px";
+		document.getElementById("navbar").style.marginLeft = "400px";
+	}
 
-  return (
-    <div className="Layout">
-      <SideBarLogic></SideBarLogic>
-      
-    </div>
-  )
+	closeNav() {
+		document.getElementById("sidebar").style.width = "0";
+		document.getElementById("navbar").style.marginLeft = "0";
+	}
 
-
+	render() {
+		return (
+			<div className="Layout">
+				<NavBar handleOpen={this.openNav}></NavBar>
+				<SideBar handleClose={this.closeNav}></SideBar>
+			</div>
+		);
+	}
 }
 
-
-export default Layout
+export default Layout;

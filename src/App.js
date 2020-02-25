@@ -5,20 +5,17 @@ import AuthenticatedRoute from "./components/misc/AuthenticatedRoute";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
-import NavBar from "./components/NavBar/NavBar";
+import NavBar from "./components/UI/NavBar/NavBar";
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
-import SideBar from "./components/UI/SideBar";
-import ExpandSideBar from "./components/UI/ExpandSideBar";
+
 import Layout from "./components/UI/Layout";
 function App() {
 	return (
 		<div className="App">
 			<AuthenticatedRoute>
-				<Layout>
-
-				</Layout>
+				<Layout/>
 			</AuthenticatedRoute>
-			{/* <Switch>
+			<Switch>
 				<AuthenticatedRoute exact path="/">
 					<Home />
 				</AuthenticatedRoute>
@@ -31,7 +28,7 @@ function App() {
 				<Route exact path="/login" component={Login} />
 
 				<Route exact path="/signin" component={SignIn} />
-			</Switch> */}
+			</Switch>
 		</div>
 	);
 }

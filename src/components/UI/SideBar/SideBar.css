@@ -1,0 +1,77 @@
+.SideBar {
+	background: rgb(2, 154, 238);
+	background: linear-gradient(
+		286deg,
+		rgba(2, 154, 238, 1) 4%,
+		rgba(75, 194, 255, 1) 78%
+	);
+	height: 100vh;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	padding-top: 60px;
+	transition: 0.5s;
+	width: 400px;
+	text-align: start;
+}
+.SideBar li {
+	list-style-type: none;
+	text-decoration: none;
+}
+.parent-list-item {
+	padding: 5px;
+
+	font-size: 25px;
+	color: #ee029b;
+	display: block;
+	transition: 0.3s;
+	background-color: #96f5e0;
+}
+
+.parent-list-item:hover {
+	color: #f1f1f1;
+	background-color: chocolate;
+}
+
+#closebtn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 20px;
+	display: flex;
+	align-items: flex-end;
+	height: 50px;
+	width: 50px;
+	color: #ee029b;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+.openbtn {
+	font-size: 20px;
+	height: 50px;
+	width: 50px;
+	margin-top: 10px;
+	cursor: pointer;
+	background-color: black;
+	color: #ee029b;
+	padding: 10px 15px;
+	border: none;
+}
+
+.openbtn:hover {
+	background-color: #444;
+}
+
+.collapsable-list {
+	cursor: pointer;
+}
+.parent-list-item {
+}
+.parent-list-item h3 {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
