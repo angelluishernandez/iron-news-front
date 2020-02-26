@@ -1,41 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Moment from "react-moment";
+import "./Card.css";
 
 const Card = props => {
 	console.log(props.articles);
 	return (
-		<ul className="Card">
-			{props.articles.map(article =>
-				article.map((element, index) => {
-					return (
-						<li key={index}>
-							<div className="Card">
-								<div className="card">
-									<img
-										className="card-img-top"
-										src={element.urlToImage}
-										alt={element.title}
-									/>
-									<a href={element.url} target="blank">
-										<div className="card-body">
-											<h5 className="card-title">{element.title}</h5>
-											<p className="card-text">{element.description}</p>
-										</div>
-									</a>
-									<div className="card-footer">
-										<Moment format="YYYY/MM/DD HH:mm">
-											{element.publishedAt}
-										</Moment>
-									</div>
-								</div>
+		<div className="Card card-deck">
+			{props.articles.map((article, index) => {
+				console.log("this is the article =>", typeof article);
+
+				console.log("this is the element=> ", article);
+				return (
+					<div className="card" key={index}>
+						<img
+							className="card-img-top"
+							src={article.urlToImage}
+							alt={article.description}
+						></img>
+						<div className="card-body">
+							<h5 className="card-title">{article.title}</h5>
+							<p className="card-text">{article.description}</p>
 							</div>
-						</li>
-					);
-				})
-			)}
-		</ul>
+							<div>
+							<p className="card-text">
+								<small className="text-muted">
+									<Moment format="YYYY/MM/DD HH:mm">
+										{article.publishedAt}
+									</Moment>
+								</small>
+							</p>
+						</div>
+					</div>
+				);
+			})}
+		</div>
 	);
 };
 
 export default Card;
+
+

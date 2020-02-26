@@ -1,0 +1,19 @@
+.Card img {
+  max-width: 200px;
+  padding: 2px;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow .3s;
+
+}
+.card-img-top{
+  width: 100%; 
+  object-fit: contain;
+}
+
+.card:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2)
+}

@@ -5,30 +5,32 @@ import AuthenticatedRoute from "./components/misc/AuthenticatedRoute";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
-
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
-
 import Layout from "./components/UI/Layout";
+
 function App() {
 	return (
 		<div className="App">
 			<AuthenticatedRoute>
-				<Layout/>
+				<Layout />
 			</AuthenticatedRoute>
-			<Switch>
-				<AuthenticatedRoute exact path="/">
-					<Home />
-				</AuthenticatedRoute>
+			<main className="container">
+				<Switch>
+					<AuthenticatedRoute exact path="/">
+						<Home />
+					</AuthenticatedRoute>
 
-				<AuthenticatedRoute exact path="/latestnews">
-					
-					<GetLatestNews />
-				</AuthenticatedRoute>
+					<AuthenticatedRoute exact path="/latestnews">
+						<GetLatestNews />
+						
+						
+					</AuthenticatedRoute>
 
-				<Route exact path="/login" component={Login} />
+					<Route exact path="/login" component={Login} />
 
-				<Route exact path="/signin" component={SignIn} />
-			</Switch>
+					<Route exact path="/signin" component={SignIn} />
+				</Switch>
+			</main>
 		</div>
 	);
 }

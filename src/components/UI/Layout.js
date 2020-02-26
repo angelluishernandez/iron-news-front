@@ -19,7 +19,7 @@ class Layout extends React.Component {
 		return (
 			<div className="Layout">
 				<NavBar handleOpen={this.openNav}></NavBar>
-				<SideBar handleClose={this.closeNav}></SideBar>
+				{/* <SideBar handleClose={this.closeNav}></SideBar> */}
 			</div>
 		);
 	}
