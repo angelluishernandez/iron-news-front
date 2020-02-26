@@ -2,6 +2,7 @@ import React from "react";
 import customCategoriesArray from "../../constants/customCategories";
 import "./SigIn.css";
 import IronNewsService from "../../services/IronNewsService";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 class SignIn extends React.Component {
 	state = {
@@ -12,7 +13,7 @@ class SignIn extends React.Component {
 			profilePic: null,
 			organization: "",
 			collaborators: "",
-			customCategories: "",
+			customCategories: [],
 		},
 		error: false,
 		loading: true,
@@ -21,11 +22,11 @@ class SignIn extends React.Component {
 
 	handleChange = event => {
 		const { name, value, files } = event.target;
-		console.log(files)
+		console.log(event.target.files);
 		this.setState({
 			data: {
 				...this.state.data,
-        [name]: files ? files[0] : value
+				[name]: files ? files[0] : value,
 			},
 		});
 	};
@@ -33,13 +34,19 @@ class SignIn extends React.Component {
 	handleSubmit = event => {
 		event.preventDefault();
 		const { data } = this.state;
-
-		console.log(data.profilePic)
+		const formData = new FormData();
+		formData.append("name", data.name);
+		formData.append("email", data.email);
+		formData.append("password", data.password);
+		formData.append("profilePic", data.profilePic);
+		formData.append("organization", data.organization);
+		formData.append("collaborators", data.collaborators);
+		formData.append("customCategories", data.customCategories);
 
 		this.setState({ loading: true, error: false }, () => {
-			IronNewsService.register(data)
+			IronNewsService.register(formData)
 				.then(() => {
-					console.log("entra")
+					console.log("entra");
 					this.setState({
 						success: true,
 					});
@@ -135,7 +142,7 @@ class SignIn extends React.Component {
 					</div>
 					<div className="mb-4">
 						<label htmlFor="organization">
-							Choose your category
+							What topics are you interested in?
 							<select
 								onChange={this.handleChange}
 								value={data.customCategories}

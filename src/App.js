@@ -14,7 +14,7 @@ function App() {
 			<AuthenticatedRoute>
 				<Layout />
 			</AuthenticatedRoute>
-			<main className="container">
+			
 				<Switch>
 					<AuthenticatedRoute exact path="/">
 						<Home />
@@ -30,7 +30,6 @@ function App() {
 
 					<Route exact path="/signin" component={SignIn} />
 				</Switch>
-			</main>
 		</div>
 	);
 }
