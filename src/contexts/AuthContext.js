@@ -9,9 +9,7 @@ export class AuthContextProvider extends React.Component {
 	};
 	setUser = user => {
 		localStorage.setItem("user", user ? JSON.stringify(user) : null);
-		this.setState({
-			user,
-		});
+		this.setState({ user });
 	};
 	logout = () => {
 		IronNewsService.logout().then(() => {

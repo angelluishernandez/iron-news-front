@@ -5,7 +5,7 @@ import AuthenticatedRoute from "./components/misc/AuthenticatedRoute";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
-import NavBar from "./components/UI/NavBar/NavBar";
+
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
 
 import Layout from "./components/UI/Layout";

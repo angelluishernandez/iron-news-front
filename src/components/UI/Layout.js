@@ -1,6 +1,7 @@
 import React from "react";
 import SideBar from "../UI/SideBar/SideBar"
 import NavBar from "../UI/NavBar/NavBar"
+import { WithAuthConsumer } from "../../contexts/AuthContext";
 
 
 class Layout extends React.Component {
@@ -24,4 +25,4 @@ class Layout extends React.Component {
 	}
 }
 
-export default Layout;
+export default WithAuthConsumer(Layout);

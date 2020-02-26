@@ -6,7 +6,6 @@ class FolderExpandList extends React.Component {
 		activeCollapse: false,
 	};
 	handleExpandCollapse = () => {
-		console.log("This is the current state=> ", this.state.activeCollapse);
 		this.state.activeCollapse
 			? this.setState({ activeCollapse: false })
 			: this.setState({ activeCollapse: true });
@@ -31,14 +30,11 @@ class FolderExpandList extends React.Component {
 				{this.state.activeCollapse && (
 					<ul className="collapsable-list">
 						<li className="">
-							<h4>Folder 1</h4>
+							<h4>Añadir las carpetas en el estado y mapearlas
+								
+							</h4>
 						</li>
-						<li>
-							<h4>Folder 2</h4>
-						</li>
-						<li>
-							<h4>Folder 3</h4>
-						</li>
+					
 						<h4>
 							<AddBoxRoundedIcon /> Add a folder
 						</h4>

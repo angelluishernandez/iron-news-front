@@ -68,8 +68,7 @@
 .collapsable-list {
 	cursor: pointer;
 }
-.parent-list-item {
-}
+
 .parent-list-item h3 {
 	display: flex;
 	justify-content: space-between;
