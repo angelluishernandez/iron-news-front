@@ -2,7 +2,7 @@ import React from "react";
 import customCategoriesArray from "../../constants/customCategories";
 import "./SigIn.css";
 import IronNewsService from "../../services/IronNewsService";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+
 
 class SignIn extends React.Component {
 	state = {
@@ -141,7 +141,7 @@ class SignIn extends React.Component {
 						/>
 					</div>
 					<div className="mb-4">
-						<label htmlFor="organization">
+						<label htmlFor="customCategories">
 							What topics are you interested in?
 							<select
 								onChange={this.handleChange}

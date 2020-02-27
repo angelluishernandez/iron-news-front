@@ -3,15 +3,13 @@ import Moment from "react-moment";
 import "./Card.css";
 
 const Card = props => {
-	console.log(props.articles);
+	console.log("is reaching cards =>", props.articles);
 	return (
-		<div className="Card card-deck">
-			{props.articles.map((article, index) => {
-				console.log("this is the article =>", typeof article);
-
-				console.log("this is the element=> ", article);
+		<div className="Card card-container container-fluid">
+			{props.articles.map((article, key) => {
+				console.log("entra en card");
 				return (
-					<div className="card" key={index}>
+					<div className="card col-3" key={key}>
 						<img
 							className="card-img-top"
 							src={article.urlToImage}
@@ -20,8 +18,8 @@ const Card = props => {
 						<div className="card-body">
 							<h5 className="card-title">{article.title}</h5>
 							<p className="card-text">{article.description}</p>
-							</div>
-							<div>
+						</div>
+						<div>
 							<p className="card-text">
 								<small className="text-muted">
 									<Moment format="YYYY/MM/DD HH:mm">
@@ -38,5 +36,3 @@ const Card = props => {
 };
 
 export default Card;
-
-

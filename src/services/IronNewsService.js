@@ -21,11 +21,12 @@ const login = ({ email, password }) => http.post("/login", { email, password });
 const logout = () => http.post("/logout");
 const register = data => http.post("/register", data);
 const getLatestNews = data => http.post("/news/top-headlines", data)
-
-export default {
+const landing = (category) => http.post("/:id", category)
+export default { 
 	login,
 	logout,
 	register,
 	home,
 	getLatestNews,
+	landing
 };
