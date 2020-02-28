@@ -2,7 +2,7 @@ import React from "react";
 import "./SideBar.css";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 
-import NewsExpandList from "./NewsSideBar";
+import NewsExpandList from "./NewsExpandList";
 import FolderExpandList from "./FoldersExpandList";
 import UserViewSideBar from "../UserViewSideBar/UserViewSideBar";
 const SideBar = props => {

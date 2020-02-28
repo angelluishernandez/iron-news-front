@@ -4,6 +4,7 @@ import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
 const NavBar = props => {
 	
@@ -17,10 +18,12 @@ const NavBar = props => {
 				<MenuOutlinedIcon className="navbar-icon" onClick={props.handleOpen} />{" "}
 			</div>
 			<div>
+			<Link to={`/${props.currentUser._id}`}>
 				<h3>
 					<HomeRoundedIcon className="navbar-icon" />
 					IronNews
 				</h3>
+				</Link>
 			</div>
 			{props.currentUser && (
 				<div>

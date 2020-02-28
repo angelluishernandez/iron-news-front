@@ -7,8 +7,9 @@ import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
 import Layout from "./components/UI/Layout";
+import { WithAuthConsumer } from "./contexts/AuthContext";
 
-function App() {
+function App(props) {
 	return (
 		<div className="App">
 			<AuthenticatedRoute>
@@ -16,11 +17,11 @@ function App() {
 			</AuthenticatedRoute>
 			
 				<Switch>
-					<AuthenticatedRoute exact path="/">
+					<AuthenticatedRoute exact path={`/${props.currentUser._id}`}>
 						<Home />
 					</AuthenticatedRoute>
 
-					<AuthenticatedRoute exact path="/latestnews">
+					<AuthenticatedRoute exact path="/latestnews/:id">
 						<GetLatestNews />
 						
 						
@@ -34,4 +35,4 @@ function App() {
 	);
 }
 
-export default App;
+export default WithAuthConsumer(App) ;

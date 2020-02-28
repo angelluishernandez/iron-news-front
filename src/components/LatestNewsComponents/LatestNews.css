@@ -6,16 +6,19 @@
 		rgba(225, 63, 97, 1) 78%
 	);
 	color: white;
-	height: 35vh;
 }
 
 .fa-newspaper {
-  color: #F5C279;
-  
+	color: #f5c279;
 }
 
-.latest-news-search-box{
-  background: #F47A86 !important;
-  border: #F47A86 !important;
+.latest-news-search-box {
+	background: #f47a86;
+	border: #f47a86;
+}
 
+.search-more {
+	bottom: 0;
+	right:0; 
+	padding: 0 10px;
 }
