@@ -3,7 +3,6 @@ import Moment from "react-moment";
 import "./Card.css";
 
 const Card = props => {
-	console.log("is reaching cards =>", props.articles);
 	return (
 		<div className="Card card-container container-fluid">
 			{props.articles.map((article, key) => {

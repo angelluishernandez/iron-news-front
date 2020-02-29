@@ -34,7 +34,6 @@ class Home extends React.Component {
 	};
 
 	componentDidMount() {
-		
 		IronNewsService.landing(this.state.data.category)
 			.then(responseArticles => {
 				this.setState({
@@ -50,14 +49,13 @@ class Home extends React.Component {
 	}
 
 	componentDidUpdate(_, prevState) {
-
 		if (prevState.data.category !== this.state.data.category) {
 			IronNewsService.landing(this.state.data.category)
 				.then(responseArticles => {
 					this.setState({
 						data: {
 							category: this.state.data.category,
-							articles: responseArticles.articles
+							articles: responseArticles.articles,
 						},
 						isLoading: false,
 					});
@@ -67,7 +65,6 @@ class Home extends React.Component {
 	}
 
 	render() {
-
 		return (
 			<div>
 				<h3>This is your feed for today</h3>
@@ -97,11 +94,14 @@ class Home extends React.Component {
 					</button>
 				</form>
 
-				{!this.state.isLoading ? <Card articles={this.state.data.articles}/> : <h3>Loading ....</h3>}
+				{!this.state.isLoading ? (
+					<Card articles={this.state.data.articles} />
+				) : (
+					<h3>Loading ....</h3>
+				)}
 			</div>
 		);
 	}
 }
 
 export default WithAuthConsumer(Home);
-

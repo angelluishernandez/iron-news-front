@@ -9,7 +9,7 @@ import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
 import Layout from "./components/UI/Layout";
 import { WithAuthConsumer } from "./contexts/AuthContext";
 
-function App(props) {
+function App() {
 	return (
 		<div className="App">
 			<AuthenticatedRoute>
@@ -17,11 +17,12 @@ function App(props) {
 			</AuthenticatedRoute>
 			
 				<Switch>
-					<AuthenticatedRoute exact path={`/${props.currentUser._id}`}>
+					<AuthenticatedRoute exact path={`/:id`}>
 						<Home />
 					</AuthenticatedRoute>
 
 					<AuthenticatedRoute exact path="/latestnews/:id">
+
 						<GetLatestNews />
 						
 						

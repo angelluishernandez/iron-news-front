@@ -1,22 +1,29 @@
 import React from "react";
 import "./LatestNews.css";
 import NewsSearchForm from "../UI/NewsSearchForm";
+import { WithAuthConsumer } from "../../contexts/AuthContext";
+import { WithLatestNewsConsumer } from "../../contexts/LatestNewsContext";
+import NewsDefaultSearch from "./NewsDefaultSearch";
 class LatestNewsSearch extends React.Component {
 	state = {
-		query: "",
 		isMoreOptionsClick: false,
+		submited: false,
 	};
 
-	handleChangeSearch = event => {
+	handleChange = query => {
 		this.setState({
-			query: event.target.value,
-			isMoreOptionsClick: false,
+			data: {
+				query: {...query}
+			},
 		});
-		this.props.onSearchChange(this.state.query);
 	};
-	handleSubmitSearch = event => {
-		event.preventDefault();
-		this.props.onSubmitSearch(this.state.query);
+
+	handleSubmit = ({queryData}) => {
+		this.setState({
+			submited: true,
+
+		});
+		this.props.setQueryData(queryData);
 	};
 
 	expandSearch = event => {
@@ -29,37 +36,29 @@ class LatestNewsSearch extends React.Component {
 	render() {
 		console.log(this.state.isMoreOptionsClick);
 		return (
-			<div className="LatestNewsSearch card">
-				<form onSubmit={this.handleSubmitSearch}>
-				<div className="form-group col-md-6">
-					<i className="far fa-newspaper mr-5 fa-3x"></i>
-					<label htmlFor="search-box">Search the latest news</label>
-					<input
-						type="text"
-						placeholder="Search news..."
-						className="form-control latest-news-search-box "
-						value={this.state.query}
-						name="query"
-						autoComplete="off"
-						onChange={this.handleChangeSearch}
+			<div className="LatestNewsSearch">
+				<NewsDefaultSearch
+					expandSearch={this.expandSearch}
+					isMoreOptionsClick={this.state.isMoreOptionsClick}
+					handleChangeSearch={this.handleChange}
+					handleSubmitSearch={this.handleSubmit}
+					query={this.state.query}
+				/>
+				{this.state.isMoreOptionsClick && (
+					<NewsSearchForm
+						expandSearch={this.expandSearch}
+						isMoreOptionsClick={this.state.isMoreOptionsClick}
+						handleChangeSearch={this.handleChange}
+						handleSubmitSearch={this.handleSubmit}
+						query={this.state.query}
 					/>
-				
-			</div>
-				<div className="search-more mt-2" onClick={this.expandSearch}>
-					<p>
-						Search more options
-						{this.state.isMoreOptionsClick ? (
-							<i className="fas fa-times more-icon ml-2"></i>
-						) : (
-							<i className="fas fa-plus more-icon ml-2"></i>
-						)}
-					</p>
-				</div>
-				{this.state.isMoreOptionsClick && <NewsSearchForm />}
-				</form>
+				)}
+				<button type="submit" className="btn btn-success">
+					Search
+				</button>
 			</div>
 		);
 	}
 }
 
-export default LatestNewsSearch;
+export default WithAuthConsumer(WithLatestNewsConsumer(LatestNewsSearch));
