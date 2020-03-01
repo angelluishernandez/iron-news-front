@@ -9,6 +9,10 @@ class GetLatestNews extends React.Component {
 	state = {
 		data: {
 			query: "",
+			qInTitle: "",
+			source: "",
+			language: "",
+			sortBy: "",
 		},
 		articles: [],
 		isLoading: true,
@@ -17,18 +21,27 @@ class GetLatestNews extends React.Component {
 	};
 
 	handleChange = data => {
+
 		this.setState({
 			...this.state,
-			
+
 			isLoading: true,
 			submited: false,
 		});
 	};
-	handleSubmit = data => {
+	handleSubmit = (data) => {
+		console.log("this is data on submit", data)
+		const {query, source} = data
 		this.setState({
 			submited: true,
 			isLoading: true,
-			data: { query: data },
+			data: {
+				query: query,
+				// qInTitle: "coronavirus", 
+				source: source
+				// language: "fr",
+				// sortBy: "relevancy",
+			},
 		});
 	};
 
@@ -41,11 +54,15 @@ class GetLatestNews extends React.Component {
 	}
 
 	componentDidUpdate(_, prevState) {
-		const prevQuery = prevState.data.query
-		const query = this.state.data.query
-		if (prevQuery !== query) {
+
+		const prevData = prevState.data.query;
+		const {query, qInTitle, language, source, sortBy} = this.state.data;
+
+		console.log("this is prevState", prevState)
+		console.log("this is body=> ", query)
+		if (prevData !== query) {
 			if (this.state.submited) {
-				IronNewsService.getLatestNews({query})
+				IronNewsService.getLatestNews({query, qInTitle, language, source, sortBy})
 
 					.then(responseArticles => {
 						this.setState({
@@ -56,6 +73,7 @@ class GetLatestNews extends React.Component {
 					.catch(error => console.log(error));
 			}
 		}
+		console.log("state on update=>", this.state.data)
 	}
 
 	render() {

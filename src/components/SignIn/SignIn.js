@@ -3,7 +3,6 @@ import customCategoriesArray from "../../constants/customCategories";
 import "./SigIn.css";
 import IronNewsService from "../../services/IronNewsService";
 
-
 class SignIn extends React.Component {
 	state = {
 		data: {
@@ -13,7 +12,7 @@ class SignIn extends React.Component {
 			profilePic: null,
 			organization: "",
 			collaborators: "",
-			customCategories: [],
+			customCategories: "",
 		},
 		error: false,
 		loading: true,
@@ -44,7 +43,23 @@ class SignIn extends React.Component {
 		formData.append("customCategories", data.customCategories);
 
 		this.setState({ loading: true, error: false }, () => {
-			IronNewsService.register(formData)
+			if (this.props.user) {
+			const id = this.props.user._id
+				IronNewsService.editUser(formData, id)
+					.then(() => {
+						console.log("entra");
+						this.setState({
+							success: true,
+						});
+					})
+					.catch(() => {
+						this.setState({
+							error: true,
+							loading: false,
+						});
+					});
+			} else{
+				IronNewsService.register(formData)
 				.then(() => {
 					console.log("entra");
 					this.setState({
@@ -57,6 +72,7 @@ class SignIn extends React.Component {
 						loading: false,
 					});
 				});
+			}
 		});
 	};
 	render() {
@@ -164,7 +180,7 @@ class SignIn extends React.Component {
 					<button
 						className="btn btn-success mr-1"
 						id="signin-btn2"
-						disabled={!loading}
+						// disabled={!loading}
 					>
 						Sign in
 					</button>

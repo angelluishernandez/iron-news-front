@@ -8,6 +8,7 @@ import SignIn from "./components/SignIn/SignIn";
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
 import Layout from "./components/UI/Layout";
 import { WithAuthConsumer } from "./contexts/AuthContext";
+import UserEdit from "./components/UserEdit/UserEdit";
 
 function App() {
 	return (
@@ -15,25 +16,25 @@ function App() {
 			<AuthenticatedRoute>
 				<Layout />
 			</AuthenticatedRoute>
-			
-				<Switch>
-					<AuthenticatedRoute exact path={`/:id`}>
-						<Home />
-					</AuthenticatedRoute>
 
-					<AuthenticatedRoute exact path="/latestnews/:id">
+			<Switch>
+				<AuthenticatedRoute exact path={`/:id`}>
+					<Home />
+				</AuthenticatedRoute>
+				<AuthenticatedRoute exact path={`/user/:id`}>
+					<UserEdit/>
+				</AuthenticatedRoute>
 
-						<GetLatestNews />
-						
-						
-					</AuthenticatedRoute>
+				<AuthenticatedRoute exact path="/latestnews/:id">
+					<GetLatestNews />
+				</AuthenticatedRoute>
 
-					<Route exact path="/login" component={Login} />
+				<Route exact path="/login" component={Login} />
 
-					<Route exact path="/signin" component={SignIn} />
-				</Switch>
+				<Route exact path="/signin" component={SignIn} />
+			</Switch>
 		</div>
 	);
 }
 
-export default WithAuthConsumer(App) ;
+export default WithAuthConsumer(App);

@@ -17,7 +17,9 @@ class NewsDefaultSearch extends React.Component {
 	};
 
 	handleSubmit = event => {
+		
 		event.preventDefault();
+		console.log("handle submit in default")
 		this.props.handleSubmitSearch(this.state.query);
 	};
 
@@ -42,7 +44,6 @@ class NewsDefaultSearch extends React.Component {
 	render() {
 		return (
 			<div className="LatestNewsSearch card">
-				<form onSubmit={this.handleSubmit}>
 					<div className="form-group col-md-6">
 						<i className="far fa-newspaper mr-5 fa-3x"></i>
 						<label htmlFor="search-box">Search the latest news</label>
@@ -66,7 +67,6 @@ class NewsDefaultSearch extends React.Component {
 							)}
 						</p>
 					</div>
-				</form>
 			</div>
 		);
 	}
