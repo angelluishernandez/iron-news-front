@@ -1,6 +1,8 @@
 import React from "react";
 import "./SideBar.css"
 import AddBoxRoundedIcon from "@material-ui/icons/AddBoxRounded";
+import { Link } from "react-router-dom";
+import { WithAuthConsumer } from "../../../contexts/AuthContext";
 class FolderExpandList extends React.Component {
 	state = {
 		activeCollapse: false,
@@ -36,7 +38,8 @@ class FolderExpandList extends React.Component {
 						</li>
 					
 						<h4>
-							<AddBoxRoundedIcon /> Add a folder
+							<Link to={`/folders/${this.props.currentUser.id}/createfolder`}><AddBoxRoundedIcon /> Add a folder</Link>
+							
 						</h4>
 					</ul>
 				)}
@@ -45,4 +48,4 @@ class FolderExpandList extends React.Component {
 	}
 }
 
-export default FolderExpandList;
+export default WithAuthConsumer(FolderExpandList);
