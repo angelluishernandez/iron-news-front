@@ -17,17 +17,14 @@ class GetLatestNews extends React.Component {
 	};
 
 	handleChange = data => {
-		console.log("reaches get latest news handle change => ", data);
 		this.setState({
 			...this.state,
-
+			
 			isLoading: true,
 			submited: false,
 		});
 	};
 	handleSubmit = data => {
-		console.log("this is data", data)
-		// event.preventDefault();
 		this.setState({
 			submited: true,
 			isLoading: true,
@@ -44,12 +41,11 @@ class GetLatestNews extends React.Component {
 	}
 
 	componentDidUpdate(_, prevState) {
-		console.log("prev data =>", prevState.data.query);
-		console.log("current data =>", this.state.data.query);
-		console.log(prevState.data.query !== this.state.data.query);
-		if (prevState.data.query !== this.state.data.query) {
+		const prevQuery = prevState.data.query
+		const query = this.state.data.query
+		if (prevQuery !== query) {
 			if (this.state.submited) {
-				IronNewsService.getLatestNews(this.state.data.query)
+				IronNewsService.getLatestNews({query})
 
 					.then(responseArticles => {
 						this.setState({
@@ -60,7 +56,6 @@ class GetLatestNews extends React.Component {
 					.catch(error => console.log(error));
 			}
 		}
-		console.log("state after update", this.state);
 	}
 
 	render() {

@@ -22,7 +22,6 @@ class LatestNewsSearch extends React.Component {
 	};
 
 	render() {
-		console.log(this.state.isMoreOptionsClick);
 		return (
 			<div className="LatestNewsSearch">
 				<NewsDefaultSearch

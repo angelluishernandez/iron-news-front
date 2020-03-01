@@ -8,7 +8,12 @@ class NewsDefaultSearch extends React.Component {
 	};
 
 	handleChange = event => {
+		this.setState({
+			query: event.target.value
+		})
 		this.props.handleChangeSearch(event.target.value);
+
+
 	};
 
 	handleSubmit = event => {
