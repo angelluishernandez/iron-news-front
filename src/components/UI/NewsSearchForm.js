@@ -15,25 +15,14 @@ class NewsSearchForm extends React.Component {
 		submited: false
 	};
 	handleChange = event => {
-		const { name, value } = event.target;
-		this.setState({
-			data: {
-				...this.state.data,
-				[name]: value,
-			},
-		});
+		this.props.handleChangeSearch(event.target.value);
 	};
-	handleSUbmit = event => {
-		event.preventDefault()
-		this.setState({
-			...this.state, 
-			submited: true
+	handleSubmit = event => {
+		event.preventDefault();
+		this.props.handleSubmitSearch(event.target.value);
+	};
 
-		})
-		this.props.setQueryData({...this.state.data})
-
-	}
-
+	
 	render() {
 		return (
 			<div className="form-row">

@@ -4,27 +4,15 @@ import NewsSearchForm from "../UI/NewsSearchForm";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { WithLatestNewsConsumer } from "../../contexts/LatestNewsContext";
 import NewsDefaultSearch from "./NewsDefaultSearch";
+
+
 class LatestNewsSearch extends React.Component {
 	state = {
 		isMoreOptionsClick: false,
 		submited: false,
 	};
 
-	handleChange = query => {
-		this.setState({
-			data: {
-				query: {...query}
-			},
-		});
-	};
 
-	handleSubmit = ({queryData}) => {
-		this.setState({
-			submited: true,
-
-		});
-		this.props.setQueryData(queryData);
-	};
 
 	expandSearch = event => {
 		this.setState(prevState => ({
@@ -40,19 +28,17 @@ class LatestNewsSearch extends React.Component {
 				<NewsDefaultSearch
 					expandSearch={this.expandSearch}
 					isMoreOptionsClick={this.state.isMoreOptionsClick}
-					handleChangeSearch={this.handleChange}
-					handleSubmitSearch={this.handleSubmit}
+					handleChangeSearch = {this.props.handleChangeSearch}
+					handleSubmitSearch = {this.props.handleSubmitSearch}
 					query={this.state.query}
 				/>
-				{this.state.isMoreOptionsClick && (
+				{/* {this.state.isMoreOptionsClick && (
 					<NewsSearchForm
 						expandSearch={this.expandSearch}
-						isMoreOptionsClick={this.state.isMoreOptionsClick}
-						handleChangeSearch={this.handleChange}
-						handleSubmitSearch={this.handleSubmit}
+						isMoreOptionsClick={this.state.isMoreOptionsClick}					
 						query={this.state.query}
 					/>
-				)}
+				)} */}
 				<button type="submit" className="btn btn-success">
 					Search
 				</button>

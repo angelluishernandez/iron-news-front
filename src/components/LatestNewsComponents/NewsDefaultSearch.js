@@ -1,19 +1,39 @@
 import React from "react";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
+import LatestNewsContext from "../../contexts/LatestNewsContext";
 
 class NewsDefaultSearch extends React.Component {
+	state = {
+		query: "",
+	};
 
 	handleChange = event => {
 		this.props.handleChangeSearch(event.target.value);
 	};
+
 	handleSubmit = event => {
 		event.preventDefault();
-		this.props.handleSubmitSearch(event.target.value);
+		this.props.handleSubmitSearch(this.state.query);
 	};
 
-	handleExpand = event => {
+	handleExpand = () => {
 		this.props.expandSearch();
 	};
+	// handleChange = event => {
+	// 	console.log("this are the props", this.props);
+	// 	const { value, name } = event.target;
+	// 	this.props.handleChangeSearch({ [name]: value });
+	// };
+	// handleSubmit = event => {
+	// 	event.preventDefault();
+	// 	const { value, name } = event.target;
+
+	// 	this.props.handleSubmitSearch({ [name]: value });
+	// };
+
+	// handleExpand = event => {
+	// 	this.props.expandSearch();
+	// };
 	render() {
 		return (
 			<div className="LatestNewsSearch card">
@@ -42,9 +62,6 @@ class NewsDefaultSearch extends React.Component {
 						</p>
 					</div>
 				</form>
-				<button type="submit" className="btn btn-success">
-					Search
-				</button>
 			</div>
 		);
 	}

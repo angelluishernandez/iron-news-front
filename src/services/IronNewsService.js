@@ -20,7 +20,7 @@ const home = user => http.get(`/`, user);
 const login = ({ email, password }) => http.post("/login", { email, password });
 const logout = () => http.post("/logout");
 const register = data => http.post("/register", data);
-const getLatestNews = data => http.post("/news/top-headlines", data)
+const getLatestNews = (data) => http.post("/news/top-headlines", (data))
 const landing = (category) => http.post(`/`, category)
 export default { 
 	login,
