@@ -24,7 +24,7 @@ const register = data => http.post("/register", data);
 const getLatestNews = (data) => http.post("/news/top-headlines", (data))
 const editUser = (user, id) => http.patch(`/user/${id}`, user)
 const createFolder = ({name, description, tags}, userId) => http.post(`/folders/${userId}/newfolder`, {name, description, tags})
-
+const listFolders = userId => http.get(`/folders/${userId}`, userId)
 export default { 
 	login,
 	logout,
@@ -33,5 +33,6 @@ export default {
 	getLatestNews,
 	landing, 
 	editUser, 
-	createFolder
+	createFolder, 
+	listFolders
 };
