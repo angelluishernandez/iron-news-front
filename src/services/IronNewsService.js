@@ -26,6 +26,7 @@ const editUser = (user, id) => http.patch(`/user/${id}`, user)
 const createFolder = ({name, description, tags}, userId) => http.post(`/folders/${userId}/newfolder`, {name, description, tags})
 const listFolders = userId => http.get(`/folders/${userId}`, userId)
 const getUser = userId => http.get(`/user/${userId}`, userId)
+const deleteFolder = (userId, folderId) => http.delete(`/folders/${userId}/${folderId}/deletefolder`, userId, folderId)
 export default { 
 	login,
 	logout,
@@ -36,5 +37,5 @@ export default {
 	editUser, 
 	createFolder, 
 	listFolders, 
-	getUser
+	getUser, deleteFolder
 };

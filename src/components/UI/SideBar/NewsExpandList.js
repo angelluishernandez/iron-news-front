@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { WithAuthConsumer } from "../../../contexts/AuthContext";
 const NewsExpandList = props => {
 	return (
-		<li className="parent-list-item" onClick={props.handleCollapse}>
+		<li className="parent-list-item">
 			<h3>
 				Latest News{" "}
 				{!props.activeCollapse ? (

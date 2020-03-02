@@ -9,7 +9,6 @@ export class AuthContextProvider extends React.Component {
 	};
 
 	setUser = user => {
-		console.log("entra en set user => ", user)
 		localStorage.setItem("user", user ? JSON.stringify(user) : null);
 		this.setState({ user });
 	};
@@ -19,35 +18,21 @@ export class AuthContextProvider extends React.Component {
 		});
 	};
 
-	// componentDidMount() {
-	// 	// const userId = this.state.user._id;
-	// 	// IronNewsService.getUser(userId)
-	// 	// 	.then(user => {
-	// 	// 		this.setUser(user);
-	// 	// 	})
-	// 	// 	.catch(error => console.log(error));
-	// }
+	componentDidMount() {
+		const userId = this.state.user._id;
+		IronNewsService.getUser(userId)
+			.then(user => {
+				this.setUser(user);
+			})
+			.catch(error => console.log(error));
+	}
 	componentDidUpdate(_, prevState){
 	
 		if(prevState.user !== this.state.user){
-			console.log("entra en component did update", this.state.user)
 			return true
 		}
 	}
-	// componentDidUpdate(_, prevState) {
-	// 	console.log("this is the prevState => ", prevState.user);
-	// 	console.log("this is the current state=> ", this.state.user);
-	// 	if (prevState.user !== this.state.user) {
-	// 		const userId = this.state.user._id;
-	// 		IronNewsService.getUser(userId)
-	// 			.then(user => {
-	// 				this.setUser(user);
-	// 				debugger
-	// 			})
-	// 			.catch(error => console.log(error));
-	// 	}
-	// 	return true
-	// }
+
 	render() {
 		const value = {
 			currentUser: this.state.user,
