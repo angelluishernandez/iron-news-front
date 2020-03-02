@@ -1,48 +1,9 @@
 import React from "react";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
-import LatestNewsContext from "../../contexts/LatestNewsContext";
 
-class NewsDefaultSearch extends React.Component {
-	state = {
-		query: "",
-	};
+const NewsDefaultSearch =(props)=>{
 
-	handleChange = event => {
-		this.setState({
-			query: event.target.value
-		})
-		this.props.handleChangeSearch(event.target.value);
-
-
-	};
-
-	handleSubmit = event => {
-		
-		event.preventDefault();
-		console.log("handle submit in default")
-		this.props.handleSubmitSearch(this.state.query);
-	};
-
-	handleExpand = () => {
-		this.props.expandSearch();
-	};
-	// handleChange = event => {
-	// 	console.log("this are the props", this.props);
-	// 	const { value, name } = event.target;
-	// 	this.props.handleChangeSearch({ [name]: value });
-	// };
-	// handleSubmit = event => {
-	// 	event.preventDefault();
-	// 	const { value, name } = event.target;
-
-	// 	this.props.handleSubmitSearch({ [name]: value });
-	// };
-
-	// handleExpand = event => {
-	// 	this.props.expandSearch();
-	// };
-	render() {
-		return (
+			return (
 			<div className="LatestNewsSearch card">
 					<div className="form-group col-md-6">
 						<i className="far fa-newspaper mr-5 fa-3x"></i>
@@ -51,16 +12,16 @@ class NewsDefaultSearch extends React.Component {
 							type="text"
 							placeholder="Search news..."
 							className="form-control latest-news-search-box "
-							value={this.props.query}
+							value={props.query}
 							name="query"
 							autoComplete="off"
-							onChange={this.handleChange}
+							onChange={(event) =>props.handleChangeSearch(event.target)}
 						/>
 					</div>
-					<div className="search-more mt-2" onClick={this.handleExpand}>
+					<div className="search-more mt-2" onClick={()=>props.expandSearch()}>
 						<p>
 							Search more options
-							{this.props.isMoreOptionsClick ? (
+							{props.isMoreOptionsClick ? (
 								<i className="fas fa-times more-icon ml-2"></i>
 							) : (
 								<i className="fas fa-plus more-icon ml-2"></i>
@@ -70,6 +31,5 @@ class NewsDefaultSearch extends React.Component {
 			</div>
 		);
 	}
-}
 
 export default WithAuthConsumer(NewsDefaultSearch);

@@ -4,6 +4,7 @@ import NewsSearchForm from "../UI/NewsSearchForm";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { WithLatestNewsConsumer } from "../../contexts/LatestNewsContext";
 import NewsDefaultSearch from "./NewsDefaultSearch";
+import IronNewsService from "../../services/IronNewsService";
 
 class LatestNewsSearch extends React.Component {
 	state = {
@@ -18,13 +19,32 @@ class LatestNewsSearch extends React.Component {
 		submited: false,
 	};
 
-	handleSubmit = event => {
-		const { value, name } = event.target;
-		event.preventDefault();
+	handleChange = data => {
+		console.log("this is data=>", this.state.data);
+		const { name, value } = data;
 		this.setState({
-			data: { [name]: value },
+			...this.state,
+
+			data: { ...this.state.data, [name]: value },
+			isLoading: true,
+			submited: false,
 		});
-		this.props.handleSubmitSearch();
+		console.log(this.state);
+	};
+	handleSubmit = event => {
+		event.preventDefault();
+		const { query, source } = this.state.data;
+		this.setState({
+			submited: true,
+			isLoading: true,
+			data: {
+				query: query,
+				// qInTitle: "coronavirus",
+				source: source,
+				// language: "fr",
+				// sortBy: "relevancy",
+			},
+		});
 	};
 
 	expandSearch = event => {
@@ -40,8 +60,7 @@ class LatestNewsSearch extends React.Component {
 					<NewsDefaultSearch
 						expandSearch={this.expandSearch}
 						isMoreOptionsClick={this.state.isMoreOptionsClick}
-						handleChangeSearch={this.props.handleChangeSearch}
-						handleSubmitSearch={this.props.handleSubmitSearch}
+						handleChangeSearch={this.handleChange}
 						query={this.state.query}
 					/>
 					{this.state.isMoreOptionsClick && (
@@ -49,8 +68,7 @@ class LatestNewsSearch extends React.Component {
 							expandSearch={this.expandSearch}
 							isMoreOptionsClick={this.state.isMoreOptionsClick}
 							query={this.state.query}
-							handleChangeSearch={this.props.handleChangeSearch}
-							handleSubmitSearch={this.props.handleSubmitSearch}
+							handleChangeSearch={this.handleChange}
 						/>
 					)}
 					<button type="submit" className="btn btn-success">

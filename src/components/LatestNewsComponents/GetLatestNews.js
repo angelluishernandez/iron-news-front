@@ -20,30 +20,32 @@ class GetLatestNews extends React.Component {
 		submited: false,
 	};
 
-	handleChange = data => {
-
-		this.setState({
-			...this.state,
-
-			isLoading: true,
-			submited: false,
-		});
-	};
-	handleSubmit = (data) => {
-		console.log("this is data on submit", data)
-		const {query, source} = data
-		this.setState({
-			submited: true,
-			isLoading: true,
-			data: {
-				query: query,
-				// qInTitle: "coronavirus", 
-				source: source
-				// language: "fr",
-				// sortBy: "relevancy",
-			},
-		});
-	};
+	// handleChange = data => {
+	// 	console.log("this is data=>", data)
+	// 	const {name, value} = data
+	// 	this.setState({
+	// 		...this.state,
+	// 		[name]: value, 
+	// 		isLoading: true,
+	// 		submited: false,
+	// 	});
+	// 	console.log(this.state)
+	// };
+	// handleSubmit = (data) => {
+		
+	// 	const {query, source} = this.state.data
+	// 	this.setState({
+	// 		submited: true,
+	// 		isLoading: true,
+	// 		data: {
+	// 			query: query,
+	// 			// qInTitle: "coronavirus", 
+	// 			source: source
+	// 			// language: "fr",
+	// 			// sortBy: "relevancy",
+	// 		},
+	// 	});
+	// };
 
 	componentDidMount() {
 		//Hacer llamada a la API externa y actualizar loading a false
@@ -57,9 +59,6 @@ class GetLatestNews extends React.Component {
 
 		const prevData = prevState.data.query;
 		const {query, qInTitle, language, source, sortBy} = this.state.data;
-
-		console.log("this is prevState", prevState)
-		console.log("this is body=> ", query)
 		if (prevData !== query) {
 			if (this.state.submited) {
 				IronNewsService.getLatestNews({query, qInTitle, language, source, sortBy})
@@ -73,7 +72,6 @@ class GetLatestNews extends React.Component {
 					.catch(error => console.log(error));
 			}
 		}
-		console.log("state on update=>", this.state.data)
 	}
 
 	render() {
