@@ -14,9 +14,6 @@ class AddFolder extends React.Component {
 	};
 
 	handleChange = event => {
-		console.log("folder on change=> ", this.state);
-		console.log("this is the event", event.target.value);
-
 		const { name, value } = event.target;
 		this.setState({
 			folder: {
@@ -26,7 +23,6 @@ class AddFolder extends React.Component {
 		});
 	};
 	handleSubmit = event => {
-		console.log("entra en submit");
 		event.preventDefault();
 		const userId = this.props.currentUser._id;
 		const folderState = this.state.folder;
@@ -39,9 +35,7 @@ class AddFolder extends React.Component {
 				console.log("this is the folder => ", folder);
 			})
 			.then(() =>
-				IronNewsService.getUser(userId)
-					.then(user => this.props.setUser(user))
-					.catch(error => console.log(error))
+				this.props.getFolders()
 			)
 
 			.catch(error => console.log(error));
