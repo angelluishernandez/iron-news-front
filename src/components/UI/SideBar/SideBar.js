@@ -53,9 +53,9 @@ class SideBar extends React.Component {
 			.catch(error => console.log(error));
 	};
 
-	// componentDidMount() {
-	// 	this.getFolders();
-	// }
+	componentDidMount() {
+		this.getFolders();
+	}
 	componentDidUpdate(prevProps, prevState) {
 		if (prevProps !== this.props) {
 			console.log("entra en component did update");
@@ -76,7 +76,9 @@ class SideBar extends React.Component {
 			folders: folderArray,
 		});
 
-		IronNewsService.deleteFolder(folderId, userId);
+		IronNewsService.deleteFolder( userId, folderId)
+			.then(folder => console.log("this folder has been deleted=>", folder))
+			.catch(error => console.log(error));
 	};
 	render() {
 		return (
