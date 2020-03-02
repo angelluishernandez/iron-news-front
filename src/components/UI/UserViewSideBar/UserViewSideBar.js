@@ -4,18 +4,17 @@ import "./UserViewSideBar.css";
 import { Link } from "react-router-dom";
 
 const UserViewSideBar = props => {
-	console.log("this are the props ", props);
-
+	
 	return (
 		<div className="UserViewSideBar card">
-			<Link to={`/user/${props.currentUser._id}`}>
+			<Link to={`/user/${props.user._id}`}>
 				<img
-					src={props.currentUser.profilePic}
-					alt={props.currentUser.name}
+					src={props.user.profilePic}
+					alt={props.user.name}
 					className="avatar"
 				/>
 			</Link>
-			<h3>{`Welcome ${props.currentUser.name}`}</h3>
+			<h3>{`Welcome ${props.user.name}`}</h3>
 		</div>
 	);
 };

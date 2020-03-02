@@ -2,6 +2,7 @@ import React from "react";
 import customCategoriesArray from "../../constants/customCategories";
 import "./SigIn.css";
 import IronNewsService from "../../services/IronNewsService";
+import { WithAuthConsumer } from "../../contexts/AuthContext";
 
 class SignIn extends React.Component {
 	state = {
@@ -44,8 +45,28 @@ class SignIn extends React.Component {
 
 		this.setState({ loading: true, error: false }, () => {
 			if (this.props.user) {
-			const id = this.props.user._id
+				const id = this.props.user._id;
 				IronNewsService.editUser(formData, id)
+					.then(() => {
+						this.setState({
+							success: true,
+						});
+					})
+					.then(() =>
+						IronNewsService.getUser(id).then(user=> 
+							{
+								console.log("entra 2")
+								this.props.setUser(user)}
+						).catch(error => console.log(error))
+					)
+					.catch(() => {
+						this.setState({
+							error: true,
+							loading: false,
+						});
+					});
+			} else {
+				IronNewsService.register(formData)
 					.then(() => {
 						console.log("entra");
 						this.setState({
@@ -58,20 +79,6 @@ class SignIn extends React.Component {
 							loading: false,
 						});
 					});
-			} else{
-				IronNewsService.register(formData)
-				.then(() => {
-					console.log("entra");
-					this.setState({
-						success: true,
-					});
-				})
-				.catch(() => {
-					this.setState({
-						error: true,
-						loading: false,
-					});
-				});
 			}
 		});
 	};
@@ -180,7 +187,7 @@ class SignIn extends React.Component {
 					<button
 						className="btn btn-success mr-1"
 						id="signin-btn2"
-						// disabled={!loading}
+						disabled={!loading}
 					>
 						Sign in
 					</button>
@@ -189,4 +196,4 @@ class SignIn extends React.Component {
 		);
 	}
 }
-export default SignIn;
+export default WithAuthConsumer(SignIn);

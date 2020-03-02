@@ -14,43 +14,48 @@ class AddFolder extends React.Component {
 	};
 
 	handleChange = event => {
-    console.log("folder on change=> ", this.state)
-    console.log("this is the event", event.target.value)
+		console.log("folder on change=> ", this.state);
+		console.log("this is the event", event.target.value);
 
 		const { name, value } = event.target;
 		this.setState({
-			folder: { 
-        ...this.state.folder, 
-        [name]: value },
+			folder: {
+				...this.state.folder,
+				[name]: value,
+			},
 		});
 	};
 	handleSubmit = event => {
-  console.log("entra en submit")
-    event.preventDefault();
-    const userId = this.props.currentUser._id
-    const folderState = this.state.folder
-		IronNewsService.createFolder({...folderState}, userId)
+		console.log("entra en submit");
+		event.preventDefault();
+		const userId = this.props.currentUser._id;
+		const folderState = this.state.folder;
+		IronNewsService.createFolder({ ...folderState }, userId)
 			.then(folder => {
 				this.setState({
 					...this.state.folder,
 					submited: true,
-        });
-        console.log("this is the folder => ", folder)
+				});
+				console.log("this is the folder => ", folder);
 			})
-			.catch(error => console.log(error));
-      console.log("folder on submit=> ", this.state.folder)
+			.then(() =>
+				IronNewsService.getUser(userId)
+					.then(user => this.props.setUser(user))
+					.catch(error => console.log(error))
+			)
 
-    };
+			.catch(error => console.log(error));
+	};
 
 	render() {
 		return (
 			<AddFolderForm
 				handleChangeInForm={this.handleChange}
-        handleSubmitInForm={this.handleSubmit}
-        folder={this.state.folder}
+				handleSubmitInForm={this.handleSubmit}
+				folder={this.state.folder}
 			></AddFolderForm>
 		);
 	}
 }
 
-export default WithAuthConsumer(AddFolder) ;
+export default WithAuthConsumer(AddFolder);

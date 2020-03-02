@@ -19,28 +19,21 @@ function App() {
 			</AuthenticatedRoute>
 
 			<Switch>
+				
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/signin" component={SignIn} />
 				<AuthenticatedRoute exact path={`/:id`}>
 					<Home />
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path={`/user/:id`}>
-					<UserEdit/>
+					<UserEdit />
 				</AuthenticatedRoute>
-
 				<AuthenticatedRoute exact path="/latestnews/:id">
 					<GetLatestNews />
 				</AuthenticatedRoute>
-
-				{/* Folder routes */}
-
-				<AuthenticatedRoute exact path={`/folders/:id/createfolder`}>
-					<AddFolder/>
-				</AuthenticatedRoute>	
-
-				{/* Auth routes */}
-
-				<Route exact path="/login" component={Login} />
-
-				<Route exact path="/signin" component={SignIn} />
+				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
+					<AddFolder />
+				</AuthenticatedRoute>
 			</Switch>
 		</div>
 	);
