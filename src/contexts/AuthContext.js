@@ -65,40 +65,11 @@ export class AuthContextProvider extends React.Component {
 			.catch(error => console.log(error));
 	};
 
-	// componentDidMount() {
-	// 	// const userId = this.state.user._id;
-	// 	// // // IronNewsService.getUser(userId)
-	// 	// // // 	.then(user => {
-	// 	// // // 		this.setUser(user);
-	// 	// // // 	})
-	// 	// // // 	.catch(error => console.log(error));
-
-	// 	// IronNewsService.listFolders(userId)
-	// 	// 	.then(folders => {
-	// 	// 		this.setState({
-	// 	// 			...this.state,
-	// 	// 			folders: [...folders],
-	// 	// 		});
-	// 	// 	})
-	// 	// 	.catch(error => console.log(error));
-	// }
-	// componentDidUpdate(_, prevState) {
-	// 	// console.log("this is the context state => ");
-	// 	// if (prevState !== this.state && !this.state.updated) {
-	// 	// 	this.setState({
-	// 	// 		updated: true
-	// 	// 	})
-	// 	// 	const userId = this.state.user._id;
-	// 	// 	IronNewsService.listFolders(userId)
-	// 	// 	.then(folders => {
-	// 	// 		this.setState({
-	// 	// 			...this.state,
-	// 	// 			folders: [...folders],
-	// 	// 		});
-	// 	// 	})
-	// 	// 	.catch(error => console.log(error));
-	// 	// }
-	// }
+	componentDidMount() {
+		if(this.state.user){
+			this.getFolders()
+		}
+	}
 
 	render() {
 		const value = {
