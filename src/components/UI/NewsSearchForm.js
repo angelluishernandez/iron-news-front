@@ -45,10 +45,12 @@ const NewsSearchForm = (props) => {
 				<select
 					onChange={(event) =>props.handleChangeSearch(event.target)}
 					className="custom-select custom-select-mg mt-3"
+					name="language"
 				>
 					{languagesArray.map((language, index) => {
+						console.log("language=>", language)
 						return (
-							<option key={index} value={language}>
+							<option key={index} value={language.code}>
 								{language.flag}
 								{language.name}
 							</option>
@@ -61,8 +63,10 @@ const NewsSearchForm = (props) => {
 				<select
 					onChange={(event) =>props.handleChangeSearch(event.target)}
 					className="custom-select custom-select-mg mt-3"
+					name="sortBy"
 				>
 					{sortByArray.map((sorter, index) => {
+						console.log("sorter=>", sorter)
 						return (
 							<option key={index} value={sorter}>
 								{sorter.charAt(0).toUpperCase() + sorter.slice(1)}{" "}

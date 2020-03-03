@@ -9,8 +9,8 @@ const Card = props => {
 			{props.articles.map((article, key) => {
 				console.log("entra en card");
 				return (
-					<form>
-						<div className="card col-3" key={key}>
+					<form key={key}>
+						<div className="card col-3" >
 							<select>
 								{props.folders.map((folder, key) => {
 									return <option key={key}>{folder.name}</option>;

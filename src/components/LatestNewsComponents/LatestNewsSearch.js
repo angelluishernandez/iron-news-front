@@ -24,11 +24,13 @@ class LatestNewsSearch extends React.Component {
 	handleChange = data => {
 		console.log("this is data=>", this.state.data);
 		const { name, value } = data;
+		console.log("this is the value", data.name)
 		this.setState({
 			...this.state,
 			data: {
 				...this.state.data,
 				[name]: value,
+				
 			},
 			isLoading: true,
 			submited: false,
@@ -45,7 +47,7 @@ class LatestNewsSearch extends React.Component {
 				query: query,
 				qInTitle: qInTitle,
 				source: source,
-				language: language,
+				language: language.toLowerCase(),
 				sortBy: sortBy,
 			},
 		});
