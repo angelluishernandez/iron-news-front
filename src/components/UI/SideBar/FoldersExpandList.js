@@ -24,11 +24,18 @@ const FolderExpandList = props => {
 			{props.activeCollapse && (
 				<ul className="collapsable-list">
 					<li className="">
-						{props.folders.map((folder) => {
+						{props.folders.map(folder => {
 							return (
-									<h4 key={folder._id} >
-										{folder.name} <DeleteIcon id={folder._id} deleteFolder={props.deleteFolder} userId={props.currentUser._id}/>
-									</h4>
+								<div key={folder._id}>
+									<Link to={`folder/${folder._id}/newslist`}>
+										<h4 >{folder.name} </h4>
+									</Link>
+									<DeleteIcon
+										id={folder._id}
+										deleteFolder={props.deleteFolder}
+										userId={props.currentUser._id}
+									/>
+								</div>
 							);
 						})}
 					</li>

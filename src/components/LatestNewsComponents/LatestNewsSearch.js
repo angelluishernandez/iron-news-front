@@ -23,6 +23,7 @@ class LatestNewsSearch extends React.Component {
 		isMoreOptionsClick: false,
 		submited: false,
 		isInLatest: this.props.isInLatest,
+		articleSelected: {}
 	};
 
 	handleChange = data => {
@@ -73,9 +74,14 @@ class LatestNewsSearch extends React.Component {
 	getNewsData = article => {
 		console.log("this is the article=>", article);
 		const selectedArticle = this.state.articles.filter(
-			articleFilter => article === articleFilter
+			articleFilter => article.name === articleFilter
 		);
 		console.log(selectedArticle);
+		this.setState({
+			...this.state, 
+			articleSelected:{...selectedArticle}
+
+		})
 	};
 
 	componentDidUpdate(_, prevState) {

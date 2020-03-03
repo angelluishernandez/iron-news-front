@@ -24,16 +24,17 @@ const register = data => http.post("/register", data);
 const getLatestNews = data => http.post("/news/top-headlines", data);
 const getAllNews = data => http.post("/news/everything", data);
 const editUser = (user, id) => http.patch(`/user/${id}`, user);
+const listNewsInFolder = (folderId) => http.get(`/news/${folderId}/listnews`, folderId)
+const addNewsToFolder = (article, folderId) =>
+	http.post(`/news/${folderId}`, article);
 const createFolder = ({ name, description, tags }, userId) =>
 	http.post(`/folders/${userId}/newfolder`, { name, description, tags });
+
 const listFolders = userId => http.get(`/folders/${userId}`, userId);
 const getUser = userId => http.get(`/user/${userId}`, userId);
 const deleteFolder = (userId, folderId) =>
 	http.delete(`/folders/${userId}/${folderId}/deletefolder`, userId, folderId);
-const addNewsToFolder = (
-	{ content, description, publishedAt, source, title, url, urlToImage },
-	folderId
-) => http.post(`/news/${folderId}`);
+
 export default {
 	login,
 	logout,
@@ -48,4 +49,6 @@ export default {
 	deleteFolder,
 	getAllNews,
 	addNewsToFolder,
+	listNewsInFolder
 };
+

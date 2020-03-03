@@ -12,19 +12,31 @@ class Home extends React.Component {
 		},
 		isLoading: true,
 		submited: false,
+		articleSelected: "",
+		selectedFolder: "",
 	};
 
 	handleChange = event => {
 		const value = event.target.value;
+		console.log("this is the value on handle change =>", value);
 		this.setState({
 			data: {
 				...this.state.data,
 				category: [value],
+				// selectedFolder: [value]
 			},
 			isLoading: true,
 		});
 	};
-
+	handleChangeOnFolderSelect = event => {
+		console.log("entra en handlechangeonfolder=>", event.target.value);
+		const value = event.target.value;
+		this.setState({
+			...this.state,
+			selectedFolder: value,
+		});
+		console.log("this is the current state after changing folder", this.state);
+	};
 	handleSubmit = event => {
 		event.preventDefault();
 		this.setState({
@@ -49,11 +61,26 @@ class Home extends React.Component {
 	}
 
 	getNewsData = (event, articleFilter) => {
-		event.preventDefault()
+		event.preventDefault();
+		console.log("event and article=>", event, articleFilter);
 		const articleSelected = this.state.data.articles.filter(
 			article => article.title === articleFilter
 		);
-		console.log(articleSelected);
+		console.log(...articleSelected);
+		this.setState({
+			...this.state,
+			articleSelected: { ...articleSelected },
+		});
+
+		console.log("This is the current state=> ", this.state);
+		if (this.state.selectedFolder !== "") {
+			IronNewsService.addNewsToFolder(
+				this.state.articleSelected,
+				this.state.selectedFolder
+			)
+				.then(response => console.log(response))
+				.catch(error => console.log(error));
+		}
 	};
 
 	componentDidUpdate(_, prevState) {
@@ -66,6 +93,7 @@ class Home extends React.Component {
 					);
 					this.setState({
 						data: {
+							...this.state,
 							category: this.state.data.category,
 							articles: responseArticles.articles,
 						},
@@ -118,6 +146,8 @@ class Home extends React.Component {
 									publishedAt={article.publishedAt}
 									key={index}
 									getNewsData={this.getNewsData}
+									handleChangeOnFolderSelect={this.handleChangeOnFolderSelect}
+									isInFolder={false}
 								></Card>
 							);
 						})}

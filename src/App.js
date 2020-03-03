@@ -11,6 +11,7 @@ import { WithAuthConsumer } from "./contexts/AuthContext";
 import UserEdit from "./components/UserEdit/UserEdit";
 import AddFolder from "./components/Folders/AddFolder";
 import GetAllNews from "./components/GetAllNews/GetAllNews";
+import FolderView from "./components/UI/FolderView";
 
 function App() {
 	return (
@@ -20,7 +21,6 @@ function App() {
 			</AuthenticatedRoute>
 
 			<Switch>
-				
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signin" component={SignIn} />
 				<AuthenticatedRoute exact path={`/:id`}>
@@ -33,7 +33,10 @@ function App() {
 					<GetLatestNews />
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path="/getallnews/:id">
-					<GetAllNews/>
+					<GetAllNews />
+				</AuthenticatedRoute>
+				<AuthenticatedRoute exact path="/folder/:folderId/newslist">
+					<FolderView />
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 					<AddFolder />
