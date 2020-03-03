@@ -48,10 +48,22 @@ class Home extends React.Component {
 			.catch(error => console.log(error));
 	}
 
+	getNewsData = (event, articleFilter) => {
+		event.preventDefault()
+		const articleSelected = this.state.data.articles.filter(
+			article => article.title === articleFilter
+		);
+		console.log(articleSelected);
+	};
+
 	componentDidUpdate(_, prevState) {
 		if (prevState.data.category !== this.state.data.category) {
 			IronNewsService.landing(this.state.data.category)
 				.then(responseArticles => {
+					console.log(
+						"this is the response from the api",
+						responseArticles.articles
+					);
 					this.setState({
 						data: {
 							category: this.state.data.category,
@@ -95,7 +107,21 @@ class Home extends React.Component {
 				</form>
 
 				{!this.state.isLoading ? (
-					<Card articles={this.state.data.articles} />
+					<div>
+						{this.state.data.articles.map((article, index) => {
+							return (
+								<Card
+									title={article.title}
+									url={article.url}
+									urlToImage={article.urlToImage}
+									description={article.description}
+									publishedAt={article.publishedAt}
+									key={index}
+									getNewsData={this.getNewsData}
+								></Card>
+							);
+						})}
+					</div>
 				) : (
 					<h3>Loading ....</h3>
 				)}

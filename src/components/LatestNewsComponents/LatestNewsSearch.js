@@ -16,8 +16,8 @@ class LatestNewsSearch extends React.Component {
 			source: "",
 			language: "",
 			sortBy: "",
-			to: "", 
-			from: ""
+			to: "",
+			from: "",
 		},
 		articles: [],
 		isMoreOptionsClick: false,
@@ -40,7 +40,15 @@ class LatestNewsSearch extends React.Component {
 	};
 	handleSubmit = event => {
 		event.preventDefault();
-		const { query, source, qInTitle, language, sortBy, to, from} = this.state.data;
+		const {
+			query,
+			source,
+			qInTitle,
+			language,
+			sortBy,
+			to,
+			from,
+		} = this.state.data;
 		this.setState({
 			submited: true,
 			isLoading: true,
@@ -50,8 +58,8 @@ class LatestNewsSearch extends React.Component {
 				source: source,
 				language: language.toLowerCase(),
 				sortBy: sortBy,
-				to: to, 
-				from: from
+				to: to,
+				from: from,
 			},
 		});
 		console.log("this state on submit => ", this.state);
@@ -62,9 +70,24 @@ class LatestNewsSearch extends React.Component {
 			isMoreOptionsClick: !prevState.isMoreOptionsClick,
 		}));
 	};
+	getNewsData = article => {
+		console.log("this is the article=>", article);
+		const selectedArticle = this.state.articles.filter(
+			articleFilter => article === articleFilter
+		);
+		console.log(selectedArticle);
+	};
 
 	componentDidUpdate(_, prevState) {
-		const { query, qInTitle, language, source, sortBy, to , from } = this.state.data;
+		const {
+			query,
+			qInTitle,
+			language,
+			source,
+			sortBy,
+			to,
+			from,
+		} = this.state.data;
 		if (prevState.data !== this.state.data && this.state.submited) {
 			if (this.props.isInLatest) {
 				IronNewsService.getLatestNews({
@@ -73,8 +96,8 @@ class LatestNewsSearch extends React.Component {
 					language,
 					source,
 					sortBy,
-					to, 
-					from
+					to,
+					from,
 				})
 
 					.then(responseArticles => {
@@ -93,8 +116,8 @@ class LatestNewsSearch extends React.Component {
 					language,
 					source,
 					sortBy,
-					to, 
-					from
+					to,
+					from,
 				})
 					.then(responseArticles => {
 						this.setState({
@@ -134,9 +157,18 @@ class LatestNewsSearch extends React.Component {
 					</button>
 				</form>
 				<div>
-					{!this.state.isLoading && this.state.submited ? (
-						<Card articles={this.state.articles} />
-					) : null}
+					{!this.state.isLoading && this.state.submited
+						? this.state.articles.map((article, key) => {
+							console.log("this are the articles on latest news=> ", article) }): null
+							// 	return (
+							// 		<Card
+							// 			article={article}
+							// 			getNewsData={this.getNewsData}
+							// 			key={key}
+							// 		/>
+							// 	);
+						  // })
+						}
 				</div>
 			</div>
 		);

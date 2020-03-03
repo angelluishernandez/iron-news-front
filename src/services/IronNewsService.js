@@ -30,6 +30,10 @@ const listFolders = userId => http.get(`/folders/${userId}`, userId);
 const getUser = userId => http.get(`/user/${userId}`, userId);
 const deleteFolder = (userId, folderId) =>
 	http.delete(`/folders/${userId}/${folderId}/deletefolder`, userId, folderId);
+const addNewsToFolder = (
+	{ content, description, publishedAt, source, title, url, urlToImage },
+	folderId
+) => http.post(`/news/${folderId}`);
 export default {
 	login,
 	logout,
@@ -43,4 +47,5 @@ export default {
 	getUser,
 	deleteFolder,
 	getAllNews,
+	addNewsToFolder,
 };
