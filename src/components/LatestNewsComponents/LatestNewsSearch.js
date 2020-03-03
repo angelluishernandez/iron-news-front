@@ -17,20 +17,19 @@ class LatestNewsSearch extends React.Component {
 			language: "",
 			sortBy: "",
 		},
+		articles: [],
 		isMoreOptionsClick: false,
 		submited: false,
+		isInLatest: this.props.isInLatest,
 	};
 
 	handleChange = data => {
-		console.log("this is data=>", this.state.data);
 		const { name, value } = data;
-		console.log("this is the value", data.name)
 		this.setState({
 			...this.state,
 			data: {
 				...this.state.data,
 				[name]: value,
-				
 			},
 			isLoading: true,
 			submited: false,
@@ -63,22 +62,42 @@ class LatestNewsSearch extends React.Component {
 	componentDidUpdate(_, prevState) {
 		const { query, qInTitle, language, source, sortBy } = this.state.data;
 		if (prevState.data !== this.state.data && this.state.submited) {
-			IronNewsService.getLatestNews({
-				query,
-				qInTitle,
-				language,
-				source,
-				sortBy,
-			})
-
-				.then(responseArticles => {
-					this.setState({
-						articles: responseArticles.articles,
-						isLoading: false,
-					});
+			if (this.props.isInLatest) {
+				IronNewsService.getLatestNews({
+					query,
+					qInTitle,
+					language,
+					source,
+					sortBy,
 				})
-				.catch(error => console.log(error));
+
+					.then(responseArticles => {
+						this.setState({
+							articles: responseArticles.articles,
+							isLoading: false,
+						});
+					})
+					.catch(error => console.log(error));
+			}
+			if (!this.props.isInLatest) {
+				console.log("is in latest?", this.props.isInLatest);
+				IronNewsService.getAllNews({
+					query,
+					qInTitle,
+					language,
+					source,
+					sortBy,
+				})
+					.then(responseArticles => {
+						this.setState({
+							articles: responseArticles.articles,
+							isLoading: false,
+						});
+					})
+					.catch(error => console.log(error));
+			}
 		}
+
 		console.log("this is the state in component did update=> ", this.state);
 	}
 
@@ -91,6 +110,7 @@ class LatestNewsSearch extends React.Component {
 						isMoreOptionsClick={this.state.isMoreOptionsClick}
 						handleChangeSearch={this.handleChange}
 						query={this.state.query}
+						isInLatest={this.props.isInLatest}
 					/>
 					{this.state.isMoreOptionsClick && (
 						<NewsSearchForm
@@ -98,6 +118,7 @@ class LatestNewsSearch extends React.Component {
 							isMoreOptionsClick={this.state.isMoreOptionsClick}
 							query={this.state.query}
 							handleChangeSearch={this.handleChange}
+							isInLatest={this.props.isInLatest}
 						/>
 					)}
 					<button type="submit" className="btn btn-success">

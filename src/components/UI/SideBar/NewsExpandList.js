@@ -24,7 +24,9 @@ const NewsExpandList = props => {
 					<Link to={`/latestnews/${props.currentUser._id}`}>
 						<li>Check the latest news</li>
 					</Link>
-					<li>Check older news</li>
+					<Link to={`/getallnews/${props.currentUser._id}`}>
+						<li>Check older news</li>
+					</Link>
 				</ul>
 			)}
 		</li>

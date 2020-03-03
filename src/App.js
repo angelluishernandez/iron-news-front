@@ -10,6 +10,7 @@ import Layout from "./components/UI/Layout";
 import { WithAuthConsumer } from "./contexts/AuthContext";
 import UserEdit from "./components/UserEdit/UserEdit";
 import AddFolder from "./components/Folders/AddFolder";
+import GetAllNews from "./components/GetAllNews/GetAllNews";
 
 function App() {
 	return (
@@ -30,6 +31,9 @@ function App() {
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path="/latestnews/:id">
 					<GetLatestNews />
+				</AuthenticatedRoute>
+				<AuthenticatedRoute exact path="/getallnews/:id">
+					<GetAllNews/>
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 					<AddFolder />

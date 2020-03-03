@@ -48,7 +48,6 @@ const NewsSearchForm = (props) => {
 					name="language"
 				>
 					{languagesArray.map((language, index) => {
-						console.log("language=>", language)
 						return (
 							<option key={index} value={language.code}>
 								{language.flag}
@@ -66,7 +65,6 @@ const NewsSearchForm = (props) => {
 					name="sortBy"
 				>
 					{sortByArray.map((sorter, index) => {
-						console.log("sorter=>", sorter)
 						return (
 							<option key={index} value={sorter}>
 								{sorter.charAt(0).toUpperCase() + sorter.slice(1)}{" "}
