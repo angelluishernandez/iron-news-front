@@ -32,11 +32,10 @@ class AddFolder extends React.Component {
 					...this.state.folder,
 					submited: true,
 				});
+				this.props.getFolders()
 				console.log("this is the folder => ", folder);
 			})
-			.then(() =>
-				this.props.getFolders()
-			)
+		
 
 			.catch(error => console.log(error));
 	};

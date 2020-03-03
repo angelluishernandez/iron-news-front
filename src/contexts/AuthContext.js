@@ -40,6 +40,7 @@ export class AuthContextProvider extends React.Component {
 	};
 
 	deleteFolder = (event, userId, folderId) => {
+		console.log("delete folder is executed=>", )
 		event.preventDefault();
 		const folderArray = this.state.folders.filter(
 			folder => folder._id !== folderId
@@ -57,6 +58,7 @@ export class AuthContextProvider extends React.Component {
 		const userId = this.state.user._id;
 		IronNewsService.listFolders(userId)
 			.then(folders => {
+				console.log("get folders=> ", folders)
 				this.setState({
 					...this.state,
 					folders: [...folders],

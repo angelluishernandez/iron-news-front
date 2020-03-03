@@ -16,6 +16,8 @@ class LatestNewsSearch extends React.Component {
 			source: "",
 			language: "",
 			sortBy: "",
+			to: "", 
+			from: ""
 		},
 		articles: [],
 		isMoreOptionsClick: false,
@@ -38,7 +40,7 @@ class LatestNewsSearch extends React.Component {
 	};
 	handleSubmit = event => {
 		event.preventDefault();
-		const { query, source, qInTitle, language, sortBy } = this.state.data;
+		const { query, source, qInTitle, language, sortBy, to, from} = this.state.data;
 		this.setState({
 			submited: true,
 			isLoading: true,
@@ -48,6 +50,8 @@ class LatestNewsSearch extends React.Component {
 				source: source,
 				language: language.toLowerCase(),
 				sortBy: sortBy,
+				to: to, 
+				from: from
 			},
 		});
 		console.log("this state on submit => ", this.state);
@@ -60,7 +64,7 @@ class LatestNewsSearch extends React.Component {
 	};
 
 	componentDidUpdate(_, prevState) {
-		const { query, qInTitle, language, source, sortBy } = this.state.data;
+		const { query, qInTitle, language, source, sortBy, to , from } = this.state.data;
 		if (prevState.data !== this.state.data && this.state.submited) {
 			if (this.props.isInLatest) {
 				IronNewsService.getLatestNews({
@@ -69,6 +73,8 @@ class LatestNewsSearch extends React.Component {
 					language,
 					source,
 					sortBy,
+					to, 
+					from
 				})
 
 					.then(responseArticles => {
@@ -87,6 +93,8 @@ class LatestNewsSearch extends React.Component {
 					language,
 					source,
 					sortBy,
+					to, 
+					from
 				})
 					.then(responseArticles => {
 						this.setState({

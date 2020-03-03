@@ -4,7 +4,7 @@ import sortByArray from "../../constants/relevancy";
 import { WithLatestNewsConsumer } from "../../contexts/LatestNewsContext";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 
-const NewsSearchForm = (props) => {
+const NewsSearchForm = props => {
 	return (
 		<div className="form-row">
 			<div className="form-group col-md-6">
@@ -14,7 +14,7 @@ const NewsSearchForm = (props) => {
 					className="form-control"
 					placeholder="Search in headline"
 					name="qInTitle"
-					onChange={(event) =>props.handleChangeSearch(event.target)}
+					onChange={event => props.handleChangeSearch(event.target)}
 				/>
 			</div>
 
@@ -25,25 +25,42 @@ const NewsSearchForm = (props) => {
 					className="form-control"
 					placeholder="Source"
 					name="source"
-					onChange={(event) =>props.handleChangeSearch(event.target)}
+					onChange={event => props.handleChangeSearch(event.target)}
 				/>
 			</div>
 
-			{/* Search by data => look for a method */}
-			{/* <div className="form-group col-md-6">
-				<label htmlFor="from">Language</label>
-				<input type="text" className="form-control"  placeholder="from"/>
-			</div> */}
+			{/* Search by data => look for a method  */}
 
-			{/* <div className="form-group col-md-6">
-				<label htmlFor="to">Language</label>
-				<input type="text" className="form-control"  placeholder="to"/>
-			</div> */}
+			{!props.isInLatest ? (
+				<div>
+					<div className="form-group col-md-6">
+						<label htmlFor="from">From</label>
+						<input
+							type="date"
+							className="form-control"
+							placeholder="from"
+							name="from"
+							onChange={event => props.handleChangeSearch(event.target)}
+						/>
+					</div>
+
+					<div className="form-group col-md-6">
+						<label htmlFor="to">To</label>
+						<input
+							type="date"
+							className="form-control"
+							placeholder="to"
+							name="to"
+							onChange={event => props.handleChangeSearch(event.target)}
+						/>
+					</div>
+				</div>
+			) : null}
 
 			<div className="form-group col-md-6">
 				<label htmlFor="language">Language</label>
 				<select
-					onChange={(event) =>props.handleChangeSearch(event.target)}
+					onChange={event => props.handleChangeSearch(event.target)}
 					className="custom-select custom-select-mg mt-3"
 					name="language"
 				>
@@ -60,7 +77,7 @@ const NewsSearchForm = (props) => {
 			<div className="form-group col-md-6">
 				<label htmlFor="sortBy">Sort By</label>
 				<select
-					onChange={(event) =>props.handleChangeSearch(event.target)}
+					onChange={event => props.handleChangeSearch(event.target)}
 					className="custom-select custom-select-mg mt-3"
 					name="sortBy"
 				>
