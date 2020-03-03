@@ -33,18 +33,20 @@ class GetLatestNews extends React.Component {
 	// };
 	// handleSubmit = (data) => {
 		
-	// 	const {query, source} = this.state.data
+	// 	const {query, source, qInTitle, language, sortBy} = this.state.data
 	// 	this.setState({
+	// 		...this.state, 
 	// 		submited: true,
 	// 		isLoading: true,
 	// 		data: {
 	// 			query: query,
-	// 			// qInTitle: "coronavirus", 
-	// 			source: source
-	// 			// language: "fr",
-	// 			// sortBy: "relevancy",
+	// 			qInTitle: qInTitle, 
+	// 			source: source, 
+	// 			language: language,
+	// 			sortBy: sortBy,
 	// 		},
 	// 	});
+	// 	console.log("this state on submit => ", this.state)
 	// };
 
 	componentDidMount() {
@@ -59,7 +61,7 @@ class GetLatestNews extends React.Component {
 
 		const prevData = prevState.data.query;
 		const {query, qInTitle, language, source, sortBy} = this.state.data;
-		if (prevData !== query) {
+		if (prevData !== this.state.data) {
 			if (this.state.submited) {
 				IronNewsService.getLatestNews({query, qInTitle, language, source, sortBy})
 

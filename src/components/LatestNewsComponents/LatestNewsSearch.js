@@ -5,6 +5,8 @@ import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { WithLatestNewsConsumer } from "../../contexts/LatestNewsContext";
 import NewsDefaultSearch from "./NewsDefaultSearch";
 import IronNewsService from "../../services/IronNewsService";
+import languagesArray from "../../constants/languages";
+import Card from "../UI/Card";
 
 class LatestNewsSearch extends React.Component {
 	state = {
@@ -24,8 +26,10 @@ class LatestNewsSearch extends React.Component {
 		const { name, value } = data;
 		this.setState({
 			...this.state,
-
-			data: { ...this.state.data, [name]: value },
+			data: {
+				...this.state.data,
+				[name]: value,
+			},
 			isLoading: true,
 			submited: false,
 		});
@@ -33,18 +37,19 @@ class LatestNewsSearch extends React.Component {
 	};
 	handleSubmit = event => {
 		event.preventDefault();
-		const { query, source } = this.state.data;
+		const { query, source, qInTitle, language, sortBy } = this.state.data;
 		this.setState({
 			submited: true,
 			isLoading: true,
 			data: {
 				query: query,
-				// qInTitle: "coronavirus",
+				qInTitle: qInTitle,
 				source: source,
-				// language: "fr",
-				// sortBy: "relevancy",
+				language: language,
+				sortBy: sortBy,
 			},
 		});
+		console.log("this state on submit => ", this.state);
 	};
 
 	expandSearch = event => {
@@ -52,6 +57,28 @@ class LatestNewsSearch extends React.Component {
 			isMoreOptionsClick: !prevState.isMoreOptionsClick,
 		}));
 	};
+
+	componentDidUpdate(_, prevState) {
+		const { query, qInTitle, language, source, sortBy } = this.state.data;
+		if (prevState.data !== this.state.data && this.state.submited) {
+			IronNewsService.getLatestNews({
+				query,
+				qInTitle,
+				language,
+				source,
+				sortBy,
+			})
+
+				.then(responseArticles => {
+					this.setState({
+						articles: responseArticles.articles,
+						isLoading: false,
+					});
+				})
+				.catch(error => console.log(error));
+		}
+		console.log("this is the state in component did update=> ", this.state);
+	}
 
 	render() {
 		return (
@@ -75,6 +102,11 @@ class LatestNewsSearch extends React.Component {
 						Search
 					</button>
 				</form>
+				<div>
+					{!this.state.isLoading && this.state.submited ? (
+						<Card articles={this.state.articles} />
+					) : null}
+				</div>
 			</div>
 		);
 	}

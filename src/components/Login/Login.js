@@ -21,6 +21,7 @@ class Login extends React.Component {
 			IronNewsService.login({ ...this.state.data }).then(
 				user => {
 					this.props.setUser(user);
+					this.props.getFolders()
 				},
 				() => {
 					this.setState({
