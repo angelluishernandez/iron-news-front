@@ -35,9 +35,8 @@ function App() {
 				<AuthenticatedRoute exact path="/getallnews/:id">
 					<GetAllNews />
 				</AuthenticatedRoute>
-				<AuthenticatedRoute exact path="/folder/:folderId/newslist">
-					<FolderView />
-				</AuthenticatedRoute>
+				<AuthenticatedRoute exact path="/folder/:folderId/newslist" render={({match}) => <FolderView folderId={match.params.folderId}/>}/>
+			
 				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 					<AddFolder />
 				</AuthenticatedRoute>

@@ -27,7 +27,7 @@ const FolderExpandList = props => {
 						{props.folders.map(folder => {
 							return (
 								<div key={folder._id}>
-									<Link to={`folder/${folder._id}/newslist`}>
+									<Link to={`/folder/${folder._id}/newslist`}>
 										<h4 >{folder.name} </h4>
 									</Link>
 									<DeleteIcon

@@ -17,6 +17,7 @@ export class AuthContextProvider extends React.Component {
 	};
 	logout = () => {
 		IronNewsService.logout().then(() => {
+			localStorage.clear()
 			this.setUser();
 		});
 	};

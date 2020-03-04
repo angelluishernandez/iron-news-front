@@ -24,7 +24,7 @@ const register = data => http.post("/register", data);
 const getLatestNews = data => http.post("/news/top-headlines", data);
 const getAllNews = data => http.post("/news/everything", data);
 const editUser = (user, id) => http.patch(`/user/${id}`, user);
-const listNewsInFolder = (folderId) => http.get(`/news/${folderId}/listnews`, folderId)
+const listNewsInFolder = (folderId) => http.get(`/folder/${folderId}/newslist`, folderId)
 const addNewsToFolder = (article, folderId) =>
 	http.post(`/news/${folderId}`, article);
 const createFolder = ({ name, description, tags }, userId) =>
