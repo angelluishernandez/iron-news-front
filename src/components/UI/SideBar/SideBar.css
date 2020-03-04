@@ -1,10 +1,6 @@
 .SideBar {
-	background: rgb(2, 154, 238);
-	background: linear-gradient(
-		286deg,
-		rgba(2, 154, 238, 1) 4%,
-		rgba(75, 194, 255, 1) 78%
-	);
+	background: #FFC107;
+	
 	height: 100vh;
 	position: fixed;
 	z-index: 1;
@@ -24,15 +20,14 @@
 	padding: 5px;
 
 	font-size: 25px;
-	color: #ee029b;
+	color: #FF5722;
 	display: block;
 	transition: 0.3s;
-	background-color: #96f5e0;
-}
+	background-color: #FFECB3}
 
 .parent-list-item:hover {
 	color: #f1f1f1;
-	background-color: chocolate;
+	background-color: #FF5722;
 }
 
 #closebtn {
@@ -44,7 +39,7 @@
 	align-items: flex-end;
 	height: 50px;
 	width: 50px;
-	color: #ee029b;
+	color: #FF5722;
 	margin-right: 10px;
 	margin-top: 5px;
 }
@@ -56,7 +51,7 @@
 	margin-top: 10px;
 	cursor: pointer;
 	background-color: black;
-	color: #ee029b;
+	color: #FF5722;
 	padding: 10px 15px;
 	border: none;
 }
@@ -73,4 +68,17 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
+}
+
+
+.folder-items{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: flex-start;
+	align-items: baseline;
+}
+
+.expand-icon{
+	cursor:pointer
 }

@@ -7,6 +7,7 @@ import NewsDefaultSearch from "./NewsDefaultSearch";
 import IronNewsService from "../../services/IronNewsService";
 import languagesArray from "../../constants/languages";
 import Card from "../UI/Card";
+import Spinner from "../UI/Spinner";
 
 class LatestNewsSearch extends React.Component {
 	state = {
@@ -183,8 +184,9 @@ class LatestNewsSearch extends React.Component {
 					</form>
 				</div>
 				<div>
-					{!this.state.isLoading && this.state.submited
-						? this.state.articles.map((article, key) => {
+					{!this.state.isLoading && this.state.submited ?
+					<div className="row mt-5 mr-3 ml-3">
+						 {this.state.articles.map((article, key) => {
 								return (
 									<Card
 										title={article.title}
@@ -198,8 +200,10 @@ class LatestNewsSearch extends React.Component {
 										isInFolder={false}
 									/>
 								);
-						  })
-						: null}
+						  })}
+							</div>
+						: <Spinner/> }
+
 				</div>
 			</div>
 		);

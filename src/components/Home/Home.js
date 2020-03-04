@@ -3,7 +3,8 @@ import { WithAuthConsumer } from "../../contexts/AuthContext";
 import IronNewsService from "../../services/IronNewsService";
 import Card from "../UI/Card";
 import customCategoriesArray from "../../constants/customCategories";
-
+import "./Home.css";
+import Spinner from "../UI/Spinner";
 class Home extends React.Component {
 	state = {
 		data: {
@@ -104,36 +105,37 @@ class Home extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<h3>This is your feed for today</h3>
-				<h3>Or look of a category</h3>
-				<form className="mb-4" onSubmit={this.handleSubmit}>
-					<select
-						onChange={this.handleChange}
-						value={this.props.currentUser.category}
-						className="custom-select custom-select-mg mt-3"
-						name="category"
-					>
-						{customCategoriesArray.map((category, key) => {
-							return (
-								<option key={key} value={category}>
-									{category.charAt(0).toUpperCase() + category.slice(1)}
-									{}
-								</option>
-							);
-						})}
-					</select>
-					<button
-						type="submit"
-						className="btn btn-success"
-						disabled={this.state.isLoading}
-					>
-						Search ...
-					</button>
-				</form>
-
+			<div className="Home">
+				<div className="form-container pt-3 pb-3">
+					<h3>This is your feed for today</h3>
+					<h3>Or look of a category</h3>
+					<form className="col" onSubmit={this.handleSubmit}>
+						<select
+							onChange={this.handleChange}
+							value={this.props.currentUser.category}
+							className="custom-select custom-select-mg mt-3"
+							name="category"
+						>
+							{customCategoriesArray.map((category, key) => {
+								return (
+									<option key={key} value={category}>
+										{category.charAt(0).toUpperCase() + category.slice(1)}
+										{}
+									</option>
+								);
+							})}
+						</select>
+						<button
+							type="submit"
+							className="btn btn-success"
+							disabled={this.state.isLoading}
+						>
+							Search ...
+						</button>
+					</form>
+				</div>
 				{!this.state.isLoading ? (
-					<div>
+					<div className="row mt-5 mr-3 ml-3">
 						{this.state.data.articles.map((article, index) => {
 							return (
 								<Card
@@ -151,7 +153,7 @@ class Home extends React.Component {
 						})}
 					</div>
 				) : (
-					<h3>Loading ....</h3>
+					<Spinner/>
 				)}
 			</div>
 		);

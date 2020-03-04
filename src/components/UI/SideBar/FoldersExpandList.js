@@ -11,12 +11,12 @@ const FolderExpandList = props => {
 				Folders
 				{!props.activeCollapse ? (
 					<i
-						className="fas fa-arrow-circle-down"
+						className="fas fa-arrow-circle-down expand-icon"
 						onClick={props.handleCollapse}
 					></i>
 				) : (
 					<i
-						className="fas fa-arrow-circle-up"
+						className="fas fa-arrow-circle-up expand-icon"
 						onClick={props.handleCollapse}
 					></i>
 				)}
@@ -26,15 +26,20 @@ const FolderExpandList = props => {
 					<li className="">
 						{props.folders.map(folder => {
 							return (
-								<div key={folder._id}>
-									<Link to={`/folder/${folder._id}/newslist`}>
-										<h4 >{folder.name} </h4>
-									</Link>
-									<DeleteIcon
-										id={folder._id}
-										deleteFolder={props.deleteFolder}
-										userId={props.currentUser._id}
-									/>
+								<div key={folder._id} className="folder-items">
+									<div>
+										<Link to={`/folder/${folder._id}/newslist`}>
+											<h4>{folder.name} </h4>
+										</Link>
+									</div>
+									<div>
+										{" "}
+										<DeleteIcon
+											id={folder._id}
+											deleteFolder={props.deleteFolder}
+											userId={props.currentUser._id}
+										/>
+									</div>
 								</div>
 							);
 						})}

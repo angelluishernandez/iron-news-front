@@ -12,12 +12,14 @@ const Card = props => {
 	// 	publishedAt: props.publishedAt,
 	// };
 	return (
-		<div className="Card card-container container-fluid" key={props.key}>
-			<div className="card col-3">
+
+			<div className="Card col-sm-3 d-flex align-items-stretch mb-5 card-container" key={props.key}>
+			<div className="card">
 				{!props.isInFolder ? (
 					<form>
 						<select
 							name="selectedFolder"
+							className="custom-select custom-select-mg mt-3 mb-3"
 							onChange={event => props.handleChangeOnFolderSelect(event)}
 						>
 							{props.folders.map((folder, key) => {
@@ -60,7 +62,7 @@ const Card = props => {
 					</p>
 				</div>
 			</div>
-		</div>
+			</div>
 	);
 };
 

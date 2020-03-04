@@ -2,6 +2,8 @@ import React from "react";
 import Card from "./Card";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import IronNewsService from "../../services/IronNewsService";
+import "./Card.css"
+import "./FolderView.css"
 
 class FolderView extends React.Component {
 	state = {
@@ -29,19 +31,21 @@ class FolderView extends React.Component {
 			<div className="FolderView">
 				
 			{!this.state.loading
-				? this.state.savedArticles.map((savedArticle, index) => {
+				? <div className="row mt-5 mr-3 ml-3"> 
+				{this.state.savedArticles.map((savedArticle, index) => {
 						return (
 							<Card
 								title={savedArticle.headline}
 								url={savedArticle.url}
-								urlToImage={savedArticle.urlToImage}
+								urlToImage={savedArticle.image}
 								description={savedArticle.description}
-								publishedAt={savedArticle.publishedAt}
+								publishedAt={savedArticle.date}
 								key={index}
 								isInFolder={true}
 							/>
 						);
-					})
+					})}
+					</div>
 				: null}
 			</div>
 		);

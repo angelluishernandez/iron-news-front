@@ -2,6 +2,10 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  background-color: #FFECB3!important;
+  border: none !important;
+  margin-bottom: 10px;
+  padding-top: 10px;
 }
 .avatar{
   max-width: 100px;

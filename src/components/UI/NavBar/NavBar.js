@@ -7,23 +7,27 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 
 const NavBar = props => {
-	
 	return (
 		<nav
-			className="navbar bg-light navbar-expand-lg navbar-light sidebar-main ExpandSideBar flex-container"
+			className="navbar  navbar-expand-lg  sidebar-main ExpandSideBar flex-container"
 			id="navbar"
 			role="navigation"
 		>
 			<div>
 				<MenuOutlinedIcon className="navbar-icon" onClick={props.handleOpen} />{" "}
 			</div>
-			<div>
-			<Link to={`/${props.currentUser._id}`}>
-				<h3>
-					<HomeRoundedIcon className="navbar-icon" />
-					IronNews
-				</h3>
-				</Link>
+			<div className="home-element">
+				<div>
+					<Link to={`/${props.currentUser._id}`} style={{ color: "#000000" }}>
+						<HomeRoundedIcon className="navbar-icon" />
+					</Link>
+				</div>
+				<div>
+					<Link to={`/${props.currentUser._id}`} style={{ color: "#000000" }}>
+						{" "}
+						<h3>IronNews</h3>
+					</Link>
+				</div>{" "}
 			</div>
 			{props.currentUser && (
 				<div>

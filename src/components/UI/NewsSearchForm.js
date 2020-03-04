@@ -6,7 +6,7 @@ import { WithAuthConsumer } from "../../contexts/AuthContext";
 
 const NewsSearchForm = props => {
 	return (
-		<div className="form-row">
+		<div className="form-row p-5">
 			<div className="form-group col-md-6">
 				<label htmlFor="qInTitle">Search in headline</label>
 				<input

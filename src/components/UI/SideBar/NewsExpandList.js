@@ -9,12 +9,12 @@ const NewsExpandList = props => {
 				Latest News{" "}
 				{!props.activeCollapse ? (
 					<i
-						className="fas fa-arrow-circle-down"
+						className="fas fa-arrow-circle-down expand-icon"
 						onClick={props.handleCollapse}
 					></i>
 				) : (
 					<i
-						className="fas fa-arrow-circle-up"
+						className="fas fa-arrow-circle-up expand-icon"
 						onClick={props.handleCollapse}
 					></i>
 				)}

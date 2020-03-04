@@ -1,6 +1,11 @@
 .Card img {
-  max-width: 200px;
+  width:300px;
+  height: 200px; 
   padding: 2px;
+  object-fit: cover
+}
+.card-body{
+  color: black
 }
 .card{
   display: flex;
@@ -25,4 +30,12 @@
   justify-content: space-between;
 }
 
+.card-container .btn{
+  background-color:#FF5722 ;
+  border: 2px solid #FFC107
+}
 
+.card-container .btn:hover{
+  background-color:#FFC107 ;
+  border: 2px solid #FF5722
+}

@@ -1,0 +1,26 @@
+.Home{
+  background-color: #FFECB3;
+}
+
+
+.form-container{
+  background:#FFC107; 
+  color:#212121; 
+}
+
+.form-container .btn{
+  background-color:#FF5722 ;
+  border: 2px solid #FFC107
+  
+
+}
+
+.form-container .btn:hover{
+  background-color:#FFC107 ;
+  border: 2px solid #FF5722
+}
+
+
+.spinner-grow{
+  color: #FF5722;
+}
