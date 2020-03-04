@@ -41,20 +41,9 @@ export class AuthContextProvider extends React.Component {
 		});
 	};
 
-	getFolderNews = () => {
-		console.log("entra en getFolderNews=> ")
-		// IronNewsService.getFolderNews(folderId)
-		// 	.then(news => {
-		// 		this.setState({
-		// 			...this.state,
-		// 			news: { news },
-		// 		});
-		// 	})
-		// 	.catch(error => console.log(error));
-	};
+	
 
 	deleteFolder = (event, userId, folderId) => {
-		console.log("delete folder is executed=>");
 		event.preventDefault();
 		const folderArray = this.state.folders.filter(
 			folder => folder._id !== folderId
@@ -68,11 +57,9 @@ export class AuthContextProvider extends React.Component {
 			.catch(error => console.log(error));
 	};
 	getFolders = () => {
-		console.log("entra en get folders=> ", this.state);
 		const userId = this.state.user._id;
 		IronNewsService.listFolders(userId)
 			.then(folders => {
-				console.log("get folders=> ", folders);
 				this.setState({
 					...this.state,
 					folders: [...folders],

@@ -7,6 +7,7 @@ import FolderExpandList from "./FoldersExpandList";
 import UserViewSideBar from "../UserViewSideBar/UserViewSideBar";
 import IronNewsService from "../../../services/IronNewsService";
 import { WithAuthConsumer } from "../../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 class SideBar extends React.Component {
 	state = {
 		activeCollapseFolders: false,
@@ -91,7 +92,7 @@ class SideBar extends React.Component {
 				<div className="h-100">
 					<ul>
 						<li className="parent-list-item">
-							<h3>Home</h3>
+							<Link to={`/${this.props.currentUser._id}`}><h3>Home</h3></Link>
 						</li>
 						<br />
 						<NewsExpandList

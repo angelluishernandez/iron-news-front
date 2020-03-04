@@ -23,7 +23,8 @@ class LatestNewsSearch extends React.Component {
 		isMoreOptionsClick: false,
 		submited: false,
 		isInLatest: this.props.isInLatest,
-		articleSelected: {}
+		articleSelected: "",
+		selectedFolder: "",
 	};
 
 	handleChange = data => {
@@ -51,6 +52,7 @@ class LatestNewsSearch extends React.Component {
 			from,
 		} = this.state.data;
 		this.setState({
+			...this.state,
 			submited: true,
 			isLoading: true,
 			data: {
@@ -71,19 +73,28 @@ class LatestNewsSearch extends React.Component {
 			isMoreOptionsClick: !prevState.isMoreOptionsClick,
 		}));
 	};
-	getNewsData = article => {
-		console.log("this is the article=>", article);
-		const selectedArticle = this.state.articles.filter(
-			articleFilter => article.name === articleFilter
+
+	getNewsData = (event, articleFilter) => {
+		console.log("this is what getnewsdata receives=>", articleFilter);
+		event.preventDefault();
+		const articleSelected = this.state.articles.filter(
+			article => article.title === articleFilter
 		);
-		console.log(selectedArticle);
+		console.log(...articleSelected);
 		this.setState({
-			...this.state, 
-			articleSelected:{...selectedArticle}
+			...this.state,
+			articleSelected: { ...articleSelected },
+		});
 
-		})
+		if (this.state.selectedFolder !== "") {
+			IronNewsService.addNewsToFolder(
+				this.state.articleSelected,
+				this.state.selectedFolder
+			)
+				.then(response => console.log(response))
+				.catch(error => console.log(error));
+		}
 	};
-
 	componentDidUpdate(_, prevState) {
 		const {
 			query,
@@ -108,6 +119,7 @@ class LatestNewsSearch extends React.Component {
 
 					.then(responseArticles => {
 						this.setState({
+							...this.state,
 							articles: responseArticles.articles,
 							isLoading: false,
 						});
@@ -127,6 +139,7 @@ class LatestNewsSearch extends React.Component {
 				})
 					.then(responseArticles => {
 						this.setState({
+							...this.state,
 							articles: responseArticles.articles,
 							isLoading: false,
 						});
@@ -134,47 +147,59 @@ class LatestNewsSearch extends React.Component {
 					.catch(error => console.log(error));
 			}
 		}
-
-		console.log("this is the state in component did update=> ", this.state);
 	}
-
+	handleChangeOnFolderSelect = event => {
+		console.log("entra en handlechangeonfolder=>", event.target.value);
+		const value = event.target.value;
+		this.setState({
+			...this.state,
+			selectedFolder: value,
+		});
+	};
 	render() {
 		return (
 			<div className="LatestNewsSearch">
-				<form onSubmit={this.handleSubmit}>
-					<NewsDefaultSearch
-						expandSearch={this.expandSearch}
-						isMoreOptionsClick={this.state.isMoreOptionsClick}
-						handleChangeSearch={this.handleChange}
-						query={this.state.query}
-						isInLatest={this.props.isInLatest}
-					/>
-					{this.state.isMoreOptionsClick && (
-						<NewsSearchForm
+				<div>
+					<form onSubmit={this.handleSubmit}>
+						<NewsDefaultSearch
 							expandSearch={this.expandSearch}
 							isMoreOptionsClick={this.state.isMoreOptionsClick}
-							query={this.state.query}
 							handleChangeSearch={this.handleChange}
+							query={this.state.query}
 							isInLatest={this.props.isInLatest}
 						/>
-					)}
-					<button type="submit" className="btn btn-success">
-						Search
-					</button>
-				</form>
+						{this.state.isMoreOptionsClick && (
+							<NewsSearchForm
+								expandSearch={this.expandSearch}
+								isMoreOptionsClick={this.state.isMoreOptionsClick}
+								query={this.state.query}
+								handleChangeSearch={this.handleChange}
+								isInLatest={this.props.isInLatest}
+							/>
+						)}
+						<button type="submit" className="btn btn-success">
+							Search
+						</button>
+					</form>
+				</div>
 				<div>
 					{!this.state.isLoading && this.state.submited
 						? this.state.articles.map((article, key) => {
-							console.log("this are the articles on latest news=> ", article) }): null
-							// 	return (
-							// 		<Card
-							// 			article={article}
-							// 			getNewsData={this.getNewsData}
-							// 			key={key}
-							// 		/>
-							// 	);
-						  // })
-						}
+								return (
+									<Card
+										title={article.title}
+										url={article.url}
+										urlToImage={article.urlToImage}
+										description={article.description}
+										publishedAt={article.publishedAt}
+										getNewsData={this.getNewsData}
+										key={key}
+										handleChangeOnFolderSelect={this.handleChangeOnFolderSelect}
+										isInFolder={false}
+									/>
+								);
+						  })
+						: null}
 				</div>
 			</div>
 		);

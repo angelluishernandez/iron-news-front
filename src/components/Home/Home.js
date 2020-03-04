@@ -62,7 +62,6 @@ class Home extends React.Component {
 
 	getNewsData = (event, articleFilter) => {
 		event.preventDefault();
-		console.log("event and article=>", event, articleFilter);
 		const articleSelected = this.state.data.articles.filter(
 			article => article.title === articleFilter
 		);
@@ -72,7 +71,6 @@ class Home extends React.Component {
 			articleSelected: { ...articleSelected },
 		});
 
-		console.log("This is the current state=> ", this.state);
 		if (this.state.selectedFolder !== "") {
 			IronNewsService.addNewsToFolder(
 				this.state.articleSelected,

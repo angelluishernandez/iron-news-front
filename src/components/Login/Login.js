@@ -49,7 +49,7 @@ class Login extends React.Component {
 		const { data, error, loading } = this.state;
 		const errorClassName = error ? "is-invalid" : "";
 		if(this.props.currentUser){
-			return <Redirect to="/"/>
+			return <Redirect to={`/${this.props.currentUser._id}`}/>
 		}
 		return (
 			<div className="Login">
