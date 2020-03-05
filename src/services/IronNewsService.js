@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-	baseURL: process.env.MONGODB_URI ,
+	baseURL: "https://iron-news-api.herokuapp.com/" ,
 	withCredentials: true,
 });
 
