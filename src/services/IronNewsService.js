@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-	baseURL: "https://ironnewsapi.herokuapp.com" ,
+	baseURL: process.env.REACT_APP_API_URL,
 	withCredentials: true,
 });
 
