@@ -2,18 +2,14 @@ import React from "react";
 import Moment from "react-moment";
 import "./Card.css";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
+import DeleteIcon from "./DeleteIcon";
 
 const Card = props => {
-	// const currentArticle = {
-	// 	title: props.title,
-	// 	urlToImage: props.urlToImage,
-	// 	description: props.description,
-	// 	url: props.url,
-	// 	publishedAt: props.publishedAt,
-	// };
 	return (
-
-			<div className="Card col-sm-3 d-flex align-items-stretch mb-5 card-container" key={props.key}>
+		<div
+			className="Card col-sm-3 d-flex align-items-stretch mb-5 card-container"
+			key={props.key}
+		>
 			<div className="card">
 				{!props.isInFolder ? (
 					<form>
@@ -22,6 +18,9 @@ const Card = props => {
 							className="custom-select custom-select-mg mt-3 mb-3"
 							onChange={event => props.handleChangeOnFolderSelect(event)}
 						>
+							<option value="" selected disabled hidden>
+								Choose a folder
+							</option>
 							{props.folders.map((folder, key) => {
 								return (
 									<option key={key} value={folder._id}>
@@ -39,7 +38,17 @@ const Card = props => {
 							Add to this folder
 						</button>
 					</form>
-				) : null}
+				) : (
+					<div>
+						<h5>
+							Delete this article{" "}
+							<DeleteIcon
+								folderId={props.folderId}
+								deleteNewsInFolder={props.deleteNewsInFolder}
+							/>
+						</h5>
+					</div>
+				)}
 
 				<a href={props.url} target="blank">
 					<img
@@ -62,7 +71,7 @@ const Card = props => {
 					</p>
 				</div>
 			</div>
-			</div>
+		</div>
 	);
 };
 

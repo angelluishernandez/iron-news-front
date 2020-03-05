@@ -72,7 +72,7 @@ class Home extends React.Component {
 			articleSelected: { ...articleSelected },
 		});
 
-		if (this.state.selectedFolder !== "") {
+		if (this.state.selectedFolder) {
 			IronNewsService.addNewsToFolder(
 				this.state.articleSelected,
 				this.state.selectedFolder
@@ -108,14 +108,14 @@ class Home extends React.Component {
 			<div className="Home">
 				<div className="form-container pt-3 pb-3">
 					<h3>This is your feed for today</h3>
-					<h3>Or look of a category</h3>
+					<h3>Or look for a category</h3>
 					<form className="col" onSubmit={this.handleSubmit}>
 						<select
 							onChange={this.handleChange}
 							value={this.props.currentUser.category}
 							className="custom-select custom-select-mg mt-3"
 							name="category"
-						>
+						><option value="" selected disabled hidden>Choose a category</option>
 							{customCategoriesArray.map((category, key) => {
 								return (
 									<option key={key} value={category}>
@@ -125,13 +125,7 @@ class Home extends React.Component {
 								);
 							})}
 						</select>
-						<button
-							type="submit"
-							className="btn btn-success"
-							disabled={this.state.isLoading}
-						>
-							Search ...
-						</button>
+					
 					</form>
 				</div>
 				{!this.state.isLoading ? (

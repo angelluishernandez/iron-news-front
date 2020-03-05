@@ -27,59 +27,7 @@ class SideBar extends React.Component {
 			activeCollapseNews: !prevState.activeCollapseNews,
 		}));
 	};
-	// getFolders = () => {
-	// 	console.log("entra en get folders");
-	// 	const userId = this.props.currentUser._id;
-	// 	IronNewsService.listFolders(userId)
-	// 		.then(folders => {
-	// 			this.setState({
-	// 				...this.state,
-	// 				folders: [...folders],
-	// 			});
-	// 		})
-	// 		.catch(error => console.log(error));
-	// };
-
-	// getUser = () => {
-	// 	const userId = this.props.currentUser._id;
-
-	// 	IronNewsService.getUser(userId)
-	// 		.then(user => {
-	// 			this.setState({
-	// 				...this.state,
-	// 				user: user,
-	// 			});
-	// 		})
-	// 		.catch(error => console.log(error));
-	// };
-
-	// componentDidMount() {
-	// 	this.getFolders();
-	// }
-	// componentDidUpdate(prevProps, prevState) {
-	// 	if (prevProps !== this.props) {
-	// 		console.log("entra en component did update");
-	// 		this.getFolders();
-	// 		this.getUser();
-	// 	}
-
-	// 	if ({ ...prevState.folders } !== { ...this.state.folders }) {
-	// 	}
-	// }
-
-	// deleteFolder = (event, userId, folderId) => {
-	// 	event.preventDefault();
-	// 	const folderArray = this.props.folders.filter(
-	// 		folder => folder._id !== folderId
-	// 	);
-	// 	this.setState({
-	// 		folders: folderArray,
-	// 	});
-
-	// 	IronNewsService.deleteFolder( userId, folderId)
-	// 		.then(folder => console.log("this folder has been deleted=>", folder))
-	// 		.catch(error => console.log(error));
-	// };
+	
 	render() {
 		return (
 			<div className="SideBar" id="sidebar">
@@ -102,7 +50,6 @@ class SideBar extends React.Component {
 						<br />
 						<FolderExpandList
 							handleCollapse={this.handleExpandCollapseFolders}
-							// folders={this.props.folders}
 							activeCollapse={this.state.activeCollapseFolders}
 							deleteFolder={this.deleteFolder}
 							userId={this.props.currentUser._id}

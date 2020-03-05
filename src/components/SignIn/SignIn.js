@@ -3,6 +3,7 @@ import customCategoriesArray from "../../constants/customCategories";
 import "./SigIn.css";
 import IronNewsService from "../../services/IronNewsService";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
+import { Redirect } from "react-router-dom";
 
 class SignIn extends React.Component {
 	state = {
@@ -71,7 +72,9 @@ class SignIn extends React.Component {
 						console.log("entra");
 						this.setState({
 							success: true,
+							
 						});
+						
 					})
 					.catch(() => {
 						this.setState({
@@ -85,7 +88,12 @@ class SignIn extends React.Component {
 	render() {
 		const { data, error, loading } = this.state;
 		const errorClassName = error ? "is-invalid" : "";
+		if(this.state.success){
+			return <Redirect to={"/login"}/>
+
+		}
 		return (
+			
 			<div className="Login pt-3 pb-1">
 				<form className="mb-4" onSubmit={this.handleSubmit}>
 					<div className="mb-4">
@@ -191,6 +199,7 @@ class SignIn extends React.Component {
 					>
 						Sign in
 					</button>
+					
 				</form>
 			</div>
 		);
