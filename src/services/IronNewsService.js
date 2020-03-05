@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-	baseURL: "https://iron-news-api.herokuapp.com/" ,
+	baseURL: "https://ironnewsapi.herokuapp.com" ,
 	withCredentials: true,
 });
 
