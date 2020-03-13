@@ -115,7 +115,7 @@ class Home extends React.Component {
 							value={this.props.currentUser.category}
 							className="custom-select custom-select-mg mt-3"
 							name="category"
-						><option value="" selected disabled hidden>Choose a category</option>
+						><option selected hidden>Choose a category</option>
 							{customCategoriesArray.map((category, key) => {
 								return (
 									<option key={key} value={category}>

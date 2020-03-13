@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-	baseURL: process.env.REACT_APP_API_URL,
+	baseURL: "http://localhost:5000",
 	withCredentials: true,
 });
 
@@ -24,7 +24,8 @@ const register = data => http.post("/register", data);
 const getLatestNews = data => http.post("/news/top-headlines", data);
 const getAllNews = data => http.post("/news/everything", data);
 const editUser = (user, id) => http.patch(`/user/${id}`, user);
-const listNewsInFolder = (folderId) => http.get(`/folder/${folderId}/newslist`, folderId)
+const listNewsInFolder = folderId =>
+	http.get(`/folder/${folderId}/newslist`, folderId);
 const addNewsToFolder = (article, folderId) =>
 	http.post(`/news/${folderId}`, article);
 const createFolder = ({ name, description, tags }, userId) =>
@@ -34,6 +35,7 @@ const listFolders = userId => http.get(`/folders/${userId}`, userId);
 const getUser = userId => http.get(`/user/${userId}`, userId);
 const deleteFolder = (userId, folderId) =>
 	http.delete(`/folders/${userId}/${folderId}/deletefolder`, userId, folderId);
+const searchSources = data => http.post("/sources/get-sources", data);
 
 export default {
 	login,
@@ -49,6 +51,6 @@ export default {
 	deleteFolder,
 	getAllNews,
 	addNewsToFolder,
-	listNewsInFolder
+	listNewsInFolder,
+	searchSources,
 };
-

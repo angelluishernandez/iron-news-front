@@ -12,6 +12,7 @@ import UserEdit from "./components/UserEdit/UserEdit";
 import AddFolder from "./components/Folders/AddFolder";
 import GetAllNews from "./components/GetAllNews/GetAllNews";
 import FolderView from "./components/UI/FolderView";
+import SearchForSources from "./components/SourcesComponents/SearchForSources";
 
 function App(props) {
 	return (
@@ -29,6 +30,9 @@ function App(props) {
 						<Redirect to={`/${props.currentUser._id}`} />
 					) : null}
 					}
+				</AuthenticatedRoute>
+				<AuthenticatedRoute exact path="/sources">
+					<SearchForSources />
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path={`/:id`}>
 					<Home />
@@ -49,6 +53,7 @@ function App(props) {
 						<FolderView folderId={match.params.folderId} />
 					)}
 				/>
+				
 
 				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 					<AddFolder />
