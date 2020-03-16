@@ -2,7 +2,6 @@ import React from "react";
 import IronNewsService from "../../services/IronNewsService";
 import { Link, Redirect } from "react-router-dom";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
-import "./Login.css";
 
 class Login extends React.Component {
 	state = {

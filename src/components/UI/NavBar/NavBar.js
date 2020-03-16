@@ -3,7 +3,6 @@ import { WithAuthConsumer } from "../../../contexts/AuthContext";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
-import "./NavBar.css";
 import { Link } from "react-router-dom";
 
 const NavBar = props => {

@@ -1,6 +1,5 @@
 import React from "react";
 import customCategoriesArray from "../../constants/customCategories";
-import "./SigIn.css";
 import IronNewsService from "../../services/IronNewsService";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { Redirect } from "react-router-dom";

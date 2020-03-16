@@ -31,11 +31,11 @@
 }
 
 .card-container .btn{
-  background-color:#FF5722 ;
-  border: 2px solid #FFC107
+  background-color:$base-orange ;
+  border: 2px solid $base-yellow
 }
 
 .card-container .btn:hover{
-  background-color:#FFC107 ;
-  border: 2px solid #FF5722
+  background-color:$base-yellow ;
+  border: 2px solid $base-orange
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import "./LatestNews.css";
 import NewsSearchForm from "../UI/NewsSearchForm";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { WithLatestNewsConsumer } from "../../contexts/LatestNewsContext";

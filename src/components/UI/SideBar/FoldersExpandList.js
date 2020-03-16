@@ -1,5 +1,4 @@
 import React from "react";
-import "./SideBar.css";
 import AddBoxRoundedIcon from "@material-ui/icons/AddBoxRounded";
 import { Link } from "react-router-dom";
 import { WithAuthConsumer } from "../../../contexts/AuthContext";

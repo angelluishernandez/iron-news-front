@@ -1,5 +1,4 @@
 import React from "react";
-import "./SideBar.css";
 import { Link } from "react-router-dom";
 import { WithAuthConsumer } from "../../../contexts/AuthContext";
 const NewsExpandList = props => {

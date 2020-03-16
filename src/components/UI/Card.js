@@ -1,6 +1,5 @@
 import React from "react";
 import Moment from "react-moment";
-import "./Card.css";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import DeleteIcon from "./DeleteIcon";
 

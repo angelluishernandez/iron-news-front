@@ -1,5 +1,4 @@
 import React from "react";
-import "./SideBar.css";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
 
 import NewsExpandList from "./NewsExpandList";

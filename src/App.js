@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "./styles/styles.scss"
 import { Switch, Route, Redirect } from "react-router-dom";
 import AuthenticatedRoute from "./components/misc/AuthenticatedRoute";
 import Login from "./components/Login/Login";

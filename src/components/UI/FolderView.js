@@ -2,8 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import IronNewsService from "../../services/IronNewsService";
-import "./Card.css"
-import "./FolderView.css"
+
 
 class FolderView extends React.Component {
 	state = {

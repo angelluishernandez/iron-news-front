@@ -3,8 +3,8 @@ import { WithAuthConsumer } from "../../contexts/AuthContext";
 import IronNewsService from "../../services/IronNewsService";
 import Card from "../UI/Card";
 import customCategoriesArray from "../../constants/customCategories";
-import "./Home.css";
 import Spinner from "../UI/Spinner";
+
 class Home extends React.Component {
 	state = {
 		data: {
