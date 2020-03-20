@@ -1,10 +1,8 @@
 import React from "react";
 import MenuOpenIcon from "@material-ui/icons/MenuOpen";
-
 import NewsExpandList from "./NewsExpandList";
 import FolderExpandList from "./FoldersExpandList";
 import UserViewSideBar from "../UserViewSideBar/UserViewSideBar";
-import IronNewsService from "../../../services/IronNewsService";
 import { WithAuthConsumer } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 class SideBar extends React.Component {
