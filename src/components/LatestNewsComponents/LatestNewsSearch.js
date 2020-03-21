@@ -149,7 +149,6 @@ class LatestNewsSearch extends React.Component {
 		}
 	}
 	handleChangeOnFolderSelect = event => {
-		console.log("entra en handlechangeonfolder=>", event.target.value);
 		const value = event.target.value;
 		this.setState({
 			...this.state,
