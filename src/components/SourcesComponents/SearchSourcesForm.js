@@ -1,4 +1,5 @@
 import React from "react";
+import SourcesCategory from "./SourcesCategory";
 
 const SearchSourcesForm = props => {
 	return (
@@ -11,27 +12,16 @@ const SearchSourcesForm = props => {
 				<div className="form-group col-md-6">
 					<label htmlFor="search-box">Search for category</label>
 
-					<input
-						type="text"
-						placeholder="Category"
-						className="form-control latest-news-search-box "
-						value={props.category}
+					<SourcesCategory
+						handleChangeSearch={props.handleChangeSearch}
 						name="category"
-						autoComplete="off"
-						onChange={e => props.handleChangeSearch(e)}
 					/>
 				</div>
 				<div className="form-group col-md-6">
 					<label htmlFor="search-box">Search for language</label>
-
-					<input
-						type="text"
-						placeholder="Language"
-						className="form-control latest-news-search-box "
-						value={props.language}
+					<SourcesCategory
+						handleChangeSearch={props.handleChangeSearch}
 						name="language"
-						autoComplete="off"
-						onChange={e => props.handleChangeSearch(e)}
 					/>
 				</div>
 				<button type="submit" onClick={e => props.handleSubmit(e)}>

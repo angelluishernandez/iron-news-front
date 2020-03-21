@@ -1,6 +1,7 @@
 import React from "react";
 import SearchSourcesForm from "./SearchSourcesForm";
 import IronNewsService from "../../services/IronNewsService";
+import SourcesList from "./SourcesList";
 
 class SearchForSources extends React.Component {
 	state = {
@@ -10,7 +11,7 @@ class SearchForSources extends React.Component {
 		},
 		submited: false,
 		sources: [],
-		loading: true
+		loading: true,
 	};
 
 	handleChangeSearch = e => {
@@ -24,11 +25,11 @@ class SearchForSources extends React.Component {
 		});
 	};
 
-	handleSubmit = (e) => {
-		e.preventDefault()
+	handleSubmit = e => {
+		e.preventDefault();
 		this.setState({
 			submited: true,
-			loading: true
+			loading: true,
 		});
 	};
 
@@ -38,8 +39,8 @@ class SearchForSources extends React.Component {
 			IronNewsService.searchSources({ language, category })
 				.then(sources =>
 					this.setState({
-						sources: [sources],
-						loading: false
+						sources: sources,
+						loading: false,
 					})
 				)
 				.catch(error => console.log(error));
@@ -53,6 +54,9 @@ class SearchForSources extends React.Component {
 					handleChangeSearch={this.handleChangeSearch}
 					handleSubmit={this.handleSubmit}
 				/>
+				{!this.state.loading ? (
+					<SourcesList sources={this.state.sources} />
+				) : null}
 			</div>
 		);
 	}
