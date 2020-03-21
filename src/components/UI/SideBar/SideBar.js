@@ -5,6 +5,7 @@ import FolderExpandList from "./FoldersExpandList";
 import UserViewSideBar from "../UserViewSideBar/UserViewSideBar";
 import { WithAuthConsumer } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
+
 class SideBar extends React.Component {
 	state = {
 		activeCollapseFolders: false,
@@ -52,6 +53,7 @@ class SideBar extends React.Component {
 							deleteFolder={this.deleteFolder}
 							userId={this.props.currentUser._id}
 						/>
+						<br />
 						<li className="parent-list-item">
 							<Link to="/sources"> Search for sources </Link>
 						</li>

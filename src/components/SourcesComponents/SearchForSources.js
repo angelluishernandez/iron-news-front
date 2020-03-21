@@ -1,7 +1,8 @@
 import React from "react";
 import SearchSourcesForm from "./SearchSourcesForm";
-import IronNewsService from "../../services/IronNewsService";
+import Spinner from "../UI/Spinner"
 import SourcesList from "./SourcesList";
+import IronNewsService from "../../services/IronNewsService";
 
 class SearchForSources extends React.Component {
 	state = {
@@ -49,6 +50,8 @@ class SearchForSources extends React.Component {
 
 	render() {
 		return (
+
+			
 			<div className="SearchForSources">
 				<SearchSourcesForm
 					handleChangeSearch={this.handleChangeSearch}
@@ -56,7 +59,7 @@ class SearchForSources extends React.Component {
 				/>
 				{!this.state.loading ? (
 					<SourcesList sources={this.state.sources} />
-				) : null}
+				) : <Spinner/>}
 			</div>
 		);
 	}
