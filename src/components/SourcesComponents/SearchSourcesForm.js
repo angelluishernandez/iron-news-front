@@ -3,7 +3,7 @@ import SourcesCategory from "./SourcesCategory";
 
 const SearchSourcesForm = props => {
 	return (
-		<div className="SearchSourcesForm">
+		<div className="SearchSourcesForm pb-3">
 			<form
 				onSubmit={e => {
 					props.handleSubmit(e);
@@ -24,7 +24,7 @@ const SearchSourcesForm = props => {
 						name="language"
 					/>
 				</div>
-				<button type="submit" onClick={e => props.handleSubmit(e)}>
+				<button type="submit" onClick={e => props.handleSubmit(e)} className="btn mt-3" >
 					Search for sources
 				</button>
 			</form>

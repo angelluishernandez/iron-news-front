@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import "./styles/styles.scss"
+import "./styles/styles.scss";
 import { Switch, Route, Redirect } from "react-router-dom";
 import AuthenticatedRoute from "./components/misc/AuthenticatedRoute";
 import Login from "./components/Login/Login";
@@ -54,7 +54,6 @@ function App(props) {
 						<FolderView folderId={match.params.folderId} />
 					)}
 				/>
-				
 
 				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 					<AddFolder />

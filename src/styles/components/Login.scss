@@ -4,20 +4,15 @@
 	text-align: center;
 	justify-content: center;
 	align-items: center;
-	background: rgb(253, 189, 64);
-	background: linear-gradient(
-		165deg,
-		rgba(253, 189, 64, 1) 5%,
-		rgba(236, 139, 67, 1) 100%
-	);
-	color: #d64d23;
+	background:$secondary;
+	color:$primary;
 }
 .Login input {
 	width: 300px;
 }
 #login-btn {
-	background: #d64d23;
-	border: 3px solid #7E3315;
+	background:$primary-light;
+	border: 3px solid $primary-dark;
 }
 .register{
 	position: absolute;
@@ -27,8 +22,8 @@
 }
 
 #signin-btn {
-	background: #d64d23;
-	border: 3px solid #7E3315;
+	background:$primary-light;
+	border: 3px solid $primary-dark;
 	display: flex;
 	justify-content: center;
 	bottom: 0;

@@ -1,6 +1,5 @@
 import React from "react";
 import { WithAuthConsumer } from "../../../contexts/AuthContext";
-import "./UserViewSideBar.css";
 import { Link } from "react-router-dom";
 
 const UserViewSideBar = props => {

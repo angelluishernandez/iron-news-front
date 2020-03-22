@@ -56,9 +56,10 @@ class SearchForSources extends React.Component {
 				<SearchSourcesForm
 					handleChangeSearch={this.handleChangeSearch}
 					handleSubmit={this.handleSubmit}
+					className="SearchSourcesForm"
 				/>
 				{!this.state.loading ? (
-					<SourcesList sources={this.state.sources} />
+					<SourcesList sources={this.state.sources} className="SourcesList"/>
 				) : <Spinner/>}
 			</div>
 		);

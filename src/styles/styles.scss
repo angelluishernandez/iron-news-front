@@ -1,11 +1,13 @@
-@import "./base/base";
+
 @import "./base/settings"; 
+@import "./base/base";
+@import "./components/Login";
 @import "./components/Card";
 @import "./components/FolderView";
 @import "./components/Home";
 @import "./components/LatestNews";
-@import "./components/Login";
 @import "./components/NavBar";
 @import "./components/SideBar";
-@import "./components/SignIn";
 @import "./components/Spinner";
+@import "./components/UserViewSideBar";
+@import "./components/SearchForSources";

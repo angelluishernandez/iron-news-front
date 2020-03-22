@@ -1,34 +1,29 @@
 .LatestNewsSearch {
-	background: rgb(224, 99, 43);
-	background: rgb(255, 236, 179);
-	background: linear-gradient(
-		40deg,
-		rgba(255, 236, 179, 1) 62%,
-		rgba(255, 187, 79, 1) 100%
-	);
+	background:$secondary; 
 	color: black;
 }
 
+.LatestNewsSearch div{
+	background: $secondary;
+}
 .LatestNewsSearch i{
-	color: #ff5722
+	color: $base-orange; 
+	
 }
 
-.LatestNewsSearch .btn {
-	background-color: #ff5722;
-	border: 2px solid #ffc107;
-}
+
 
 .LatestNewsSearch .btn:hover {
-	background-color: #ffc107;
-	border: 2px solid #ff5722;
+	background-color: $base-yellow;
+	border: 2px solid $base-orange;
 }
 .fa-newspaper {
 	color: #f5c279;
 }
 
 .latest-news-search-box {
-	background: #f47a86;
-	border: #f47a86;
+	background:lighten($base-orange, 10%);
+	border: lighten($base-orange, 10%);
 }
 
 .search-more {

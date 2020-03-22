@@ -1,0 +1,15 @@
+p{
+  line-height: $line-height-paragraph;
+  font-size: $font-size-paragraph; 
+}
+
+h5{
+  line-height: $line-height-titles;
+}
+
+body .btn{
+  background: $primary;
+  border: 2px solid $primary-dark; 
+  color: $text-color; 
+  font-weight: 700;
+}

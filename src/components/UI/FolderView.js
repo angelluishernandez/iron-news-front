@@ -14,17 +14,7 @@ class FolderView extends React.Component {
 	deleteNewsInFolder = (event, folderId, newsId) => {
 		event.preventDefault();
 
-		console.log("entra")
-		// console.log("eNTRa")
-		// console.log(event, folderId, newsId, )
-		// const newsArray = this.state.savedArticles.filter(news => news._id !== newsId);
-		// this.setState({
-		// 	...this.state,
-		// 	savedArticles: newsArray,
-		// });
-		// IronNewsService.deleteNewsInFolder(folderId, newsId)
-		// 	.then(news => console.log("This news has been deleted=>", news))
-		// 	.catch(error => console.log(error));
+
 	};
 
 	componentDidMount() {

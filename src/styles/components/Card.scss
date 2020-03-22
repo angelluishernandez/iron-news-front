@@ -31,11 +31,12 @@
 }
 
 .card-container .btn{
-  background-color:$base-orange ;
-  border: 2px solid $base-yellow
+  background-color:$primary ;
+  border: 2px solid $primary-dark
 }
 
 .card-container .btn:hover{
-  background-color:$base-yellow ;
-  border: 2px solid $base-orange
+  background-color:$primary-light ;
+  border: 2px solid $primary-dark
 }
+

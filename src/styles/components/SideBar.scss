@@ -1,5 +1,5 @@
 .SideBar {
-	background: $base-yellow;
+	background: $secondary;
 	
 	height: 100vh;
 	position: fixed;
@@ -20,14 +20,14 @@
 	padding: 5px;
 
 	font-size: 25px;
-	color: $base-orange;
+	color: $primary;
 	display: block;
 	transition: 0.3s;
-	background-color: #FFECB3}
+	background-color: $secondary-light}
 
 .parent-list-item:hover {
 	color: #f1f1f1;
-	background-color: $base-orange;
+	background-color: $primary;
 }
 
 #closebtn {
@@ -39,7 +39,7 @@
 	align-items: flex-end;
 	height: $m-size;
 	width: $m-size;
-	color: $base-orange;
+	color: $primary;
 	margin-right: 10px;
 	margin-top: 5px;
 }
@@ -51,7 +51,7 @@
 	margin-top: 10px;
 	cursor: pointer;
 	background-color: $black;
-	color: $base-orange;
+	color: $primary;
 	padding: 10px 15px;
 	border: none;
 }
