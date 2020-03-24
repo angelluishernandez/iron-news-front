@@ -32,4 +32,4 @@ const NewsExpandList = props => {
 	);
 };
 
-export default WithAuthConsumer(NewsExpandList);
+export default NewsExpandList;

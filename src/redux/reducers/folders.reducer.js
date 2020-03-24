@@ -1,11 +1,16 @@
 // Folders reducer
 
-const foldersReducerDefaultState = [];
+const foldersReducerDefaultState = [{
+	name: "", 
+	description: "", 
+	tags: ""
+}];
 
-const folderReducer = (state = foldersReducerDefaultState, action) => {
-	switch (action.type) {
-		case "GET_USER_FOLDERS":
-			return [...state, action.folders];
+const folderReducer = (state = foldersReducerDefaultState, {type, payload}) => {
+	console.log(payload)
+	switch (type) {
+		case "GET_FOLDERS":
+			return payload;
 		default:
 			return state;
 	}

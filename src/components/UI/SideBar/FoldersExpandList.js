@@ -3,6 +3,7 @@ import AddBoxRoundedIcon from "@material-ui/icons/AddBoxRounded";
 import { Link } from "react-router-dom";
 import { WithAuthConsumer } from "../../../contexts/AuthContext";
 import DeleteIcon from "../DeleteIcon";
+
 const FolderExpandList = props => {
 	return (
 		<li className="parent-list-item">

@@ -1,3 +1,8 @@
 // GET USER
 
-export const getUser = ({})
+export const getUser = ({
+  return dispatch=> {
+    return IronNewsService.
+  }
+
+})

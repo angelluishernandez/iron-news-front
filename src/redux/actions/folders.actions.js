@@ -1,18 +1,21 @@
+import IronNewsService from "../../services/IronNewsService";
 
-// GET USER FOLDERS
+// Get folders action generator
 
-
-export const getFolders = ({
-
-
-
-
-})
+export const getUserFolders = () => {
+	return dispatch => {
+		return IronNewsService.test()
+			.then(folders => {
+				dispatch({ type: "GET_FOLDERS", payload: folders });
+			})
+			.catch(error => console.log(error));
+	};
+};
 
 // ADD USER FOLDER
 
 // EDIT USER FOLDERS
 
-
-
 // REMOVE USER FOLDERS
+
+

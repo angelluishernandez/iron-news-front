@@ -13,3 +13,20 @@ body .btn{
   color: $text-color; 
   font-weight: 700;
 }
+body a{
+  text-decoration: none;
+  color: $primary
+}
+
+body Link{
+  text-decoration: none;
+  color: $primary
+
+}
+
+body a:hover{
+  cursor: pointer
+}
+body Link:hover{
+  cursor: pointer
+}
