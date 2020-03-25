@@ -2,6 +2,7 @@ import React from "react";
 import Moment from "react-moment";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
 import DeleteIcon from "./DeleteIcon";
+import ShareIcon from "./ShareIcon";
 
 const Card = props => {
 	return (
@@ -38,14 +39,12 @@ const Card = props => {
 						</button>
 					</form>
 				) : (
-					<div>
-						<h5>
-							Delete this article{" "}
-							<DeleteIcon
-								folderId={props.folderId}
-								deleteNewsInFolder={props.deleteNewsInFolder}
-							/>
-						</h5>
+					<div className="icons-div">
+						<DeleteIcon
+							folderId={props.folderId}
+							deleteNewsInFolder={props.deleteNewsInFolder}	
+						/>
+						<ShareIcon />
 					</div>
 				)}
 

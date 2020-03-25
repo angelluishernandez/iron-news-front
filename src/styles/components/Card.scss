@@ -40,3 +40,16 @@
   border: 2px solid $primary-dark
 }
 
+.icons-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25%;
+  color:darken($primary, 10%); 
+  margin: 15px 0 15px 0; 
+}
+
+
+.icons-div i{
+ 
+}

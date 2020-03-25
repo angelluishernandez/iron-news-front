@@ -4,12 +4,10 @@ import { WithAuthConsumer } from "../../contexts/AuthContext";
 const DeleteIcon = props => {
 	return (
 		
-		<div className="DeleteFolder">
-				<i onClick={(event) => props.deleteFolder(event, props.userId, props.id )}
-					className="fa fa-trash"
-					
-				></i>
-		</div>
+			<i
+				onClick={event => props.deleteFolder(event, props.userId, props.id)}
+				className="fas fa-share-alt"
+			></i>
 	);
 };
 

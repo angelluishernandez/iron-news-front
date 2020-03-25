@@ -19,13 +19,12 @@ import Test from "./redux-test/Test";
 function App(props) {
 	return (
 		<div className="App">
-
-			{/* <AuthenticatedRoute>
+			<AuthenticatedRoute>
 				<Layout />
 			</AuthenticatedRoute>
 
-		 <Switch>
-				{/*	<Route exact path="/login" component={Login} />
+			<Switch>
+				<Route exact path="/login" component={Login} />
 
 				<Route exact path="/signin" component={SignIn} />
 				<AuthenticatedRoute exact path={"/"}>
@@ -48,8 +47,8 @@ function App(props) {
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path="/getallnews/:id">
 					<GetAllNews />
-				</AuthenticatedRoute> */}
-				{/* <AuthenticatedRoute
+				</AuthenticatedRoute>
+				<AuthenticatedRoute
 					exact
 					path="/folder/:folderId/newslist"
 					render={({ match }) => (
@@ -59,8 +58,8 @@ function App(props) {
 
 				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 					<AddFolder />
-				</AuthenticatedRoute>  */}
-			{/* </Switch> */}
+				</AuthenticatedRoute>
+			</Switch>
 		</div>
 	);
 }

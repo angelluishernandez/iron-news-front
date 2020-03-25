@@ -11,13 +11,13 @@ import store from "./redux/store/store";
 import Test from "./redux-test/Test";
 
 ReactDOM.render(
-	<Provider store={store}>
+	// <Provider store={store}>
 		<BrowserRouter>
 			<AuthContextProvider>
 			<App/>
 			</AuthContextProvider>
-		</BrowserRouter>
-	</Provider>,
+		</BrowserRouter>, 
+	// </Provider>,
 	document.getElementById("root")
 );
 
