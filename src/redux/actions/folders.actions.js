@@ -4,6 +4,7 @@ import IronNewsService from "../../services/IronNewsService";
 
 export const getUserFolders = () => {
 	return dispatch => {
+		
 		return IronNewsService.test()
 			.then(folders => {
 				dispatch({ type: "GET_FOLDERS", payload: folders });

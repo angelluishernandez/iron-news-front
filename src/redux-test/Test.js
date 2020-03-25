@@ -4,8 +4,10 @@ import { getUserFolders } from "../redux/actions/folders.actions";
 import { bindActionCreators } from "redux";
 
 class Test extends React.Component {
+	
+	
+	
 	componentDidMount = () => {
-		
 		const { getUserFolders } = this.props;
 		getUserFolders();
 

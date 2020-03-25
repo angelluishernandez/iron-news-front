@@ -13,11 +13,9 @@ import Test from "./redux-test/Test";
 ReactDOM.render(
 	<Provider store={store}>
 		<BrowserRouter>
-			{/* <AuthContextProvider> */}
-				<Switch>
-					<Route exact path="/" component={Test}/>
-				</Switch>
-			{/* </AuthContextProvider> */}
+			<AuthContextProvider>
+			<App/>
+			</AuthContextProvider>
 		</BrowserRouter>
 	</Provider>,
 	document.getElementById("root")
