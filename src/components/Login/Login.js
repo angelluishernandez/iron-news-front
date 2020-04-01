@@ -2,6 +2,8 @@ import React from "react";
 import IronNewsService from "../../services/IronNewsService";
 import { Link, Redirect } from "react-router-dom";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
+import { userLoginFetch } from "../../redux/actions/user.actions";
+import { connect } from "react-redux";
 
 class Login extends React.Component {
 	state = {
@@ -15,21 +17,24 @@ class Login extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
+		console.log("This is the state in Login=> ", this.state.data)
+		this.props.userLoginFetch(this.state.data);
+		this.props.history.push("/")
 
-		this.setState({ loading: true, error: false }, () => {
-			IronNewsService.login({ ...this.state.data }).then(
-				user => {
-					this.props.setUser(user);
-					this.props.getFolders()
-				},
-				() => {
-					this.setState({
-						error: true,
-						loading: false,
-					});
-				}
-			);
-		});
+		// this.setState({ loading: true, error: false }, () => {
+		// 	IronNewsService.login({ ...this.state.data }).then(
+		// 		user => {
+		// 			this.props.setUser(user);
+		// 			this.props.getFolders();
+		// 		},
+		// 		() => {
+		// 			this.setState({
+		// 				error: true,
+		// 				loading: false,
+		// 			});
+		// 		}
+		// 	);
+		// });
 	};
 
 	handleBlur = event => {};
@@ -47,8 +52,8 @@ class Login extends React.Component {
 	render() {
 		const { data, error, loading } = this.state;
 		const errorClassName = error ? "is-invalid" : "";
-		if(this.props.currentUser){
-			return <Redirect to={`/${this.props.currentUser._id}`}/>
+		if (this.props.currentUser) {
+			return <Redirect to={`/${this.props.currentUser._id}`} />;
 		}
 		return (
 			<div className="Login">
@@ -100,4 +105,8 @@ class Login extends React.Component {
 	}
 }
 
-export default WithAuthConsumer(Login);
+const mapDispatchToProps = dispatch => ({
+	userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo)),
+});
+
+export default connect(undefined, mapDispatchToProps)(Login);

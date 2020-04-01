@@ -19,15 +19,15 @@ import Test from "./redux-test/Test";
 function App(props) {
 	return (
 		<div className="App">
-			<AuthenticatedRoute>
-				<Layout />
-			</AuthenticatedRoute>
+			{/* <AuthenticatedRoute> */}
+				{/* <Layout /> */}
+			{/* </AuthenticatedRoute> */}
 
 			<Switch>
 				<Route exact path="/login" component={Login} />
 
 				<Route exact path="/signin" component={SignIn} />
-				<AuthenticatedRoute exact path={"/"}>
+				{/* <AuthenticatedRoute exact path={"/"}>
 					{props.currentUser ? (
 						<Redirect to={`/${props.currentUser._id}`} />
 					) : null}
@@ -58,7 +58,7 @@ function App(props) {
 
 				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 					<AddFolder />
-				</AuthenticatedRoute>
+				</AuthenticatedRoute> */}
 			</Switch>
 		</div>
 	);

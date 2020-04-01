@@ -7,17 +7,18 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { Provider } from "react-redux";
-import store from "./redux/store/store";
 import Test from "./redux-test/Test";
+import configStore from "./redux/store/store"
+
+const store = configStore();
+const state = store.getState();
 
 ReactDOM.render(
-	// <Provider store={store}>
+	<Provider store={store}>
 		<BrowserRouter>
-			<AuthContextProvider>
-			<App/>
-			</AuthContextProvider>
-		</BrowserRouter>, 
-	// </Provider>,
+			<App />
+		</BrowserRouter>
+	</Provider>,
 	document.getElementById("root")
 );
 
