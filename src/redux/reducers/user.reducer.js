@@ -1,19 +1,34 @@
 const initialState = {
-	currentUser: {},
+
 };
 
-export const userReducer = (state = initialState, action) => {
-	console.log("This the payload on reducer =>", action.payload)
 
+
+const userReducer = (state = {initialState}, action) => {
+	console.log("this is the action=> ", action)
+	console.log("This the user on reducer =>", action.type);
+	console.log("this is the payload", action.currentUser);
+	console.log("this is the state, ", state);
 	switch (action.type) {
-		case "LOGIN_USER":
+		case "SET_CURRENT_USER":
 			return {
 				...state,
-				currentUser: action.payload,
+				currentUser: action.currentUser,
+				isAuthenticated: true,
+			};
+		// case "GET_CURRENT_USER": 
+		// return {
+		// 	...state, 
+		// 	currentUser: JSON.parse(localStorage.getItem("user"))
+		// }
+		case "LOGOUT_USER":
+			return {
+				...state,
+				currentUser: {},
 			};
 		default:
 			return state;
 	}
 };
 
-
+export default userReducer;

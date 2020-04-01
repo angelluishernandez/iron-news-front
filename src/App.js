@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "./styles/styles.scss";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, Router } from "react-router-dom";
 import AuthenticatedRoute from "./components/misc/AuthenticatedRoute";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
@@ -14,7 +14,8 @@ import AddFolder from "./components/Folders/AddFolder";
 import GetAllNews from "./components/GetAllNews/GetAllNews";
 import FolderView from "./components/UI/FolderView";
 import SearchForSources from "./components/SourcesComponents/SearchForSources";
-import Test from "./redux-test/Test";
+import MockHome from "./components/MockHome";
+import Moremock from "./components/Moremock";
 
 function App(props) {
 	return (
@@ -27,6 +28,9 @@ function App(props) {
 				<Route exact path="/login" component={Login} />
 
 				<Route exact path="/signin" component={SignIn} />
+
+				<Route exact path="/" component={MockHome} />
+				<Route exact path="/moremock" component={Moremock} />
 				{/* <AuthenticatedRoute exact path={"/"}>
 					{props.currentUser ? (
 						<Redirect to={`/${props.currentUser._id}`} />

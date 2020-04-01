@@ -17,8 +17,7 @@ class Login extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		console.log("This is the state in Login=> ", this.state.data)
-		this.props.userLoginFetch(this.state.data);
+		this.props.userLoginFetch({...this.state.data});
 		this.props.history.push("/")
 
 		// this.setState({ loading: true, error: false }, () => {
