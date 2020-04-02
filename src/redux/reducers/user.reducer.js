@@ -1,34 +1,55 @@
-const initialState = {
+import { userConstants } from "../constants/constants";
+console.log("USER", JSON.parse(localStorage.getItem("user")))
+let user = JSON.parse(localStorage.getItem("user"));
 
-};
+const initialState = user ? { loggedIn: true, user } : {};
 
 
 
-const userReducer = (state = {initialState}, action) => {
-	console.log("this is the action=> ", action)
-	console.log("This the user on reducer =>", action.type);
-	console.log("this is the payload", action.currentUser);
-	console.log("this is the state, ", state);
+export const authentication = (state = initialState, action) => {
 	switch (action.type) {
-		case "SET_CURRENT_USER":
+		case userConstants.LOGIN_REQUEST:
 			return {
-				...state,
-				currentUser: action.currentUser,
-				isAuthenticated: true,
+				loggedIn: true,
+				user: action.user,
 			};
-		// case "GET_CURRENT_USER": 
-		// return {
-		// 	...state, 
-		// 	currentUser: JSON.parse(localStorage.getItem("user"))
-		// }
-		case "LOGOUT_USER":
+		case userConstants.LOGIN_SUCCESS:
 			return {
-				...state,
-				currentUser: {},
+				loggedIn: true,
+				user: action.user,
 			};
+		case userConstants.LOGIN_FAILURE:
+			return {};
+		case userConstants.LOGOUT:
+			return {};
 		default:
 			return state;
 	}
 };
 
-export default userReducer;
+// const initialState = {};
+
+// const userReducer = (state = { initialState }, action) => {
+// 	switch (action.type) {
+// 		case "SET_CURRENT_USER":
+// 			return {
+// 				...state,
+// 				currentUser: action.currentUser,
+// 				isAuthenticated: true,
+// 			};
+// 		// case "GET_CURRENT_USER":
+// 		// return {
+// 		// 	...state,
+// 		// 	currentUser: JSON.parse(localStorage.getItem("user"))
+// 		// }
+// 		case "LOGOUT_USER":
+// 			return {
+// 				...state,
+// 				currentUser: {},
+// 			};
+// 		default:
+// 			return state;
+// 	}
+// };
+
+// export default userReducer;

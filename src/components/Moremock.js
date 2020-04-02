@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const Moremock = props => {
-	console.log(props);
+	console.log("MORE MOCK=>", props);
 	return (
 		<div>
 			<h1>{props.userState.name}</h1>

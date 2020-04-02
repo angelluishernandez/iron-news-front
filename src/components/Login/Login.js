@@ -2,7 +2,7 @@ import React from "react";
 import IronNewsService from "../../services/IronNewsService";
 import { Link, Redirect } from "react-router-dom";
 import { WithAuthConsumer } from "../../contexts/AuthContext";
-import { userLoginFetch } from "../../redux/actions/user.actions";
+import { userActions } from "../../redux/actions/user.actions";
 import { connect } from "react-redux";
 
 class Login extends React.Component {
@@ -11,14 +11,23 @@ class Login extends React.Component {
 			email: "",
 			password: "",
 		},
-		error: false,
-		loading: false,
+		submited: false,
 	};
 
 	handleSubmit = event => {
 		event.preventDefault();
-		this.props.userLoginFetch({...this.state.data});
-		this.props.history.push("/")
+
+		this.setState({
+			submited: true,
+		});
+
+		const { email, password } = this.state.data;
+		console.log(email, password)
+		const {dispatch} = this.props;
+		if (email && password) {
+			dispatch(userActions.doLogin({email, password}));
+		}
+	
 
 		// this.setState({ loading: true, error: false }, () => {
 		// 	IronNewsService.login({ ...this.state.data }).then(
@@ -104,8 +113,11 @@ class Login extends React.Component {
 	}
 }
 
-const mapDispatchToProps = dispatch => ({
-	userLoginFetch: userInfo => dispatch(userLoginFetch(userInfo)),
-});
+const mapStateToProps = (state)=> {
+	const {logginIn} = state.authentication
+	return{
+		logginIn
+	}
+}
 
-export default connect(undefined, mapDispatchToProps)(Login);
+export default connect(mapStateToProps)(Login);

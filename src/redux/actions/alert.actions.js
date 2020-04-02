@@ -1,26 +1,28 @@
+import {alertConstants} from "../constants/constants"
 
-// const success = message => {
-// 	return {
-// 		type: alertConstants.SUCCESS,
-// 		message,
-// 	};
-// };
 
-// const error = message => {
-// 	return {
-// 		type: alertConstants.error,
-// 		message,
-// 	};
-// };
+const success = message => {
+	return {
+		type: alertConstants.SUCCESS,
+		message,
+	};
+};
 
-// const clear = () => {
-// 	return {
-// 		type: alertConstants.CLEAR,
-// 	};
-// };
+const error = message => {
+	return {
+		type: alertConstants.ERROR,
+		message,
+	};
+};
 
-// export const alertActions = {
-// 	success,
-// 	error,
-// 	clear,
-// };
+const clear = () => {
+	return {
+		type: alertConstants.CLEAR,
+	};
+};
+
+export const alertActions = {
+	success,
+	error,
+	clear,
+};

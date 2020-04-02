@@ -16,21 +16,25 @@ import FolderView from "./components/UI/FolderView";
 import SearchForSources from "./components/SourcesComponents/SearchForSources";
 import MockHome from "./components/MockHome";
 import Moremock from "./components/Moremock";
+import { AuthRoute } from "./components/AuthRoute/AuthRoute";
 
 function App(props) {
 	return (
 		<div className="App">
 			{/* <AuthenticatedRoute> */}
-				{/* <Layout /> */}
+			{/* <Layout /> */}
 			{/* </AuthenticatedRoute> */}
 
 			<Switch>
 				<Route exact path="/login" component={Login} />
 
 				<Route exact path="/signin" component={SignIn} />
+		
+					<Route exact path="/" component={MockHome} />
+				<AuthRoute>
+					<Route exact path="/moremock" component={Moremock} />
+				</AuthRoute>
 
-				<Route exact path="/" component={MockHome} />
-				<Route exact path="/moremock" component={Moremock} />
 				{/* <AuthenticatedRoute exact path={"/"}>
 					{props.currentUser ? (
 						<Redirect to={`/${props.currentUser._id}`} />

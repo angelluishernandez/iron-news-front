@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const MockHome = (props) => {
-console.log(props)
+console.log("MOCK", props)
 	return (
 		<div>
       <h1 style={{color: "black"}}>HOla</h1>
@@ -15,7 +15,7 @@ console.log(props)
 const mapStateToProps = (state) => {
   console.log("this is the state on mapStatetoProps", state)
   return {
-    currentUser: state.userState
+    currentUser: {...state.authentication.user}
   }
 }
 
