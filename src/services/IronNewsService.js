@@ -19,8 +19,8 @@ http.interceptors.response.use(
 
 // const test = () => http.get("/findAllFolders")
 
-const home = user => http.get(`/`, user);
-const landing = category => http.post(`/`, category);
+// const home = user => http.get(`/`, user);
+// const landing = category => http.post(`/`, category);
 const login = ({ email, password }) => http.post("/login", { email, password });
 const logout = () => http.post("/logout");
 const register = data => http.post("/register", data);
@@ -45,9 +45,9 @@ export default {
 	login,
 	logout,
 	register,
-	home,
+	// home,
 	getLatestNews,
-	landing,
+	// landing,
 	editUser,
 	createFolder,
 	listFolders,

@@ -1,6 +1,5 @@
 import IronNewsService from "../../services/IronNewsService";
 import { alertActions } from "../actions/alert.actions";
-import { setUser } from "../helpers/loginHelpers";
 import { userConstants } from "../constants/constants";
 import { history } from "../../helpers/history";
 
@@ -14,8 +13,9 @@ const doLogin = ({ email, password }) => {
 		IronNewsService.login({ email, password }).then(
 			user => {
 				dispatch(success(user));
+				localStorage.setItem("user", user ? JSON.stringify(user) : null);
 				history.push("/");
-				localStorage.setItem("user", user ? JSON.stringify(user) : null)
+				
 			},
 			error => {
 				dispatch(failure(error));
@@ -28,18 +28,20 @@ const doLogin = ({ email, password }) => {
 //----------------------Logout----------------------//
 
 const logout = () => {
-	IronNewsService.logout()
-	return{
-		type: userConstants.LOGOUT
-	}
-}
+	IronNewsService.logout().then(() => localStorage.clear());
+
+	return {
+		type: userConstants.LOGOUT,
+	};
+};
 
 //----------------------ACTION TYPES----------------------//
 
 const request = user => {
-	return { 
-		type: userConstants.LOGIN_REQUEST, 
-		user };
+	return {
+		type: userConstants.LOGIN_REQUEST,
+		user,
+	};
 };
 const success = user => {
 	return {
@@ -59,13 +61,8 @@ const failure = error => {
 
 export const userActions = {
 	doLogin,
-	logout
+	logout,
 };
-
-
-
-
-
 
 // // Action generators
 // export const userLoginFetch = ({ email, password }) => dispatch => {

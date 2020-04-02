@@ -1,7 +1,5 @@
 import React from "react";
-import IronNewsService from "../../services/IronNewsService";
 import { Link, Redirect } from "react-router-dom";
-import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { userActions } from "../../redux/actions/user.actions";
 import { connect } from "react-redux";
 
@@ -20,29 +18,14 @@ class Login extends React.Component {
 		this.setState({
 			submited: true,
 		});
-
+		console.log("this are the props on submit => ", this.props)
 		const { email, password } = this.state.data;
-		console.log(email, password)
-		const {dispatch} = this.props;
+		const { dispatch, history } = this.props;
 		if (email && password) {
-			dispatch(userActions.doLogin({email, password}));
+			dispatch(userActions.doLogin({ email, password }));
+			
 		}
-	
 
-		// this.setState({ loading: true, error: false }, () => {
-		// 	IronNewsService.login({ ...this.state.data }).then(
-		// 		user => {
-		// 			this.props.setUser(user);
-		// 			this.props.getFolders();
-		// 		},
-		// 		() => {
-		// 			this.setState({
-		// 				error: true,
-		// 				loading: false,
-		// 			});
-		// 		}
-		// 	);
-		// });
 	};
 
 	handleBlur = event => {};
@@ -57,10 +40,10 @@ class Login extends React.Component {
 		});
 	};
 
-	handleClick = event =>{
-		const {dispatch} = this.props
-		dispatch(userActions.logout())
-	}
+	handleClick = event => {
+		const { dispatch } = this.props;
+		dispatch(userActions.logout());
+	};
 
 	render() {
 		const { data, error, loading } = this.state;
@@ -113,17 +96,23 @@ class Login extends React.Component {
 						</Link>
 					</div>
 				</form>
+				<div>
+					<button className="btn btn-success">
+						{" "}
+						<Link to={"/signin"}>Create an account</Link>
+					</button>
+				</div>
 				<button onClick={this.handleClick}>LogOut</button>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state)=> {
-	const {logginIn} = state.authentication
-	return{
-		logginIn
-	}
-}
+const mapStateToProps = state => {
+	const { loggedIn } = state.authentication;
+	return {
+		loggedIn,
+	};
+};
 
 export default connect(mapStateToProps)(Login);

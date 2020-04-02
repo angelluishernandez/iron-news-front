@@ -19,7 +19,6 @@ class Home extends React.Component {
 
 	handleChange = event => {
 		const value = event.target.value;
-		console.log("this is the value on handle change =>", value);
 		this.setState({
 			data: {
 				...this.state.data,
@@ -30,13 +29,11 @@ class Home extends React.Component {
 		});
 	};
 	handleChangeOnFolderSelect = event => {
-		console.log("entra en handlechangeonfolder=>", event.target.value);
 		const value = event.target.value;
 		this.setState({
 			...this.state,
 			selectedFolder: value,
 		});
-		console.log("this is the current state after changing folder", this.state);
 	};
 	handleSubmit = event => {
 		event.preventDefault();

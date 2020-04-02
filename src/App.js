@@ -16,7 +16,7 @@ import FolderView from "./components/UI/FolderView";
 import SearchForSources from "./components/SourcesComponents/SearchForSources";
 import MockHome from "./components/MockHome";
 import Moremock from "./components/Moremock";
-import AuthRoute from "./components/AuthRoute/AuthRoute";
+import {AuthRoute} from "./components/AuthRoute/AuthRoute";
 import { history } from "./helpers/history";
 
 function App(props) {
@@ -28,9 +28,7 @@ function App(props) {
 			<Router history={history}>
 				<Switch>
 					{/* <Layout/> */}
-					<Route exact path="/login">
-						<Login />
-					</Route>
+					<Route exact path="/login" component={Login}/>
 
 					<Route exact path="/signin" component={SignIn} />
 					<AuthRoute exact path="/" component={MockHome} />
