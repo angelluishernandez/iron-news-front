@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { Provider } from "react-redux";
 import {store} from "./redux/store/store";
+import { history } from "./helpers/history";
 
 // const store = configStore();
 const state = store.getState();

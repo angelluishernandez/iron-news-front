@@ -18,11 +18,12 @@ class Layout extends React.Component {
 	render() {
 		return (
 			<div className="Layout">
-				<NavBar handleOpen={this.openNav}></NavBar>
-				<SideBar handleClose={this.closeNav}></SideBar>
+				{/* <NavBar handleOpen={this.openNav}></NavBar>
+				<SideBar handleClose={this.closeNav}></SideBar> */}
+				Hello
 			</div>
 		);
 	}
 }
 
-export default WithAuthConsumer(Layout);
+export default Layout;

@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import { createLogger } from "redux-logger";
 import thunk from "redux-thunk";
 import {authentication} from "../reducers/user.reducer";
+import {folderReducer} from "../reducers/folders.reducer"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -9,6 +10,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const createLoggerMiddleware = createLogger();
 const rootReducer = combineReducers({
 	authentication,
+	folderReducer
 });
 
 export const store = createStore(

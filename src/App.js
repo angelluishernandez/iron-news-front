@@ -16,7 +16,8 @@ import FolderView from "./components/UI/FolderView";
 import SearchForSources from "./components/SourcesComponents/SearchForSources";
 import MockHome from "./components/MockHome";
 import Moremock from "./components/Moremock";
-import { AuthRoute } from "./components/AuthRoute/AuthRoute";
+import AuthRoute from "./components/AuthRoute/AuthRoute";
+import { history } from "./helpers/history";
 
 function App(props) {
 	return (
@@ -24,18 +25,20 @@ function App(props) {
 			{/* <AuthenticatedRoute> */}
 			{/* <Layout /> */}
 			{/* </AuthenticatedRoute> */}
+			<Router history={history}>
+				<Switch>
+					{/* <Layout/> */}
+					<Route exact path="/login">
+						<Login />
+					</Route>
 
-			<Switch>
-				<Route exact path="/login" component={Login} />
+					<Route exact path="/signin" component={SignIn} />
+					<AuthRoute exact path="/" component={MockHome} />
 
-				<Route exact path="/signin" component={SignIn} />
-		
-					<Route exact path="/" component={MockHome} />
-				<AuthRoute>
-					<Route exact path="/moremock" component={Moremock} />
-				</AuthRoute>
+					<AuthRoute exact path="/moremock" component={Moremock} />
+					<AuthRoute exact path="/folders/:id/createfolder" component ={AddFolder} />
 
-				{/* <AuthenticatedRoute exact path={"/"}>
+					{/* <AuthenticatedRoute exact path={"/"}>
 					{props.currentUser ? (
 						<Redirect to={`/${props.currentUser._id}`} />
 					) : null}
@@ -67,7 +70,8 @@ function App(props) {
 				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 					<AddFolder />
 				</AuthenticatedRoute> */}
-			</Switch>
+				</Switch>
+			</Router>
 		</div>
 	);
 }

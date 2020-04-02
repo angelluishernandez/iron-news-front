@@ -1,16 +1,29 @@
 import IronNewsService from "../../services/IronNewsService";
+import { foldersConstants } from "../constants/constants";
 
-// Get folders action generator
+//----------------------ACTION GENERATORS----------------------//
 
-export const getUserFolders = () => {
+//----------------------Get user's folders----------------------//
+
+const fetchFolders = id => {
 	return dispatch => {
-		
-		return IronNewsService.test()
-			.then(folders => {
-				dispatch({ type: "GET_FOLDERS", payload: folders });
-			})
-			.catch(error => console.log(error));
+		IronNewsService.listFolders(id).then(folders => {
+			dispatch(getAllFolders(folders));
+		});
 	};
+};
+
+//----------------------ACTION TYPES----------------------//
+
+const getAllFolders = folders => ({
+	type: foldersConstants.LIST_FOLDERS,
+	folders,
+});
+
+//----------------------EXPORTS----------------------//
+
+export const folderActions = {
+	fetchFolders,
 };
 
 // ADD USER FOLDER
@@ -18,5 +31,3 @@ export const getUserFolders = () => {
 // EDIT USER FOLDERS
 
 // REMOVE USER FOLDERS
-
-

@@ -37,7 +37,9 @@ const logout = () => {
 //----------------------ACTION TYPES----------------------//
 
 const request = user => {
-	return { type: userConstants.LOGIN_REQUEST, user };
+	return { 
+		type: userConstants.LOGIN_REQUEST, 
+		user };
 };
 const success = user => {
 	return {

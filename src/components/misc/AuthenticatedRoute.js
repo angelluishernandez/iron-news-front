@@ -5,7 +5,6 @@ import { Redirect, Route } from "react-router-dom";
 
 const AuthenticatedRoute = (props) => {
 	if (!props.currentUser) {
-		console.log("this is the current user =>", props.currentUser)
     
 		return <Redirect to={"/login"} />;
 	} else {

@@ -57,6 +57,11 @@ class Login extends React.Component {
 		});
 	};
 
+	handleClick = event =>{
+		const {dispatch} = this.props
+		dispatch(userActions.logout())
+	}
+
 	render() {
 		const { data, error, loading } = this.state;
 		const errorClassName = error ? "is-invalid" : "";
@@ -108,6 +113,7 @@ class Login extends React.Component {
 						</Link>
 					</div>
 				</form>
+				<button onClick={this.handleClick}>LogOut</button>
 			</div>
 		);
 	}
