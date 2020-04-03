@@ -27,10 +27,12 @@ function App(props) {
 			{/* </AuthenticatedRoute> */}
 			<Router history={history}>
 				<Switch>
-					{/* <Layout/> */}
+
+					
 					<Route exact path="/login" component={Login}/>
 
 					<Route exact path="/signin" component={SignIn} />
+					<AuthRoute component={Layout} />
 					<AuthRoute exact path="/" component={MockHome} />
 
 					<AuthRoute exact path="/moremock" component={Moremock} />

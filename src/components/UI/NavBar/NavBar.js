@@ -1,5 +1,4 @@
 import React from "react";
-import { WithAuthConsumer } from "../../../contexts/AuthContext";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
@@ -17,24 +16,22 @@ const NavBar = props => {
 			</div>
 			<div className="home-element">
 				<div>
-					<Link to={`/${props.currentUser._id}`} style={{ color: "#000000" }}>
+					<Link to={`/${props.currentUserId}`} style={{ color: "#000000" }}>
 						<HomeRoundedIcon className="navbar-icon" />
 					</Link>
 				</div>
 				<div>
-					<Link to={`/${props.currentUser._id}`} style={{ color: "#000000" }}>
+					<Link to={`/${props.currentUserId}`} style={{ color: "#000000" }}>
 						{" "}
 						<h3>IronNews</h3>
 					</Link>
 				</div>{" "}
 			</div>
-			{props.currentUser && (
-				<div>
-					<ExitToAppRoundedIcon onClick={props.logout} />
-				</div>
-			)}
+			<div>
+				<ExitToAppRoundedIcon onClick={props.handleLogout} />
+			</div>
 		</nav>
 	);
 };
 
-export default WithAuthConsumer(NavBar);
+export default NavBar;
