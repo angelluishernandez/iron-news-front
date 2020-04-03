@@ -7,28 +7,12 @@ import { WithAuthConsumer } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 
 class SideBar extends React.Component {
-	state = {
-		activeCollapseFolders: false,
-		activeCollapseNews: false,
-	};
-	handleExpandCollapseFolders = () => {
-		this.setState(prevState => ({
-			...this.state,
-			activeCollapseFolders: !prevState.activeCollapseFolders,
-		}));
-	};
 
-	handleExpandCollapseNews = () => {
-		this.setState(prevState => ({
-			...this.state,
-			activeCollapseNews: !prevState.activeCollapseNews,
-		}));
-	};
 
 	render() {
 		return (
 			<div className="SideBar" id="sidebar">
-				<UserViewSideBar user={this.props.user} />
+				<UserViewSideBar currentUser={this.props.currentUser} />
 				<MenuOpenIcon
 					className="closebtn"
 					id="closebtn"
@@ -43,15 +27,17 @@ class SideBar extends React.Component {
 						</li>
 						<br />
 						<NewsExpandList
-							handleCollapse={this.handleExpandCollapseNews}
-							activeCollapse={this.state.activeCollapseNews}
+							handleExpandCollapseNews={this.props.handleExpandCollapseNews}
+							isNewsExpanded={this.props.isNewsExpanded}
+							currentUserId={this.props.currentUser._id}
 						/>
 						<br />
 						<FolderExpandList
-							handleCollapse={this.handleExpandCollapseFolders}
-							activeCollapse={this.state.activeCollapseFolders}
-							deleteFolder={this.deleteFolder}
-							userId={this.props.currentUser._id}
+							handleExpandCollapseFolders={this.props.handleExpandCollapseFolders}
+							isFoldersExpanded={this.props.isFoldersExpanded}
+							handleDeleteFolder={this.props.handleDeleteFolder}
+							currentUser={this.props.currentUser}
+							folders={this.props.folders}
 						/>
 						<br />
 						<li className="parent-list-item">

@@ -1,9 +1,8 @@
 import React from "react";
 import AddFolderForm from "./AddFolderForm";
 import IronNewsService from "../../services/IronNewsService";
-import { WithAuthConsumer } from "../../contexts/AuthContext";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import {folderActions} from "../../redux/actions/folders.actions"
 
 class AddFolder extends React.Component {
 	state = {
@@ -34,6 +33,7 @@ class AddFolder extends React.Component {
 					...this.state.folder,
 					submited: true,
 				});
+				this.props.fetchFolders(userId)
 				this.props.history.push("/")
 			})
 		
@@ -58,4 +58,10 @@ const mapStateToProps = state=> {
 		currentUser: {...state.authentication.user}
 	}
 }
-export default connect(mapStateToProps) (AddFolder);
+
+const mapDispatchToProps = dispatch => ({
+	fetchFolders: id => dispatch(folderActions.fetchFolders(id)),
+
+
+})
+export default connect(mapStateToProps, mapDispatchToProps)(AddFolder);

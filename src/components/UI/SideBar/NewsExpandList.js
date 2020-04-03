@@ -1,29 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { WithAuthConsumer } from "../../../contexts/AuthContext";
 const NewsExpandList = props => {
 	return (
 		<li className="parent-list-item">
 			<h3>
 				Latest News{" "}
-				{!props.activeCollapse ? (
+				{!props.isNewsExpanded ? (
 					<i
 						className="fas fa-arrow-circle-down expand-icon"
-						onClick={props.handleCollapse}
+						onClick={props.handleExpandCollapseNews}
 					></i>
 				) : (
 					<i
 						className="fas fa-arrow-circle-up expand-icon"
-						onClick={props.handleCollapse}
+						onClick={props.handleExpandCollapseNews}
 					></i>
 				)}
 			</h3>
-			{props.activeCollapse && (
+			{props.isNewsExpanded && (
 				<ul className="collapsable-list">
-					<Link to={`/latestnews/${props.currentUser._id}`}>
+					<Link to={`/latestnews/${props.currentUserId}`}>
 						<li>Check the latest news</li>
 					</Link>
-					<Link to={`/getallnews/${props.currentUser._id}`}>
+					<Link to={`/getallnews/${props.currentUserId}`}>
 						<li>Check older news</li>
 					</Link>
 				</ul>

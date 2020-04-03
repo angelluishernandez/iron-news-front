@@ -13,6 +13,13 @@ const fetchFolders = id => {
 	};
 };
 
+const deleteFolder = (currentUserId, folderId) => {
+	return dispatch => {
+		IronNewsService.deleteFolder(currentUserId, folderId).then(() => {
+			dispatch(fetchFolders(currentUserId));
+		});
+	};
+};
 //----------------------ACTION TYPES----------------------//
 
 const getAllFolders = folders => ({
@@ -24,6 +31,7 @@ const getAllFolders = folders => ({
 
 export const folderActions = {
 	fetchFolders,
+	deleteFolder
 };
 
 // ADD USER FOLDER

@@ -1,9 +1,7 @@
 import React from "react";
-import { WithAuthConsumer } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 
 const UserViewSideBar = props => {
-	
 	return (
 		<div className="UserViewSideBar card">
 			<Link to={`/user/${props.currentUser._id}`}>
@@ -18,4 +16,4 @@ const UserViewSideBar = props => {
 	);
 };
 
-export default WithAuthConsumer(UserViewSideBar);
+export default UserViewSideBar;

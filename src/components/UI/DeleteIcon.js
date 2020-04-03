@@ -1,14 +1,27 @@
 import React from "react";
-import { WithAuthConsumer } from "../../contexts/AuthContext";
+import { connect } from "react-redux";
+import { folderActions } from "../../redux/actions/folders.actions";
 
 const DeleteIcon = props => {
 	return (
-		
-			<i
-				onClick={event => props.deleteFolder(event, props.userId, props.id)}
-				className="fas fa-share-alt"
-			></i>
+		<i
+			onClick={event =>
+				props.deleteFolder(props.currentUser._id, props.folderId)
+			}
+			className="fas fa-share-alt"
+		></i>
 	);
 };
 
-export default WithAuthConsumer(DeleteIcon);
+const mapStateToProps = state => {
+	return {
+		currentUser: state.authentication.user,
+	};
+};
+
+const mapDispatchToProps = dispatch => ({
+	deleteFolder: (currentUserId, folderId) =>
+		dispatch(folderActions.deleteFolder(currentUserId, folderId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteIcon);

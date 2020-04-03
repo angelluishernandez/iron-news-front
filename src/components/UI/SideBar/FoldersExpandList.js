@@ -1,7 +1,6 @@
 import React from "react";
 import AddBoxRoundedIcon from "@material-ui/icons/AddBoxRounded";
 import { Link } from "react-router-dom";
-import { WithAuthConsumer } from "../../../contexts/AuthContext";
 import DeleteIcon from "../DeleteIcon";
 
 const FolderExpandList = props => {
@@ -9,40 +8,38 @@ const FolderExpandList = props => {
 		<li className="parent-list-item">
 			<h3>
 				Folders
-				{!props.activeCollapse ? (
+				{!props.isFoldersExpanded ? (
 					<i
 						className="fas fa-arrow-circle-down expand-icon"
-						onClick={props.handleCollapse}
+						onClick={props.handleExpandCollapseFolders}
 					></i>
 				) : (
 					<i
 						className="fas fa-arrow-circle-up expand-icon"
-						onClick={props.handleCollapse}
+						onClick={props.handleExpandCollapseFolders}
 					></i>
 				)}
 			</h3>
-			{props.activeCollapse && (
+			{props.isFoldersExpanded && (
 				<ul className="collapsable-list">
 					<li className="">
-						{props.folders.map(folder => {
-							return (
-								<div key={folder._id} className="folder-items">
-									<div>
-										<Link to={`/folder/${folder._id}/newslist`}>
-											<h4>{folder.name} </h4>
-										</Link>
-									</div>
-									<div>
-										{" "}
-										<DeleteIcon
-											id={folder._id}
-											deleteFolder={props.deleteFolder}
-											userId={props.currentUser._id}
-										/>
-									</div>
-								</div>
-							);
-						})}
+						{props.folders === undefined
+							? null
+							: props.folders.map(folder => {
+									return (
+										<div key={folder._id} className="folder-items">
+											<div>
+												<Link to={`/folder/${folder._id}/newslist`}>
+													<h4>{folder.name} </h4>
+												</Link>
+											</div>
+											<div>
+												{" "}
+												<DeleteIcon folderId = {folder._id}/>
+											</div>
+										</div>
+									);
+							  })}
 					</li>
 
 					<h4>
@@ -56,4 +53,4 @@ const FolderExpandList = props => {
 	);
 };
 
-export default WithAuthConsumer(FolderExpandList);
+export default FolderExpandList;

@@ -14,29 +14,28 @@ import AddFolder from "./components/Folders/AddFolder";
 import GetAllNews from "./components/GetAllNews/GetAllNews";
 import FolderView from "./components/UI/FolderView";
 import SearchForSources from "./components/SourcesComponents/SearchForSources";
-import MockHome from "./components/MockHome";
-import Moremock from "./components/Moremock";
+
 import {AuthRoute} from "./components/AuthRoute/AuthRoute";
 import { history } from "./helpers/history";
 
 function App(props) {
 	return (
 		<div className="App">
-			{/* <AuthenticatedRoute> */}
-			{/* <Layout /> */}
-			{/* </AuthenticatedRoute> */}
+	
 			<Router history={history}>
+			<AuthRoute component={Layout} />
 				<Switch>
 
 					
 					<Route exact path="/login" component={Login}/>
 
 					<Route exact path="/signin" component={SignIn} />
-					<AuthRoute component={Layout} />
-					<AuthRoute exact path="/" component={MockHome} />
+					
+					<AuthRoute exact path="/folders/:id/createfolder" component={AddFolder} />
+					{/* <AuthRoute exact path="/" component={MockHome} /> */}
 
-					<AuthRoute exact path="/moremock" component={Moremock} />
-					<AuthRoute exact path="/folders/:id/createfolder" component ={AddFolder} />
+					{/* <AuthRoute exact path="/moremock" component={Moremock} /> */}
+				
 
 					{/* <AuthenticatedRoute exact path={"/"}>
 					{props.currentUser ? (
