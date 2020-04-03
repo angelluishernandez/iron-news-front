@@ -8,7 +8,7 @@ const DeleteIcon = props => {
 			onClick={event =>
 				props.deleteFolder(props.currentUser._id, props.folderId)
 			}
-			className="fas fa-share-alt"
+			className="fas fa-trash"
 		></i>
 	);
 };

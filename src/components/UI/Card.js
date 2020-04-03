@@ -1,8 +1,8 @@
 import React from "react";
 import Moment from "react-moment";
-import { WithAuthConsumer } from "../../contexts/AuthContext";
 import DeleteIcon from "./DeleteIcon";
 import ShareIcon from "./ShareIcon";
+import { connect } from "react-redux";
 
 const Card = props => {
 	return (
@@ -42,7 +42,7 @@ const Card = props => {
 					<div className="icons-div">
 						<DeleteIcon
 							folderId={props.folderId}
-							deleteNewsInFolder={props.deleteNewsInFolder}	
+							deleteNewsInFolder={props.deleteNewsInFolder}
 						/>
 						<ShareIcon />
 					</div>
@@ -73,4 +73,4 @@ const Card = props => {
 	);
 };
 
-export default WithAuthConsumer(Card);
+export default Card;

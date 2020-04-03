@@ -59,7 +59,6 @@ class Layout extends React.Component {
 	//----------------------render----------------------//
 
 	render() {
-		console.log("render0", this.props.folders);
 		return (
 			<div className="Layout">
 				<NavBar
@@ -85,7 +84,6 @@ class Layout extends React.Component {
 //----------------------redux----------------------//
 
 const mapStateToProps = state => {
-	console.log("this is the state on mapStatetoProps", state);
 	return {
 		currentUser: state.authentication.user,
 		folders: state.folderReducer.folders,

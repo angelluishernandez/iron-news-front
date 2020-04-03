@@ -15,40 +15,36 @@ import GetAllNews from "./components/GetAllNews/GetAllNews";
 import FolderView from "./components/UI/FolderView";
 import SearchForSources from "./components/SourcesComponents/SearchForSources";
 
-import {AuthRoute} from "./components/AuthRoute/AuthRoute";
+import AuthRoute from "./components/AuthRoute/AuthRoute";
 import { history } from "./helpers/history";
 
 function App(props) {
 	return (
 		<div className="App">
-	
 			<Router history={history}>
-			<AuthRoute component={Layout} />
+				<AuthRoute component={Layout} />
 				<Switch>
-
-					
-					<Route exact path="/login" component={Login}/>
+					<Route exact path="/login" component={Login} />
 
 					<Route exact path="/signin" component={SignIn} />
-					
-					<AuthRoute exact path="/folders/:id/createfolder" component={AddFolder} />
-					{/* <AuthRoute exact path="/" component={MockHome} /> */}
 
-					{/* <AuthRoute exact path="/moremock" component={Moremock} /> */}
-				
-
-					{/* <AuthenticatedRoute exact path={"/"}>
-					{props.currentUser ? (
-						<Redirect to={`/${props.currentUser._id}`} />
-					) : null}
-					}
-				</AuthenticatedRoute>
+					<Route exact path={"/"}>
+						{props.currentUser ? (
+							<Redirect to={`/${props.currentUser._id}`} />
+						) : null}
+					</Route>
+					<AuthRoute
+						exact
+						path="/folders/:id/createfolder"
+						component={AddFolder}
+					/>
+					<AuthRoute exact path={`/:id`} component={Home} />
+					{/*
+			
 				<AuthenticatedRoute exact path="/sources">
 					<SearchForSources />
 				</AuthenticatedRoute>
-				<AuthenticatedRoute exact path={`/:id`}>
-					<Home />
-				</AuthenticatedRoute>
+				
 				<AuthenticatedRoute exact path={`/user/:id`}>
 					<UserEdit />
 				</AuthenticatedRoute>
@@ -75,4 +71,4 @@ function App(props) {
 	);
 }
 
-export default WithAuthConsumer(App);
+export default App;
