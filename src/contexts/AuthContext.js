@@ -16,11 +16,7 @@ export class AuthContextProvider extends React.Component {
 		localStorage.setItem("user", user ? JSON.stringify(user) : null);
 		this.setState({ user });
 	};
-	logout = () => {
-		IronNewsService.logout().then(() => {
-			this.setUser();
-		});
-	};
+
 
 	getUser = () => {
 		const userId = this.state.user._id;
@@ -53,38 +49,8 @@ export class AuthContextProvider extends React.Component {
 			.catch(error => console.log(error));
 	};
 
-	deleteFolder = (event, userId, folderId) => {
-		event.preventDefault();
-		const folderArray = this.state.folders.filter(
-			folder => folder._id !== folderId
-		);
-		this.setState({
-			folders: folderArray,
-		});
-
-		IronNewsService.deleteFolder(userId, folderId)
-			.then(folder => console.log("this folder has been deleted=>", folder))
-			.catch(error => console.log(error));
-	};
-
-	deleteNewsInFolder = (event, folderId, newsId) => {
-		event.preventDefault();
-		const newsArray = this.state.savedNews.filter(news => news._id !== newsId);
-		this.setState({
-			...this.state,
-			savedNews: newsArray,
-		});
-		IronNewsService.deleteNewsInFolder(folderId, newsId)
-			.then(news => console.log("This news has been deleted=>", news))
-			.catch(error => console.log(error));
-	};
 
 
-	componentDidMount() {
-		if (this.state.user) {
-			this.getFolders();
-		}
-	}
 
 	render() {
 		const value = {

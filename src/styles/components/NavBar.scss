@@ -10,9 +10,10 @@
 	z-index: 1;
 	width: 100%;
 	background-color: $primary; 
-	
+	height: 50px;
   display: flex; 
 	justify-content: space-between;
+	font-family: $font-body;
 	
 }
 .ExpandSideBar {

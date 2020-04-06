@@ -5,7 +5,9 @@ import customCategoriesArray from "../../constants/customCategories";
 import Spinner from "../UI/Spinner";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions/user.actions";
-
+import {folderActions} from "../../redux/actions/folders.actions"
+import {withRouter} from "react-router-dom"
+ 
 class Home extends React.Component {
 	state = {
 		data: {
@@ -16,11 +18,13 @@ class Home extends React.Component {
 		submited: false,
 		articleSelected: "",
 		selectedFolder: "",
+		userFolders: []
 	};
 
 	//----------------------component lifecycle----------------------//
 
 	componentDidMount() {
+		this.props.fetchFolders(this.props.currentUser._id)
 		IronNewsService.landing(this.state.data.category)
 			.then(responseArticles => {
 				this.setState({
@@ -110,10 +114,9 @@ class Home extends React.Component {
 		console.log("Props on home", this.props)
 		return (
 			<div className="Home">
-				<div className="form-container pt-3 pb-3">
-					<h3>This is your feed for today</h3>
-					<h3>Or look for a category</h3>
-					<form className="col" onSubmit={this.handleSubmit}>
+				<div className="form-container pt-3 pb-3 ">
+					
+					<form className="col" onSubmit={this.handleSubmit} value={"..."}>
 						<select
 							onChange={this.handleChange}
 							value={this.props.currentUser.category}
@@ -170,11 +173,11 @@ console.log(state)
 	};
 };
 
-// const mapDispatchToProps = dispatch => ({
-// 	logout: () => dispatch(userActions.logout()),
-// 	fetchFolders: id => dispatch(folderActions.fetchFolders(id)),
-// 	deleteFolder: (currentUserId, folderId) =>
-// 		dispatch(folderActions.deleteFolder(currentUserId, folderId)),
-// });
+const mapDispatchToProps = dispatch => ({
+	logout: () => dispatch(userActions.logout()),
+	fetchFolders: id => dispatch(folderActions.fetchFolders(id)),
+	deleteFolder: (currentUserId, folderId) =>
+		dispatch(folderActions.deleteFolder(currentUserId, folderId)),
+});
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

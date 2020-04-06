@@ -2,6 +2,9 @@ p{
   line-height: $line-height-paragraph;
   font-size: $font-size-paragraph; 
 }
+body{
+  font-family: $font-header;
+}
 
 h5{
   line-height: $line-height-titles;

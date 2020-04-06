@@ -6,18 +6,18 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { Provider } from "react-redux";
-import {store} from "./redux/store/store";
+import { store } from "./redux/store/store";
+import { history } from "./helpers/history";
 
 // const store = configStore();
 const state = store.getState();
 
-
 ReactDOM.render(
-	<BrowserRouter>
-		<Provider store={store}>
+	<Provider store={store}>
+		<BrowserRouter>
 			<App />
-		</Provider>
-	</BrowserRouter>,
+		</BrowserRouter>
+	</Provider>,
 	document.getElementById("root")
 );
 

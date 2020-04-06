@@ -19,14 +19,14 @@ class Layout extends React.Component {
 
 	//----------------------handle dropdown----------------------//
 	handleExpandCollapseFolders = () => {
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			...this.state,
 			isFoldersExpanded: !prevState.isFoldersExpanded,
 		}));
 	};
 
 	handleExpandCollapseNews = () => {
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			...this.state,
 			isNewsExpanded: !prevState.isNewsExpanded,
 		}));
@@ -52,9 +52,8 @@ class Layout extends React.Component {
 	//----------------------handle delete folder----------------------//
 
 	handleDeleteFolder = (currentUserId, folderId) => {
-		this.props.deleteFolder(currentUserId, folderId)
-	}
-
+		this.props.deleteFolder(currentUserId, folderId);
+	};
 
 	//----------------------render----------------------//
 
@@ -83,16 +82,16 @@ class Layout extends React.Component {
 
 //----------------------redux----------------------//
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
 		currentUser: state.authentication.user,
 		folders: state.folderReducer.folders,
 	};
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
 	logout: () => dispatch(userActions.logout()),
-	fetchFolders: id => dispatch(folderActions.fetchFolders(id)),
+	fetchFolders: (id) => dispatch(folderActions.fetchFolders(id)),
 	deleteFolder: (currentUserId, folderId) =>
 		dispatch(folderActions.deleteFolder(currentUserId, folderId)),
 });

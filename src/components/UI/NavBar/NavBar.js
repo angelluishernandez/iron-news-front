@@ -3,8 +3,9 @@ import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-const NavBar = props => {
+const NavBar = (props) => {
 	return (
 		<nav
 			className="navbar  navbar-expand-lg  sidebar-main ExpandSideBar flex-container"

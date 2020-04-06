@@ -4,8 +4,7 @@
 
 
 .form-container{
-  background:$primary-light; 
-  color:#212121; 
+  background:lighten($primary, 10%);; 
 }
 
 .form-container .btn{

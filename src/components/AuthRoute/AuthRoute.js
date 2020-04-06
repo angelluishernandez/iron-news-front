@@ -1,18 +1,20 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import React from "react"
+import { connect } from "react-redux"
+import { Redirect, Route } from "react-router-dom";
 
-const AuthRoute = props => {
-
-	if(!localStorage.getItem("user")){
-		return <Redirect to={"/login"} />
+const AuthenticatedRoute = (props) => {
+	if (!props.currentUser) {
+		console.log("this is the current user =>", props.currentUser)
+    
+		return <Redirect to={"/login"} />;
 	} else {
-		return <Route {...props} />
+		return <Route {...props} />;
 	}
-}
+};
 
-const mapStateToProps = state =>( {
-	currentUser: state.authentication
+const mapStateToProps = state => ({
+	currentUser: state.authentication.user
 })
 
-export default connect(mapStateToProps)(AuthRoute)
+export default connect(mapStateToProps)(AuthenticatedRoute)
+

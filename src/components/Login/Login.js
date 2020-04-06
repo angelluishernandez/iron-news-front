@@ -12,25 +12,24 @@ class Login extends React.Component {
 		submited: false,
 	};
 
-	handleSubmit = event => {
+	handleSubmit = (event) => {
 		event.preventDefault();
 
 		this.setState({
 			submited: true,
 		});
-		console.log("this are the props on submit => ", this.props)
+		console.log("this are the props on submit => ", this.props);
 		const { email, password } = this.state.data;
 		const { dispatch, history } = this.props;
 		if (email && password) {
 			dispatch(userActions.doLogin({ email, password }));
-			
+			history.push("/");
 		}
-
 	};
 
-	handleBlur = event => {};
+	handleBlur = (event) => {};
 
-	handleChange = event => {
+	handleChange = (event) => {
 		const { name, value } = event.target;
 		this.setState({
 			data: {
@@ -40,7 +39,7 @@ class Login extends React.Component {
 		});
 	};
 
-	handleClick = event => {
+	handleClick = (event) => {
 		const { dispatch } = this.props;
 		dispatch(userActions.logout());
 	};
@@ -81,34 +80,28 @@ class Login extends React.Component {
 							placeholder="Password"
 							name="password"
 						/>
-					</div>
-					<button
-						className="btn btn-success mr-1"
-						id="login-btn"
-						disabled={loading}
-					>
-						Log In
-					</button>
-
-					<div className="register">
-						<Link to="/signin" className="btn btn-success" id="signin-btn">
-							Sign In
-						</Link>
+						<div className="d-flex justify-content-center mt-3">
+							<button
+								className="btn btn-success mr-1"
+								id="login-btn"
+								disabled={loading}
+							>
+								Log In
+							</button>
+							<Link to="/signin">
+								<button id="signin-btn" className="btn btn-success">
+									Sign In
+								</button>
+							</Link>
+						</div>
 					</div>
 				</form>
-				<div>
-					<button className="btn btn-success">
-						{" "}
-						<Link to={"/signin"}>Create an account</Link>
-					</button>
-				</div>
-				<button onClick={this.handleClick}>LogOut</button>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	const { loggedIn } = state.authentication;
 	return {
 		loggedIn,

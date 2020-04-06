@@ -7,6 +7,10 @@
 	background:$secondary;
 	color:$primary;
 }
+
+.btn-success{
+width: 100px;
+}
 .Login input {
 	width: 300px;
 }
@@ -14,19 +18,11 @@
 	background:$primary-light;
 	border: 3px solid $primary-dark;
 }
-.register{
-	position: absolute;
-	bottom: 0; 
-	left: 0;
-	right: 0;
-}
+
 
 #signin-btn {
 	background:$primary-light;
 	border: 3px solid $primary-dark;
-	display: flex;
-	justify-content: center;
-	bottom: 0;
 	
 	
 	
