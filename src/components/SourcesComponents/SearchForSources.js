@@ -1,6 +1,6 @@
 import React from "react";
 import SearchSourcesForm from "./SearchSourcesForm";
-import Spinner from "../UI/Spinner"
+import Spinner from "../UI/Spinner";
 import SourcesList from "./SourcesList";
 import IronNewsService from "../../services/IronNewsService";
 
@@ -10,12 +10,32 @@ class SearchForSources extends React.Component {
 			language: "",
 			category: "",
 		},
-		submited: false,
+		selected: [],
 		sources: [],
+		submited: false,
 		loading: true,
 	};
 
-	handleChangeSearch = e => {
+	//----------------------component lifecycle----------------------//
+
+
+	componentDidUpdate(prevProps, prevState) {
+		const { language, category } = this.state.data;
+		if (prevState.submited !== this.state.submited && this.state.submited) {
+			IronNewsService.searchSources({ language, category })
+				.then((sources) =>
+					this.setState({
+						sources: sources,
+						loading: false,
+					})
+				)
+				.catch((error) => console.log(error));
+		}
+	}
+
+	//----------------------methods----------------------//
+
+	handleSelectChange = (e) => {
 		const { name, value } = e.target;
 		this.setState({
 			submited: false,
@@ -26,7 +46,7 @@ class SearchForSources extends React.Component {
 		});
 	};
 
-	handleSubmit = e => {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		this.setState({
 			submited: true,
@@ -34,34 +54,32 @@ class SearchForSources extends React.Component {
 		});
 	};
 
-	componentDidUpdate(prevProps, prevState) {
-		const { language, category } = this.state.data;
-		if (prevState.submited !== this.state.submited && this.state.submited) {
-			IronNewsService.searchSources({ language, category })
-				.then(sources =>
-					this.setState({
-						sources: sources,
-						loading: false,
-					})
-				)
-				.catch(error => console.log(error));
+	handleDelete = (event, name) => {
+		const itemToDelete = this.state.selected.findIndex(
+			(source) => source.name === name
+		);
+		const newArr = [...this.state.selected];
+		if (itemToDelete !== -1) {
+			newArr.splice(itemToDelete, 1);
+			this.setState({
+				selected: newArr,
+			});
 		}
-	}
+	};
 
 	render() {
 		return (
-
-			
 			<div className="SearchForSources">
 				<SearchSourcesForm
-					handleChangeSearch={this.handleChangeSearch}
+					handleSelectChange={this.handleSelectChange}
 					handleSubmit={this.handleSubmit}
 					className="SearchSourcesForm  pt-2"
-					
 				/>
 				{!this.state.loading ? (
-					<SourcesList sources={this.state.sources} className="SourcesList"/>
-				) : <Spinner/>}
+					<SourcesList sources={this.state.sources} className="SourcesList" />
+				) : (
+					<Spinner />
+				)}
 			</div>
 		);
 	}

@@ -1,3 +1,38 @@
-// GET SOURCES
+import IronNewsService from "../../services/IronNewsService";
+import { sourcesConstants, userConstants } from "../constants/constants";
+
+// FETCH_SOURCES
+//----------------------ACTION GENERATORS----------------------//
+
+//----------------------Fetch sources from API----------------------//
+
+const fetchSources = (language, category) => {
+	return (dispatchEvent) => {
+		IronNewsService.searchSources({ language, category }).then((sources) => {
+			dispatchEvent(getSources(sources));
+		});
+	};
+};
+
+// ADD_SOURCE
+
+const selectSource = (source) => ({
+	type: sourcesConstants.ADD_SOURCE,
+	source,
+});
+
+//----------------------ACTION TYPES----------------------//
+
+const getSources = (sources) => ({
+	type: sourcesConstants.FETCH_SOURCES,
+	sources,
+});
 
 
+
+//----------------------EXPORTS----------------------//
+
+export const sourcesActions = {
+	fetchSources,
+	selectSource,
+};

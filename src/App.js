@@ -16,28 +16,30 @@ import SearchForSources from "./components/SourcesComponents/SearchForSources";
 
 import AuthenticatedRoute from "./components/AuthRoute/AuthRoute";
 import { history } from "./helpers/history";
+import SourcesSelectDropDown from "./components/SourcesDropdown/SourcesSelectDropDown";
 
 function App(props) {
 	return (
 		<div className="App">
 			<Router history={history}>
-				<AuthenticatedRoute component={Layout} />
+				{/* <AuthenticatedRoute component={Layout} /> */}
 				<Switch>
-					<Route exact path="/login" component={Login} />
+					<Route exact path ="/sourcestest" component={SearchForSources} />
+					{/* <Route exact path="/login" component={Login} /> */}
 
-					<Route exact path="/signin" component={SignIn} />
+					{/* <Route exact path="/signin" component={SignIn} /> */}
 
-					<Route exact path={"/"}>
+					{/* <Route exact path={"/"}>
 						{props.currentUser ? (
 							<Redirect to={`/${props.currentUser._id}`} />
 						) : null}
-					</Route>
-					<AuthenticatedRoute
+					</Route> */}
+					{/* <AuthenticatedRoute
 						exact
 						path="/folders/:id/createfolder"
 						component={AddFolder}
-					/>
-					<AuthenticatedRoute exact path={`/:id`} component={Home} />
+					/> */}
+					{/* <AuthenticatedRoute exact path={`/:id`} component={Home} /> */}
 					{/*
 			
 				<AuthenticatedRoute exact path="/sources">

@@ -4,7 +4,7 @@ import languages from "../../constants/languages";
 
 const SourcesCategory = props => (
 	<select
-		onChange={e => props.handleChangeSearch(e)}
+		onChange={e => props.handleSelectChange(e)}
 		className="custom-select custom-select-mg mt-3"
 		name={props.name}
 	>

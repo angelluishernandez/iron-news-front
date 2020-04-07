@@ -23,3 +23,10 @@ export const foldersConstants = {
   UPDATE_FOLDERS: "UPDATE_FOLDER", 
   DELETE_FOLDER: "DELETE_FOLDER"
 }
+
+export const sourcesConstants = {
+  FETCH_SOURCES: "FETCH_SOURCES", 
+  ADD_SOURCE: "ADD_SOURCE", 
+  DELETE_SOURCE: "DELETE_SOURCE", 
+  
+}

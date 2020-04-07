@@ -34,6 +34,7 @@ const addNewsToFolder = (article, folderId) =>
 	http.post(`/news/${folderId}`, article);
 const createFolder = ({ name, description, tags }, userId) =>
 	http.post(`/folders/${userId}/newfolder`, { name, description, tags });
+const addSourcesToUser = (sources, userId) => http.post(`/sources/${userId}/addsources`, sources)	
 
 const listFolders = userId => http.get(`/folders/${userId}`, userId);
 const getUser = userId => http.get(`/user/${userId}`, userId);
@@ -57,5 +58,6 @@ export default {
 	addNewsToFolder,
 	listNewsInFolder,
 	searchSources,
+	addSourcesToUser
 	// test
 };
