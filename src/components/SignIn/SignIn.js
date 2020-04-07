@@ -20,7 +20,7 @@ class SignIn extends React.Component {
 		success: false,
 	};
 
-	handleChange = event => {
+	handleChange = (event) => {
 		const { name, value, files } = event.target;
 		console.log(event.target.files);
 		this.setState({
@@ -31,7 +31,7 @@ class SignIn extends React.Component {
 		});
 	};
 
-	handleSubmit = event => {
+	handleSubmit = (event) => {
 		event.preventDefault();
 		const { data } = this.state;
 		const formData = new FormData();
@@ -53,11 +53,12 @@ class SignIn extends React.Component {
 						});
 					})
 					.then(() =>
-						IronNewsService.getUser(id).then(user=> 
-							{
-								console.log("entra 2")
-								this.props.setUser(user)}
-						).catch(error => console.log(error))
+						IronNewsService.getUser(id)
+							.then((user) => {
+								console.log("entra 2");
+								this.props.setUser(user);
+							})
+							.catch((error) => console.log(error))
 					)
 					.catch(() => {
 						this.setState({
@@ -71,9 +72,7 @@ class SignIn extends React.Component {
 						console.log("entra");
 						this.setState({
 							success: true,
-							
 						});
-						
 					})
 					.catch(() => {
 						this.setState({
@@ -87,12 +86,10 @@ class SignIn extends React.Component {
 	render() {
 		const { data, error, loading } = this.state;
 		const errorClassName = error ? "is-invalid" : "";
-		if(this.state.success){
-			return <Redirect to={"/login"}/>
-
+		if (this.state.success) {
+			return <Redirect to={"/login"} />;
 		}
 		return (
-			
 			<div className="Login pt-3 pb-1">
 				<form className="mb-4" onSubmit={this.handleSubmit}>
 					<div className="mb-4">
@@ -144,35 +141,10 @@ class SignIn extends React.Component {
 							name="profilePic"
 						/>
 					</div>
-					<div className="mb-4">
-						<label htmlFor="organization">Organization</label>
-						<input
-							type="text"
-							className={`form-control ${errorClassName}`}
-							autoComplete="off"
-							value={data.organization}
-							onBlur={this.handleBlur}
-							onChange={this.handleChange}
-							placeholder="Your Organization"
-							name="organization"
-						/>
-					</div>
-					<div className="mb-4">
-						<label htmlFor="collaborators">Collaborators</label>
-						<input
-							type="option"
-							className={`form-control ${errorClassName}`}
-							autoComplete="off"
-							value={data.collaborators}
-							onBlur={this.handleBlur}
-							onChange={this.handleChange}
-							placeholder="Your collaborators"
-							name="collaborators"
-						/>
-					</div>
+
 					<div className="mb-4">
 						<label htmlFor="customCategories">
-							What topics are you interested in?
+							What topic are you most interested in?
 							<select
 								onChange={this.handleChange}
 								value={data.customCategories}
@@ -198,7 +170,6 @@ class SignIn extends React.Component {
 					>
 						Sign in
 					</button>
-					
 				</form>
 			</div>
 		);
