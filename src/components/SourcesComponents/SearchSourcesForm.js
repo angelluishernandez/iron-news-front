@@ -2,11 +2,11 @@ import React from "react";
 import SourcesCategory from "./SourcesCategory";
 import SourcesSelectDropDown from "../SourcesDropdown/SourcesSelectDropDown";
 
-const SearchSourcesForm = props => {
+const SearchSourcesForm = (props) => {
 	return (
 		<div className="SearchSourcesForm pb-3  pt-2">
 			<form
-				onSubmit={e => {
+				onSubmit={(e) => {
 					props.handleSubmit(e);
 				}}
 			>
@@ -24,10 +24,18 @@ const SearchSourcesForm = props => {
 						handleSelectChange={props.handleSelectChange}
 						name="language"
 					/>
-					<SourcesSelectDropDown/>
+					<SourcesSelectDropDown
+						selectedSources={props.selectedSources}
+						handleSourceSelection={props.handleSourceSelection}
+						handleDelete={props.handleDelete}
+					/>
 				</div>
-				<button type="submit" onClick={e => props.handleSubmit(e)} className="btn mt-3" >
-					Search for sources
+				<button
+					type="submit"
+					onClick={(e) => props.handleSubmit(e)}
+					className="btn mt-3"
+				>
+					Save sources
 				</button>
 			</form>
 		</div>

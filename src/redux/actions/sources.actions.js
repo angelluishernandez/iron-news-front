@@ -6,10 +6,12 @@ import { sourcesConstants, userConstants } from "../constants/constants";
 
 //----------------------Fetch sources from API----------------------//
 
-const fetchSources = (language, category) => {
-	return (dispatchEvent) => {
-		IronNewsService.searchSources({ language, category }).then((sources) => {
-			dispatchEvent(getSources(sources));
+const fetchSources = ({language, category}) => {
+	console.log(language, category)
+	return (dispatch) => {
+		IronNewsService.searchSources({language, category})
+			.then((sources) => {
+			dispatch(getSources(sources));
 		});
 	};
 };
@@ -27,8 +29,6 @@ const getSources = (sources) => ({
 	type: sourcesConstants.FETCH_SOURCES,
 	sources,
 });
-
-
 
 //----------------------EXPORTS----------------------//
 

@@ -8,7 +8,7 @@ const SourcesCategory = props => (
 		className="custom-select custom-select-mg mt-3"
 		name={props.name}
 	>
-		<option selected hidden>
+		<option selected value="">
 			Choose a {props.name}
 		</option>
 		{props.name === "category"

@@ -5,7 +5,7 @@ const OptionsDropDown = (props) => {
 		<select className="OptionsDropDown" multiple>
 			{props.options.map((option, index) => {
 				return (
-					<option key={index} value={option.name} onClick={props.handleSelection}>
+					<option key={index} value={option.name} onClick={props.handleSourceSelection}>
 						{option.name}
 					</option>
 				);
