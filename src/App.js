@@ -22,34 +22,28 @@ function App(props) {
 	return (
 		<div className="App">
 			<Router history={history}>
-				{/* <AuthenticatedRoute component={Layout} /> */}
+				<AuthenticatedRoute component={Layout} />
 				<Switch>
-					<Route exact path ="/sourcestest" component={SearchForSources} />
-					{/* <Route exact path="/login" component={Login} /> */}
-
-					{/* <Route exact path="/signin" component={SignIn} /> */}
-
-					{/* <Route exact path={"/"}>
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/signin" component={SignIn} />
+					<AuthenticatedRoute exact path="/sources">
+						<SearchForSources />
+					</AuthenticatedRoute>
+					<Route exact path={"/"}>
 						{props.currentUser ? (
 							<Redirect to={`/${props.currentUser._id}`} />
 						) : null}
-					</Route> */}
-					{/* <AuthenticatedRoute
+					</Route>
+					<AuthenticatedRoute
 						exact
 						path="/folders/:id/createfolder"
 						component={AddFolder}
-					/> */}
-					{/* <AuthenticatedRoute exact path={`/:id`} component={Home} /> */}
-					{/*
-			
-				<AuthenticatedRoute exact path="/sources">
-					<SearchForSources />
-				</AuthenticatedRoute>
-				
-				<AuthenticatedRoute exact path={`/user/:id`}>
-					<UserEdit />
-				</AuthenticatedRoute>
-				<AuthenticatedRoute exact path="/latestnews/:id">
+					/>
+					<AuthenticatedRoute exact path={`/:id`} component={Home} /> */}
+					<AuthenticatedRoute exact path={`/user/:id`}>
+						<UserEdit />
+					</AuthenticatedRoute>
+					{/* <AuthenticatedRoute exact path="/latestnews/:id">
 					<GetLatestNews />
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path="/getallnews/:id">
@@ -61,10 +55,10 @@ function App(props) {
 					render={({ match }) => (
 						<FolderView folderId={match.params.folderId} />
 					)}
-				/>
-				<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
-					<AddFolder />
-				</AuthenticatedRoute> */}
+				/> */}
+					<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
+						<AddFolder />
+					</AuthenticatedRoute>
 				</Switch>
 			</Router>
 		</div>
