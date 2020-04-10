@@ -10,6 +10,10 @@ export const sourcesReducer = (state = {}, action) => {
 			return {
 				selected: [...state.selected],
 			};
+		case sourcesConstants.FETCH_USER_SOURCES: 
+			return{
+				userSources: action.sources
+			}	
 		default:
 			return state;
 	}

@@ -17,6 +17,7 @@ import SearchForSources from "./components/SourcesComponents/SearchForSources";
 import AuthenticatedRoute from "./components/AuthRoute/AuthRoute";
 import { history } from "./helpers/history";
 import SourcesSelectDropDown from "./components/SourcesDropdown/SourcesSelectDropDown";
+import ViewSourcesComponent from "./components/ViewSources/ViewSourcesComponent";
 
 function App(props) {
 	return (
@@ -40,9 +41,8 @@ function App(props) {
 						component={AddFolder}
 					/>
 					<AuthenticatedRoute exact path={`/:id`} component={Home} /> */}
-					<AuthenticatedRoute exact path={`/user/:id`}>
-						<UserEdit />
-					</AuthenticatedRoute>
+					<AuthenticatedRoute exact path={`/user/:id`} component={UserEdit}/>
+					<AuthenticatedRoute exact path={`/sources/feed`} component={ViewSourcesComponent}/>
 					{/* <AuthenticatedRoute exact path="/latestnews/:id">
 					<GetLatestNews />
 				</AuthenticatedRoute>

@@ -38,6 +38,10 @@ const SideBar = props => {
 					<li className="parent-list-item">
 						<Link to="/sources"> Search for sources </Link>
 					</li>
+					<br />
+					<li className="parent-list-item">
+						<Link to="/sources/feed">Your sources' feed</Link>
+					</li>
 				</ul>
 			</div>
 		</div>

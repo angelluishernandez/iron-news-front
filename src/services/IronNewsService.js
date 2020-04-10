@@ -27,6 +27,7 @@ const register = data => http.post("/register", data);
 const getLatestNews = data => http.post("/news/top-headlines", data);
 const getAllNews = data => http.post("/news/everything", data);
 const searchSources = ({language, category}) => http.post("/sources/get-sources", {language, category});
+const getUserSources = (userId) => http.get(`/sources/${userId}`)
 const editUser = (user, id) => http.patch(`/user/${id}`, user);
 const listNewsInFolder = folderId =>
 	http.get(`/folder/${folderId}/newslist`, folderId);
@@ -58,6 +59,7 @@ export default {
 	addNewsToFolder,
 	listNewsInFolder,
 	searchSources,
-	addSourcesToUser
+	addSourcesToUser, 
+	getUserSources
 	// test
 };
