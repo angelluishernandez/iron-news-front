@@ -8,17 +8,23 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
 import { history } from "./helpers/history";
+import PropTypes from "prop-types";
 
 // const store = configStore();
 const state = store.getState();
 
-ReactDOM.render(
+const Root = ({ store }) => (
 	<Provider store={store}>
 		<BrowserRouter>
-			<App />
+			<Route path="/:filter?" component={App} />
 		</BrowserRouter>
-	</Provider>,
-	document.getElementById("root")
+	</Provider>
 );
+
+Root.propTypes = {
+	store: PropTypes.object.isRequired,
+};
+
+ReactDOM.render(<Root store={store} />, document.getElementById("root"));
 
 serviceWorker.unregister();
