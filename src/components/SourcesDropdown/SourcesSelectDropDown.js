@@ -1,8 +1,6 @@
 import React from "react";
 import OptionsDropDown from "./OptionsDropDown";
-import IronNewsService from "../../services/IronNewsService";
 import { Chip } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import Spinner from "../UI/Spinner";
 

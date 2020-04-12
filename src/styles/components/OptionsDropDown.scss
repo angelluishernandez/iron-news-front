@@ -6,7 +6,10 @@
 .OptionsDropDown__Chip{
 
   display: flex;
-  margin-right:5px; 
-  color: $primary;
+  margin:5px !important; 
 
+
+}
+.OptionsDropDown__Chip:hover{
+  cursor: pointer;
 }

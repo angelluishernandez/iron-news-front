@@ -41,8 +41,12 @@ function App(props) {
 						component={AddFolder}
 					/>
 					<AuthenticatedRoute exact path={`/:id`} component={Home} /> */}
-					<AuthenticatedRoute exact path={`/user/:id`} component={UserEdit}/>
-					<AuthenticatedRoute exact path={`/sources/feed`} component={ViewSourcesComponent}/>
+					<AuthenticatedRoute exact path={`/user/:id`} component={UserEdit} />
+					<AuthenticatedRoute
+						exact
+						path={`/sources/feed`}
+						component={ViewSourcesComponent}
+					/>
 					{/* <AuthenticatedRoute exact path="/latestnews/:id">
 					<GetLatestNews />
 				</AuthenticatedRoute>

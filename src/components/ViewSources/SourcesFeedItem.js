@@ -1,26 +1,29 @@
 import React from "react";
 import Spinner from "../UI/Spinner";
+import { Chip } from "@material-ui/core";
 
 const SourcesFeedItem = ({ sources, handleClick }) => {
 	return (
-		<div className="col-m-8 d-flex flex-wrap pb-3">
+		<div className="col-m-8 d-flex flex-wrap pb-3 justify-content-center">
 			{sources ? (
-				sources.map(function (source) {
-          console.log(source)
-          return (
-					<div className="card card-block m-3">
-						<div className="card-body">
-							<h3>{source.name}</h3>
-							<button
-								className="btn btn-primary"
-                onClick={e => handleClick(e, source._id)}
-                value={source.name}
-							>
-								Search...
-							</button>
+				sources.map(function (source, index) {
+					return (
+						<div>
+							<Chip
+								className="OptionsDropDown__Chip"
+								value={source.name}
+								key={index}
+								label={source.name}
+								// onSelect={(e, name) => props.handleDelete(e, source.name)}
+								onClick={(event) => handleClick(source.name, source.idFromAPI)}
+								// color="primary"	
+								variant="outlined"
+								color="primary"
+							/>
 						</div>
-					</div>
-				)})
+						
+					);
+				})
 			) : (
 				<Spinner />
 			)}
