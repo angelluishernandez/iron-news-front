@@ -64,7 +64,7 @@ const Card = (props) => {
 					<a href={props.url} target="blank">
 						<h5 className="card-title">{props.title}</h5>
 					</a>
-					<p className="card-text">{props.description}</p>
+					{/* <p className="card-text">{props.description}</p> */}
 				</div>
 				<div>
 					<p className="card-text">

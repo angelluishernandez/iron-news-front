@@ -39,7 +39,7 @@ const createFolder = ({ name, description, tags }, userId) =>
 const addSourcesToUser = (sources, userId) =>
 	http.post(`/sources/${userId}/addsources`, sources);
 const getNewsFromSource = (sourceName, sourceId, userId) =>
-	http.post(`/sources/${userId}/${sourceId}`, {sourceName});
+	http.post(`/sources/${userId}/${sourceId}`, {sourceId});
 const listFolders = (userId) => http.get(`/folders/${userId}`, userId);
 const getUser = (userId) => http.get(`/user/${userId}`, userId);
 const deleteFolder = (userId, folderId) =>

@@ -8,6 +8,7 @@ import SourcesNewsItem from "./SourcesNewsItem";
 class ViewSourcesComponent extends React.Component {
 	state = {
 		news: [],
+		
 	};
 	//----------------------component lifecycle----------------------//
 
@@ -29,13 +30,15 @@ class ViewSourcesComponent extends React.Component {
 		});
 	};
 
+
+
 	render() {
 		console.log(this.state.news);
 		return (
 			<div className="ViewSourceComponent container">
 				<hr />
 				<div className="row">
-					<div className="col-m-4">
+					<div className="col-md-12 justify-content-center chip-items">
 						<SourcesFeedItem
 							sources={this.props.userSources}
 							handleClick={this.handleClick}

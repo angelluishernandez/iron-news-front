@@ -4,7 +4,7 @@ import { Chip } from "@material-ui/core";
 
 const SourcesFeedItem = ({ sources, handleClick }) => {
 	return (
-		<div className="col-m-8 d-flex flex-wrap pb-3 justify-content-center">
+		<div className="col-md-12 d-flex flex-wrap pb-3">
 			{sources ? (
 				sources.map(function (source, index) {
 					return (

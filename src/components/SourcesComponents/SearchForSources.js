@@ -97,14 +97,14 @@ class SearchForSources extends React.Component {
 	render() {
 console.log(this.state.selected)
 		return (
-			<div className="SearchForSources">
+			<div className="SearchForSources container">
 				<SearchSourcesForm
 					handleSelectChange={this.handleSelectChange}
 					handleSubmit={this.handleSubmit}
 					handleSourceSelection={this.handleSourceSelection}
 					selectedSources={this.state.selected}
 					handleDelete={this.handleDelete}
-					className="SearchSourcesForm  pt-2"
+					className="SearchSourcesForm pt-2 d-flex align-content-center"
 				/>
 			</div>
 		);
