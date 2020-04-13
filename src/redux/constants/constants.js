@@ -31,3 +31,8 @@ export const sourcesConstants = {
   FETCH_USER_SOURCES: "FETCH_USER_SOURCES"
   
 }
+
+export const newsConstants = {
+  FETCH_FOLDER_NEWS: "FETCH_FOLDER_NEWS"
+
+}

@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "./Card";
-import { WithAuthConsumer } from "../../contexts/AuthContext";
-import IronNewsService from "../../services/IronNewsService";
+import { connect } from "react-redux";
+import { newsActions } from "../../redux/actions/news.actions";
+import Spinner from "../UI/Spinner";
 
 class FolderView extends React.Component {
 	state = {
@@ -10,22 +11,22 @@ class FolderView extends React.Component {
 		isMounted: true,
 	};
 
-	deleteNewsInFolder = (event, folderId, newsId) => {
-		event.preventDefault();
+	deleteNewsInFolder = (newsId) => {
+		console.log(this.props.currentUser._id, newsId, this.props.folderId);
+		this.props.deleteNewsInFolder(
+			this.props.currentUser._id,
+			newsId,
+			this.props.folderId
+		);
 	};
 
 	componentDidMount() {
-		console.log("entra en component did mount");
-		if (this.state.isMounted) {
-			IronNewsService.listNewsInFolder(this.props.folderId)
-				.then(news => {
-					this.setState({
-						savedArticles: news,
-						loading: false,
-					});
-				})
-				.catch(error => console.log(error));
-		}
+		console.log("These are the props", this.props);
+
+		this.props.fetchNewsInFolder(this.props.folderId);
+		this.setState({
+			loading: false,
+		});
 	}
 
 	componentWillUnmount() {
@@ -35,20 +36,19 @@ class FolderView extends React.Component {
 		});
 	}
 	render() {
-		console.log("this is the folder id=>", this.props);
-		console.log(
-			"this is the state en component did mount=> ",
-			this.state.savedArticles
-		);
+		console.log(this.props);
 		return (
-			<div className="FolderView">
+			<div className="FolderView container">
 				<div>
 					<h3>These are the news you saved to this folder</h3>
 				</div>
 
-				{!this.state.loading ? (
+				{this.props.news === undefined ? (
+					<Spinner />
+				) : (
 					<div className="row mt-5 mr-3 ml-3">
-						{this.state.savedArticles.map((savedArticle, index) => {
+						{this.props.news.map((savedArticle, index) => {
+							console.log(savedArticle);
 							return (
 								<Card
 									title={savedArticle.headline}
@@ -56,6 +56,7 @@ class FolderView extends React.Component {
 									urlToImage={savedArticle.image}
 									description={savedArticle.description}
 									publishedAt={savedArticle.date}
+									newsId={savedArticle._id}
 									key={index}
 									folderId={this.props.folderId}
 									isInFolder={true}
@@ -64,10 +65,22 @@ class FolderView extends React.Component {
 							);
 						})}
 					</div>
-				) : null}
+				)}
 			</div>
 		);
 	}
 }
 
-export default WithAuthConsumer(FolderView);
+const mapStateToProps = (state) => ({
+	news: state.newsReducer.news,
+	currentUser: state.authentication.user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	fetchNewsInFolder: (folderId) =>
+		dispatch(newsActions.fetchNewsInFolder(folderId)),
+	deleteNewsInFolder: (id, newsId, folderId) =>
+		dispatch(newsActions.deleteNewsInFolder(id, newsId, folderId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FolderView);

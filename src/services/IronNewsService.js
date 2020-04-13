@@ -38,8 +38,12 @@ const createFolder = ({ name, description, tags }, userId) =>
 	http.post(`/folders/${userId}/newfolder`, { name, description, tags });
 const addSourcesToUser = (sources, userId) =>
 	http.post(`/sources/${userId}/addsources`, sources);
+	
+const deleteNewsItem = (id, newsId) =>
+	http.delete(`/news/${id}/${newsId}`, id, newsId);
+
 const getNewsFromSource = (sourceName, sourceId, userId) =>
-	http.post(`/sources/${userId}/${sourceId}`, {sourceId});
+	http.post(`/sources/${userId}/${sourceId}`, { sourceId });
 const listFolders = (userId) => http.get(`/folders/${userId}`, userId);
 const getUser = (userId) => http.get(`/user/${userId}`, userId);
 const deleteFolder = (userId, folderId) =>
@@ -64,5 +68,6 @@ export default {
 	addSourcesToUser,
 	getUserSources,
 	getNewsFromSource,
+	deleteNewsItem,
 	// test
 };

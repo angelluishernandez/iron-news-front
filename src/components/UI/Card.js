@@ -36,9 +36,10 @@ class Card extends React.Component {
 	//----------------------methods----------------------//
 
 	submitSelectedNewsToDB = (event, article, folderId) => {
-		event.preventDefault()
-		IronNewsService.addNewsToFolder(article, folderId).then(response=> console.log("Success=> ", response))
-		
+		event.preventDefault();
+		IronNewsService.addNewsToFolder(article, folderId).then((response) =>
+			console.log("Success=> ", response)
+		);
 	};
 
 	//----------------------render----------------------//
@@ -77,7 +78,7 @@ class Card extends React.Component {
 								type="submit"
 								onClick={(event) =>
 									this.submitSelectedNewsToDB(
-										event, 
+										event,
 										this.props.article,
 										this.state.folderId
 									)
@@ -87,17 +88,15 @@ class Card extends React.Component {
 							</button>
 						</form>
 					) : (
-						{
-							/* //----------------------If news is in folder----------------------// */
-						}(
-							<div className="icons-div">
-								<DeleteIcon
-									folderId={this.props.folderId}
-									deleteNewsInFolder={this.props.deleteNewsInFolder}
-								/>
-								<ShareIcon />
-							</div>
-						)
+						/* //----------------------If news is in folder----------------------// */
+						<div className="icons-div">
+							<button
+								className="btn btn-danger"
+								onClick={() =>this.props.deleteNewsInFolder(this.props.newsId)}
+							>
+								Delete
+							</button>
+						</div>
 					)}
 
 					<a href={this.props.url} target="blank">

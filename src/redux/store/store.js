@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import {authentication} from "../reducers/user.reducer";
 import {folderReducer} from "../reducers/folders.reducer"
 import {sourcesReducer} from "../reducers/sources.reducer"
+import {newsReducer} from "../reducers/news.reducer"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -12,7 +13,8 @@ const createLoggerMiddleware = createLogger();
 const rootReducer = combineReducers({
 	authentication,
 	folderReducer, 
-	sourcesReducer
+	sourcesReducer, 
+	newsReducer
 });
 
 export const store = createStore(

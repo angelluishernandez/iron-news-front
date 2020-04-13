@@ -47,19 +47,20 @@ function App(props) {
 						path={`/sources/feed`}
 						component={ViewSourcesComponent}
 					/>
+					<AuthenticatedRoute
+					exact
+					path="/folder/:folderId/newslist"
+					render={({ match }) => (
+						<FolderView folderId={match.params.folderId} />
+					)}
+				/>
 					{/* <AuthenticatedRoute exact path="/latestnews/:id">
 					<GetLatestNews />
 				</AuthenticatedRoute>
 				<AuthenticatedRoute exact path="/getallnews/:id">
 					<GetAllNews />
 				</AuthenticatedRoute>
-				<AuthenticatedRoute
-					exact
-					path="/folder/:folderId/newslist"
-					render={({ match }) => (
-						<FolderView folderId={match.params.folderId} />
-					)}
-				/> */}
+				 */}
 					<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 						<AddFolder />
 					</AuthenticatedRoute>
