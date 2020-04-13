@@ -6,7 +6,6 @@ import Spinner from "../UI/Spinner";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions/user.actions";
 import { folderActions } from "../../redux/actions/folders.actions";
-import { withRouter } from "react-router-dom";
 
 class Home extends React.Component {
 	state = {
@@ -17,8 +16,9 @@ class Home extends React.Component {
 		isLoading: true,
 		submited: false,
 		articleSelected: "",
-		selectedFolder: "",
+		selectedFolderId: "",
 		userFolders: [],
+		isFolderSelected: false,
 	};
 
 	//----------------------component lifecycle----------------------//
@@ -64,7 +64,6 @@ class Home extends React.Component {
 			data: {
 				...this.state.data,
 				category: [value],
-				// selectedFolder: [value]
 			},
 			isLoading: true,
 		});
@@ -78,40 +77,10 @@ class Home extends React.Component {
 		});
 	};
 
-	handleChangeOnFolderSelect = (event) => {
-		const value = event.target.value;
-		this.setState({
-			...this.state,
-			selectedFolder: value,
-		});
-	};
-
-	//----------------------methods----------------------//
-
-	getNewsData = (event, articleFilter) => {
-		event.preventDefault();
-		const articleSelected = this.state.data.articles.filter(
-			(article) => article.title === articleFilter
-		);
-		this.setState({
-			...this.state,
-			articleSelected: { ...articleSelected },
-		});
-
-		if (this.state.selectedFolder) {
-			IronNewsService.addNewsToFolder(
-				this.state.articleSelected,
-				this.state.selectedFolder
-			)
-				.then((response) => console.log(response))
-				.catch((error) => console.log(error));
-		}
-	};
-
 	//----------------------render----------------------//
 
 	render() {
-		console.log("Props on home", this.props);
+		console.log("The state=> ", this.state);
 		return (
 			<div className="Home">
 				<div className="container">
@@ -145,6 +114,7 @@ class Home extends React.Component {
 								{this.state.data.articles.map((article, index) => {
 									return (
 										<Card
+											article={article}
 											title={article.title}
 											url={article.url}
 											urlToImage={article.urlToImage}
@@ -157,7 +127,8 @@ class Home extends React.Component {
 											}
 											isInFolder={false}
 											folders={this.props.folders}
-										></Card>
+											isFolderSelected={this.state.isFolderSelected}
+										/>
 									);
 								})}
 							</div>

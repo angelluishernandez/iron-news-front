@@ -33,7 +33,7 @@ const editUser = (user, id) => http.patch(`/user/${id}`, user);
 const listNewsInFolder = (folderId) =>
 	http.get(`/folder/${folderId}/newslist`, folderId);
 const addNewsToFolder = (article, folderId) =>
-	http.post(`/news/${folderId}`, article);
+	http.post(`/news/${folderId}`, article, folderId);
 const createFolder = ({ name, description, tags }, userId) =>
 	http.post(`/folders/${userId}/newfolder`, { name, description, tags });
 const addSourcesToUser = (sources, userId) =>
