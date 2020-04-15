@@ -73,6 +73,7 @@ class Layout extends React.Component {
 					currentUserId={this.props.currentUser._id}
 					handleLogout={this.handleLogout}
 					profilePic={this.props.currentUser.profilePic}
+					folders={this.props.folders}
 				/>
 				{/* <NewSideBar
 					

@@ -1,21 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AvatarComponent from "./AvatarComponent";
+import { NavDropdown } from "react-bootstrap";
 
 class NewNavbar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			menu: false,
+			dropdown: {
+				foldersDropdown: false,
+			},
 		};
 		this.toggleMenu = this.toggleMenu.bind(this);
 	}
+
+	handleDropdown = (e) => {
+		const { id } = e.target;
+		this.setState((prevState) => ({
+			dropdown: {
+				...prevState.dropdown,
+				[id]: !prevState.dropdown[id],
+			},
+		}));
+	};
 
 	toggleMenu() {
 		this.setState({ menu: !this.state.menu });
 	}
 
+	returnClasses = (id) => (id ? "dropdown-menu show" : "dropdown-menu");
+
 	render() {
+		console.log(
+			"This is the state of the dropdown=> ",
+			this.state.dropdown.foldersDropdown
+		);
 		const show = this.state.menu ? "show mobile-menu" : "";
 
 		const isCollapsed = this.state.menu
@@ -23,6 +43,7 @@ class NewNavbar extends React.Component {
 			: "ml-5 pl-5";
 
 		const isLiCollapsed = this.state.menu ? "" : "ml-5";
+		const { dropdown } = this.state;
 
 		return (
 			<div className="">
@@ -36,22 +57,6 @@ class NewNavbar extends React.Component {
 						currentUserPic={this.props.profilePic}
 						currentUserId={this.props.currentUserId}
 					/>
-
-					{/* {this.state.menu ? (
-						<form className="form-inline my-2 my-lg-0 ml-5">
-							<input
-								className="form-control mr-sm-2"
-								type="search"
-								placeholder="Search"
-							/>
-							<button
-								className="btn btn-outline-success my-2 my-sm-0"
-								type="submit"
-							>
-								Search
-							</button>
-						</form>
-					) : null} */}
 
 					<button
 						className="navbar-toggler"
@@ -91,6 +96,43 @@ class NewNavbar extends React.Component {
 									Your sources
 								</a>
 							</li>
+							{this.props.folders === undefined ? null : (
+								<NavDropdown title="Folders" id="basic-nav-dropdown">
+									{this.props.folders.map((folder, index) => {
+										return (
+											<NavDropdown.Item href="#action/3.1" key={index}>
+												{folder.name}
+											</NavDropdown.Item>
+										);
+									})}
+								</NavDropdown>
+							)}
+							{/* <li className={`nav-item ${isLiCollapsed} dropdown`}>
+								<a
+									className="nav-link dropdown-toggle"
+									href="#"
+									href="#"
+									id="foldersDropdown"
+									role="button"
+									data-toggle="dropdown"
+									aria-haspopup="true"
+									aria-expanded="false"
+									onClick={this.handleDropdown}
+								>
+									Your folders{" "}
+								</a>
+								<div
+									className={`dropdown-menu align-items-center `}
+									aria-labelledby="navbarDropdown"
+								>
+									<a href="" className="dropdown-item">
+										Folder 1{" "}
+									</a>
+									<a href="" className="dropdown-item">
+										Folder 2{" "}
+									</a>
+								</div>
+							</li> */}
 							<li
 								className={`nav-item ${isLiCollapsed} active`}
 								onClick={this.props.handleLogout}
