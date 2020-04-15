@@ -4,6 +4,8 @@ import NavBar from "../UI/NavBar/NavBar";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions/user.actions";
 import { folderActions } from "../../redux/actions/folders.actions";
+import NewNavbar from "./NavBar/NewNavbar";
+import NewSideBar from "./SideBar/NewSideBar";
 
 class Layout extends React.Component {
 	state = {
@@ -34,12 +36,12 @@ class Layout extends React.Component {
 
 	openNav() {
 		document.getElementById("sidebar").style.width = "400px";
-		document.getElementById("navbar").style.marginLeft = "400px";
+		// document.getElementById("navbar").style.marginLeft = "400px";
 	}
 
 	closeNav() {
 		document.getElementById("sidebar").style.width = "0";
-		document.getElementById("navbar").style.marginLeft = "0";
+		// document.getElementById("navbar").style.marginLeft = "0";
 	}
 
 	//----------------------logout----------------------//
@@ -60,12 +62,23 @@ class Layout extends React.Component {
 	render() {
 		return (
 			<div className="Layout">
-				<NavBar
+				{/* <NavBar
 					handleOpen={this.openNav}
 					currentUserId={this.props.currentUser._id}
 					handleLogout={this.handleLogout}
-				></NavBar>
-				<SideBar
+					profilePic={this.props.currentUser.profilePic}
+				></NavBar> */}
+				<NewNavbar
+					handleOpen={this.openNav}
+					currentUserId={this.props.currentUser._id}
+					handleLogout={this.handleLogout}
+					profilePic={this.props.currentUser.profilePic}
+				/>
+				{/* <NewSideBar
+					
+				/> */}
+
+				{/* <SideBar
 					handleClose={this.closeNav}
 					handleExpandCollapseFolders={this.handleExpandCollapseFolders}
 					handleExpandCollapseNews={this.handleExpandCollapseNews}
@@ -74,7 +87,7 @@ class Layout extends React.Component {
 					currentUser={this.props.currentUser}
 					folders={this.props.folders}
 					handleDeleteFolder={this.handleDeleteFolder}
-				></SideBar>
+				></SideBar> */}
 			</div>
 		);
 	}

@@ -5,9 +5,9 @@ import FolderExpandList from "./FoldersExpandList";
 import UserViewSideBar from "../UserViewSideBar/UserViewSideBar";
 import { Link } from "react-router-dom";
 
-const SideBar = props => {
+const SideBar = (props) => {
 	return (
-		<div className="SideBar" id="sidebar">
+		<nav className="SideBar" id="sidebar">
 			<UserViewSideBar currentUser={props.currentUser} />
 			<MenuOpenIcon
 				className="closebtn"
@@ -44,7 +44,7 @@ const SideBar = props => {
 					</li>
 				</ul>
 			</div>
-		</div>
+		</nav>
 	);
 };
 

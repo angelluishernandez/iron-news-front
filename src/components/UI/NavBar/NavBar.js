@@ -1,37 +1,37 @@
 import React from "react";
-import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
-import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
-import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+
 import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
 
 const NavBar = (props) => {
 	return (
-		<nav
-			className="navbar  navbar-expand-lg  sidebar-main ExpandSideBar flex-container"
-			id="navbar"
-			role="navigation"
-		>
-			<div>
-				<MenuOutlinedIcon className="navbar-icon" onClick={props.handleOpen} />{" "}
-			</div>
-			<div className="home-element">
-				<div>
-					<Link to={`/${props.currentUserId}`} style={{ color: "#000000" }}>
-						<HomeRoundedIcon className="navbar-icon" />
-					</Link>
-				</div>
-				<div>
-					<Link to={`/${props.currentUserId}`} style={{ color: "#000000" }}>
-						{" "}
-						<h3>IronNews</h3>
-					</Link>
-				</div>{" "}
-			</div>
-			<div>
-				<ExitToAppRoundedIcon onClick={props.handleLogout} />
-			</div>
-		</nav>
+		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+			<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+			<Navbar.Collapse id="responsive-navbar-nav">
+				<Nav className="mr-auto">
+					<Nav.Link href="#features">Features</Nav.Link>
+					<Nav.Link href="#pricing">Pricing</Nav.Link>
+					<NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+						<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.2">
+							Another action
+						</NavDropdown.Item>
+						<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+						<NavDropdown.Divider />
+						<NavDropdown.Item href="#action/3.4">
+							Separated link
+						</NavDropdown.Item>
+					</NavDropdown>
+				</Nav>
+				<Nav>
+					<Nav.Link href="#deets">More deets</Nav.Link>
+					<Nav.Link eventKey={2} href="#memes">
+						Dank memes
+					</Nav.Link>
+				</Nav>
+			</Navbar.Collapse>
+		</Navbar>
 	);
 };
 

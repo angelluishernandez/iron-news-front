@@ -1,6 +1,5 @@
 .SideBar {
-	background: $secondary;
-	
+	background: $secondary;	
 	height: 100vh;
 	position: fixed;
 	z-index: 1;
@@ -23,11 +22,18 @@
 	color: $primary;
 	display: block;
 	transition: 0.3s;
-	background-color: $secondary-light}
+	text-decoration: none;
+	
+	// background-color: $secondary-light
+}
 
-.parent-list-item:hover {
+.parent-list-item:hover{
 	color: #f1f1f1;
-	background-color: $primary;
+	// background-color: $primary;
+	border-bottom: 1px solid $primary ;
+	box-shadow: 0 0 10px 2px #ffdb00; 
+	text-decoration: none;
+
 }
 
 #closebtn {

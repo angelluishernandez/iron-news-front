@@ -9,7 +9,7 @@
 	padding: 0;
 	z-index: 1;
 	width: 100%;
-	background-color: $primary; 
+	background-color: $secondary;  
 	height: 50px;
   display: flex; 
 	justify-content: space-between;
@@ -52,3 +52,15 @@
 	padding-top: 10px;
 }
 
+
+.NewNavbar{
+	margin-left: 200px;
+}
+
+.font-awesome-icon{
+	height: 100%;
+	color: $primary
+}
+.font-awesome-icon:hover{
+	cursor: pointer;
+}

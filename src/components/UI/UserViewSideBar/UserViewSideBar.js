@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const UserViewSideBar = props => {
+const UserViewSideBar = (props) => {
 	return (
 		<div className="UserViewSideBar card">
 			<Link to={`/user/${props.currentUser._id}`}>
@@ -11,7 +11,6 @@ const UserViewSideBar = props => {
 					className="avatar"
 				/>
 			</Link>
-			<h3>{`Welcome ${props.currentUser.name}`}</h3>
 		</div>
 	);
 };

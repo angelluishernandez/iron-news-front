@@ -26,7 +26,7 @@ function App(props) {
 				<AuthenticatedRoute component={Layout} />
 				<Switch>
 					<Route exact path="/login" component={Login} />
-					<Route exact path="/signin" component={SignIn} />
+					{/*<Route exact path="/signin" component={SignIn} />
 					<AuthenticatedRoute exact path="/sources">
 						<SearchForSources />
 					</AuthenticatedRoute>
@@ -41,7 +41,7 @@ function App(props) {
 						component={AddFolder}
 					/>
 					<AuthenticatedRoute exact path={`/:id`} component={Home} /> */}
-					<AuthenticatedRoute exact path={`/user/:id`} component={UserEdit} />
+					{/* <AuthenticatedRoute exact path={`/user/:id`} component={UserEdit} />
 					<AuthenticatedRoute
 						exact
 						path={`/sources/feed`}
@@ -52,8 +52,8 @@ function App(props) {
 					path="/folder/:folderId/newslist"
 					render={({ match }) => (
 						<FolderView folderId={match.params.folderId} />
-					)}
-				/>
+					)} */}
+					{/* /> */}
 					{/* <AuthenticatedRoute exact path="/latestnews/:id">
 					<GetLatestNews />
 				</AuthenticatedRoute>
@@ -63,7 +63,8 @@ function App(props) {
 				 */}
 					<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 						<AddFolder />
-					</AuthenticatedRoute>
+					</AuthenticatedRoute>{" "}
+					*/}
 				</Switch>
 			</Router>
 		</div>
