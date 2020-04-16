@@ -6,6 +6,10 @@ body{
   font-family: $font-header;
 }
 
+hr{
+  border-bottom: 1px dashed #97a4af;
+}
+
 h5{
   line-height: $line-height-titles;
 }

@@ -64,3 +64,11 @@
 .font-awesome-icon:hover{
 	cursor: pointer;
 }
+
+.navbar-nav .dropdown-menu {
+	position: absolute;
+	background-color: blue;
+}
+.dropdown-toggle{
+  background-color: red;
+}

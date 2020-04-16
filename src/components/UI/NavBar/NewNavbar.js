@@ -96,17 +96,23 @@ class NewNavbar extends React.Component {
 									Your sources
 								</a>
 							</li>
-							{this.props.folders === undefined ? null : (
-								<NavDropdown title="Folders" id="basic-nav-dropdown">
-									{this.props.folders.map((folder, index) => {
-										return (
-											<NavDropdown.Item href="#action/3.1" key={index}>
-												{folder.name}
-											</NavDropdown.Item>
-										);
-									})}
-								</NavDropdown>
-							)}
+							<li className={`nav-item ${isLiCollapsed}`}>
+								{this.props.folders === undefined ? null : (
+									<NavDropdown title="Folders" id="basic-nav-dropdown">
+										<NavDropdown.Item href="#action/3.1">
+											Add a new folder
+										</NavDropdown.Item>
+										{this.props.folders.map((folder, index) => {
+											return (
+												<NavDropdown.Item href="#action/3.1" key={index}>
+													{folder.name}
+												</NavDropdown.Item>
+											);
+										})}
+									</NavDropdown>
+								)}
+							</li>
+
 							{/* <li className={`nav-item ${isLiCollapsed} dropdown`}>
 								<a
 									className="nav-link dropdown-toggle"

@@ -1,4 +1,6 @@
 
+
+
 .home-form {
   border: 1px solid $primary-dark
 }
@@ -23,3 +25,65 @@
 .spinner-grow{
   color: $primary;
 }
+
+.cards-column{
+  background: $secondary;
+}
+
+
+.FiltersComponent{
+
+}
+
+
+.filter-list-item{
+  list-style-type: none;
+  box-sizing: border-box;
+  border-radius: .25rem!important;
+  background: $secondary; 
+  margin-top: 15px;
+  padding: 15px
+
+}
+
+.filter-list-item p{
+  border-bottom: 1px dashed #97a4af;
+}
+.card-image{
+  max-width:150px;
+  height: 120px; 
+  padding: 2px;
+  object-fit: cover
+
+}
+
+.CardComponent{
+ 
+}
+
+.card-component-text{
+  overflow: hidden;
+  overflow-y: auto;
+  height: 50px;
+}
+
+.card-component-text::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.card-component-text::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.card-component-text::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: $primary;
+}
+

@@ -18,6 +18,8 @@ import AuthenticatedRoute from "./components/AuthRoute/AuthRoute";
 import { history } from "./helpers/history";
 import SourcesSelectDropDown from "./components/SourcesDropdown/SourcesSelectDropDown";
 import ViewSourcesComponent from "./components/ViewSources/ViewSourcesComponent";
+import FeatureNavigation from "./components/Home/FeatureNavigation";
+import NewHome from "./components/Home/NewHome";
 
 function App(props) {
 	return (
@@ -25,8 +27,9 @@ function App(props) {
 			<Router history={history}>
 				<AuthenticatedRoute component={Layout} />
 				<Switch>
-					<Route exact path="/login" component={Login} />
-					{/*<Route exact path="/signin" component={SignIn} />
+					<Route exact path="/" component={NewHome} />
+					{/* <Route exact path="/login" component={Login} />
+					<Route exact path="/signin" component={SignIn} />
 					<AuthenticatedRoute exact path="/sources">
 						<SearchForSources />
 					</AuthenticatedRoute>
@@ -40,7 +43,8 @@ function App(props) {
 						path="/folders/:id/createfolder"
 						component={AddFolder}
 					/>
-					<AuthenticatedRoute exact path={`/:id`} component={Home} /> */}
+					<Route exact path="/cards-test" component={FeatureNavigation} />
+					<AuthenticatedRoute exact path={`/:id`} component={Home} />} */}
 					{/* <AuthenticatedRoute exact path={`/user/:id`} component={UserEdit} />
 					<AuthenticatedRoute
 						exact
@@ -61,7 +65,7 @@ function App(props) {
 					<GetAllNews />
 				</AuthenticatedRoute>
 				 */}
-					<AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
+					{/* <AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
 						<AddFolder />
 					</AuthenticatedRoute>{" "}
 					*/}
