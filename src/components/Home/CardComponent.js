@@ -1,8 +1,8 @@
 import React from "react";
 import Spinner from "../UI/Spinner";
+import Moment from "react-moment";
 
 const CardComponent = ({ news, loading }) => {
-	console.log(news);
 	return loading ? (
 		<Spinner />
 	) : (
@@ -15,13 +15,19 @@ const CardComponent = ({ news, loading }) => {
 						className="card-image"
 					></img>
 				</div>
-				<div className="col-md-7">
+				<div className="col-md-7 pt-3">
 					<h5>{newsItem.title}</h5>
 					<p className="card-component-text">{newsItem.description}</p>
 				</div>
-				<div className="col-md-2">
-					<p className="">{newsItem.publishedAt}</p>
-					<p>{newsItem.source.name}</p>
+				<div className="col-md-2 pt-3">
+					<p className="card-text">
+						<small className="text-muted">
+							<Moment format="YYYY/MM/DD HH:mm">{newsItem.publishedAt}</Moment>
+						</small>
+					</p>
+					<small className="text-muted">
+						<p className="break">{newsItem.source.name}</p>
+					</small>
 				</div>
 				<hr />
 			</div>

@@ -1,6 +1,8 @@
 
+.NewHome{
+  background-color:lighten(grey, 50%);
 
-
+}
 .home-form {
   border: 1px solid $primary-dark
 }
@@ -35,6 +37,15 @@
 
 }
 
+.CategoryFilterComponent{
+  width: 100%;
+}
+
+.home-container{
+  border-right: 1px dashed #97a4af ; 
+  border-left: 1px dashed #97a4af  
+
+}
 
 .filter-list-item{
   list-style-type: none;
@@ -42,15 +53,40 @@
   border-radius: .25rem!important;
   background: $secondary; 
   margin-top: 15px;
-  padding: 15px
+  padding: 15px;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 200px;
 
 }
 
-.filter-list-item p{
+.filter-list-item::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.filter-list-item::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.filter-list-item::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: $primary;
+}
+
+
+.filter-text{
   border-bottom: 1px dashed #97a4af;
+  cursor: pointer;
 }
 .card-image{
-  max-width:150px;
+  max-width:120px;
   height: 120px; 
   padding: 2px;
   object-fit: cover
@@ -58,7 +94,7 @@
 }
 
 .CardComponent{
- 
+ border-top:1px dashed #97a4af;
 }
 
 .card-component-text{
@@ -66,6 +102,8 @@
   overflow-y: auto;
   height: 50px;
 }
+
+
 
 .card-component-text::-webkit-scrollbar-track
 {
@@ -87,3 +125,15 @@
 	background-color: $primary;
 }
 
+.reset-filters{
+  border: 1px dashed $primary ;
+  border-radius: 10px;
+  width: 50%; 
+  cursor: pointer;
+}
+
+.filters-text{
+  border: 1px dashed $primary ;
+  border-radius: 10px;
+  width: 75%
+}

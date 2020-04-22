@@ -8,6 +8,7 @@ body{
 
 hr{
   border-bottom: 1px dashed #97a4af;
+  margin: 0 200px
 }
 
 h5{
@@ -36,4 +37,8 @@ body a:hover{
 }
 body Link:hover{
   cursor: pointer
+}
+
+.break{
+  word-break: break-all;
 }

@@ -27,9 +27,10 @@ function App(props) {
 			<Router history={history}>
 				<AuthenticatedRoute component={Layout} />
 				<Switch>
-					<Route exact path="/" component={NewHome} />
-					{/* <Route exact path="/login" component={Login} />
-					<Route exact path="/signin" component={SignIn} />
+					<Route exact path="/login" component={Login} />
+					<AuthenticatedRoute exact path="/" component={NewHome} />
+
+					{/*	<Route exact path="/signin" component={SignIn} />
 					<AuthenticatedRoute exact path="/sources">
 						<SearchForSources />
 					</AuthenticatedRoute>
