@@ -1,6 +1,5 @@
 import React from "react";
 import SideBar from "../UI/SideBar/SideBar";
-import NavBar from "../UI/NavBar/NavBar";
 import { connect } from "react-redux";
 import { userActions } from "../../redux/actions/user.actions";
 import { folderActions } from "../../redux/actions/folders.actions";
@@ -62,12 +61,6 @@ class Layout extends React.Component {
 	render() {
 		return (
 			<div className="Layout">
-				{/* <NavBar
-					handleOpen={this.openNav}
-					currentUserId={this.props.currentUser._id}
-					handleLogout={this.handleLogout}
-					profilePic={this.props.currentUser.profilePic}
-				></NavBar> */}
 				<NewNavbar
 					handleOpen={this.openNav}
 					currentUserId={this.props.currentUser._id}
@@ -75,20 +68,6 @@ class Layout extends React.Component {
 					profilePic={this.props.currentUser.profilePic}
 					folders={this.props.folders}
 				/>
-				{/* <NewSideBar
-					
-				/> */}
-
-				{/* <SideBar
-					handleClose={this.closeNav}
-					handleExpandCollapseFolders={this.handleExpandCollapseFolders}
-					handleExpandCollapseNews={this.handleExpandCollapseNews}
-					isNewsExpanded={this.state.isNewsExpanded}
-					isFoldersExpanded={this.state.isFoldersExpanded}
-					currentUser={this.props.currentUser}
-					folders={this.props.folders}
-					handleDeleteFolder={this.handleDeleteFolder}
-				></SideBar> */}
 			</div>
 		);
 	}

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AvatarComponent from "./AvatarComponent";
 import { NavDropdown } from "react-bootstrap";
+import DropDownFoldersComponent from "./DropDownFoldersComponent";
+import DropDownSourcesComponent from "./DropDownSourcesComponent";
 
 class NewNavbar extends React.Component {
 	constructor(props) {
@@ -91,54 +93,13 @@ class NewNavbar extends React.Component {
 									All news
 								</a>
 							</li>
-							<li className={`nav-item ${isLiCollapsed}`}>
-								<a className="nav-link danger" href="#">
-									Your sources
-								</a>
-							</li>
-							<li className={`nav-item ${isLiCollapsed}`}>
-								{this.props.folders === undefined ? null : (
-									<NavDropdown title="Folders" id="basic-nav-dropdown">
-										<NavDropdown.Item href="#action/3.1">
-											Add a new folder
-										</NavDropdown.Item>
-										{this.props.folders.map((folder, index) => {
-											return (
-												<NavDropdown.Item href="#action/3.1" key={index}>
-													{folder.name}
-												</NavDropdown.Item>
-											);
-										})}
-									</NavDropdown>
-								)}
-							</li>
+							<DropDownSourcesComponent />
+							<DropDownFoldersComponent
+								folders={this.props.folders}
+								currentUserId={this.props.currentUserId}
+								className={`nav-item ${isLiCollapsed}`}
+							/>
 
-							{/* <li className={`nav-item ${isLiCollapsed} dropdown`}>
-								<a
-									className="nav-link dropdown-toggle"
-									href="#"
-									href="#"
-									id="foldersDropdown"
-									role="button"
-									data-toggle="dropdown"
-									aria-haspopup="true"
-									aria-expanded="false"
-									onClick={this.handleDropdown}
-								>
-									Your folders{" "}
-								</a>
-								<div
-									className={`dropdown-menu align-items-center `}
-									aria-labelledby="navbarDropdown"
-								>
-									<a href="" className="dropdown-item">
-										Folder 1{" "}
-									</a>
-									<a href="" className="dropdown-item">
-										Folder 2{" "}
-									</a>
-								</div>
-							</li> */}
 							<li
 								className={`nav-item ${isLiCollapsed} active`}
 								onClick={this.props.handleLogout}

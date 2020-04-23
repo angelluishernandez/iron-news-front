@@ -28,48 +28,53 @@ function App(props) {
 				<AuthenticatedRoute component={Layout} />
 				<Switch>
 					<Route exact path="/login" component={Login} />
-					<AuthenticatedRoute exact path="/" component={NewHome} />
-
-					{/*	<Route exact path="/signin" component={SignIn} />
-					<AuthenticatedRoute exact path="/sources">
-						<SearchForSources />
-					</AuthenticatedRoute>
+					<Route exact path="/signin" component={SignIn} />
+					<AuthenticatedRoute
+						exact
+						path="/sources"
+						component={SearchForSources}
+					/>
+					{/* If user goes to / redirect to /${props.currentUser._id} */}
 					<Route exact path={"/"}>
 						{props.currentUser ? (
 							<Redirect to={`/${props.currentUser._id}`} />
 						) : null}
 					</Route>
+					<AuthenticatedRoute exact path="/:id" component={NewHome} />
 					<AuthenticatedRoute
 						exact
 						path="/folders/:id/createfolder"
 						component={AddFolder}
 					/>
 					<Route exact path="/cards-test" component={FeatureNavigation} />
-					<AuthenticatedRoute exact path={`/:id`} component={Home} />} */}
-					{/* <AuthenticatedRoute exact path={`/user/:id`} component={UserEdit} />
+					<AuthenticatedRoute exact path={`/user/:id`} component={UserEdit} />
 					<AuthenticatedRoute
 						exact
 						path={`/sources/feed`}
 						component={ViewSourcesComponent}
 					/>
 					<AuthenticatedRoute
-					exact
-					path="/folder/:folderId/newslist"
-					render={({ match }) => (
-						<FolderView folderId={match.params.folderId} />
-					)} */}
-					{/* /> */}
-					{/* <AuthenticatedRoute exact path="/latestnews/:id">
-					<GetLatestNews />
-				</AuthenticatedRoute>
-				<AuthenticatedRoute exact path="/getallnews/:id">
-					<GetAllNews />
-				</AuthenticatedRoute>
-				 */}
-					{/* <AuthenticatedRoute exact path={"/folders/:id/createfolder"}>
-						<AddFolder />
-					</AuthenticatedRoute>{" "}
-					*/}
+						exact
+						path="/folder/:folderId/newslist"
+						render={({ match }) => (
+							<FolderView folderId={match.params.folderId} />
+						)}
+					/>
+					<AuthenticatedRoute
+						exact
+						path="/latestnews/:id"
+						component={GetLatestNews}
+					/>
+					<AuthenticatedRoute
+						exact
+						path="/getallnews/:id"
+						component={GetAllNews}
+					/>
+					<AuthenticatedRoute
+						exact
+						path={"/folders/:id/createfolder"}
+						component={AddFolder}
+					/>
 				</Switch>
 			</Router>
 		</div>
