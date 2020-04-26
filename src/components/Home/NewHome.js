@@ -47,6 +47,12 @@ class NewHome extends React.Component {
 					loading: false,
 					isFiltered: false,
 					filteredSources: [],
+
+					//Folder variables
+
+					isFolderSelected: false,
+					selectedFolder: "",
+					articleSelected: {},
 				});
 			})
 			.catch((error) => console.log(error));
@@ -127,6 +133,31 @@ class NewHome extends React.Component {
 		});
 	};
 
+	handleChangeOnFolderSelect = (event) => {
+		const folderValue = event.target.value;
+		this.setState({
+			selectedFolder: folderValue,
+		});
+	};
+
+	getNewsData = (event, articleFilter) => {
+		event.preventDefault();
+		const articleSelected = this.state.data.news.filter(
+			(article) => article.title === articleFilter
+		);
+		this.setState({
+			articleSelected: { ...articleSelected },
+		});
+		if (this.state.selectedFolder) {
+			IronNewsService.addNewsToFolder(
+				this.state.articleSelected,
+				this.state.selectedFolder
+			)
+				.then((response) => console.log(response))
+				.catch((error) => console.log(error));
+		}
+	};
+
 	render() {
 		const indexOfLastNews = this.state.currentPage * this.state.newsPerPage;
 		const indexOfFirstNews = indexOfLastNews - this.state.newsPerPage;
@@ -134,7 +165,7 @@ class NewHome extends React.Component {
 			? this.props.news.slice(indexOfFirstNews, indexOfLastNews)
 			: null;
 
-		console.log(this.state.isFiltered, this.state.filteredSources);
+		console.log(this.state.articleSelected);
 		return (
 			<div className="NewHome">
 				<div className="container home-container">
@@ -172,6 +203,11 @@ class NewHome extends React.Component {
 										: this.state.filteredSources
 								}
 								loading={this.state.loading}
+								isInFolder={false}
+								folders={this.props.folders}
+								getNewsData={this.getNewsData}
+								handleChangeOnFolderSelect={this.handleChangeOnFolderSelect}
+								isInFolder={false}
 							/>
 							<PaginationComponent
 								newsPerPage={this.state.newsPerPage}

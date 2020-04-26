@@ -3,6 +3,7 @@ import Card from "./Card";
 import { connect } from "react-redux";
 import { newsActions } from "../../redux/actions/news.actions";
 import Spinner from "../UI/Spinner";
+import CardComponent from "../Home/CardComponent";
 
 class FolderView extends React.Component {
 	state = {
@@ -50,13 +51,8 @@ class FolderView extends React.Component {
 						{this.props.news.map((savedArticle, index) => {
 							console.log(savedArticle);
 							return (
-								<Card
-									title={savedArticle.headline}
-									url={savedArticle.url}
-									urlToImage={savedArticle.image}
-									description={savedArticle.description}
-									publishedAt={savedArticle.date}
-									newsId={savedArticle._id}
+								<CardComponent
+									news={this.props.news}
 									key={index}
 									folderId={this.props.folderId}
 									isInFolder={true}

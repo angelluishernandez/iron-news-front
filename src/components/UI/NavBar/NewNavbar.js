@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AvatarComponent from "./AvatarComponent";
-import { NavDropdown } from "react-bootstrap";
 import DropDownFoldersComponent from "./DropDownFoldersComponent";
 import DropDownSourcesComponent from "./DropDownSourcesComponent";
+import DropDownNews from "./DropDownNewsComponent";
 
 class NewNavbar extends React.Component {
 	constructor(props) {
@@ -34,10 +34,6 @@ class NewNavbar extends React.Component {
 	returnClasses = (id) => (id ? "dropdown-menu show" : "dropdown-menu");
 
 	render() {
-		console.log(
-			"This is the state of the dropdown=> ",
-			this.state.dropdown.foldersDropdown
-		);
 		const show = this.state.menu ? "show mobile-menu" : "";
 
 		const isCollapsed = this.state.menu
@@ -45,16 +41,10 @@ class NewNavbar extends React.Component {
 			: "ml-5 pl-5";
 
 		const isLiCollapsed = this.state.menu ? "" : "ml-5";
-		const { dropdown } = this.state;
 
 		return (
 			<div className="">
 				<nav className="navbar navbar-expand-lg navbar-light NewNavbar pl-5 pr-5 h-100">
-					{/* <i
-						className="fas fa-bars font-awesome-icon fa-2x"
-						onClick={this.props.handleOpen}
-					></i> */}
-
 					<AvatarComponent
 						currentUserPic={this.props.profilePic}
 						currentUserId={this.props.currentUserId}
@@ -83,16 +73,7 @@ class NewNavbar extends React.Component {
 									Home <span className="sr-only">(current)</span>
 								</Link>
 							</li>
-							<li className={`nav-item ${isLiCollapsed}`}>
-								<Link className="nav-link" to={`/${this.props.currentUserId}`}>
-									Latest News
-								</Link>
-							</li>
-							<li className={`nav-item ${isLiCollapsed}`}>
-								<a className="nav-link" href="#">
-									All news
-								</a>
-							</li>
+							<DropDownNews currentUserId={this.props.currentUserId} />
 							<DropDownSourcesComponent />
 							<DropDownFoldersComponent
 								folders={this.props.folders}

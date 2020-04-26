@@ -2,7 +2,14 @@ import React from "react";
 import Spinner from "../UI/Spinner";
 import Moment from "react-moment";
 
-const CardComponent = ({ news, loading }) => {
+const CardComponent = ({
+	news,
+	loading,
+	folders,
+	getNewsData,
+	handleChangeOnFolderSelect,
+	isInFolder,
+}) => {
 	return loading ? (
 		<Spinner />
 	) : (
@@ -11,7 +18,7 @@ const CardComponent = ({ news, loading }) => {
 				<div className="col-md-3 p-3 text-center">
 					<img
 						src={newsItem.urlToImage}
-						alt={newsItem.title}
+						alt="images are returning null from the API"
 						className="card-image"
 					></img>
 				</div>
@@ -28,8 +35,41 @@ const CardComponent = ({ news, loading }) => {
 					<small className="text-muted">
 						<p className="break">{newsItem.source.name}</p>
 					</small>
+					<small className="text-muted">
+						<a href={newsItem.url} target="blank" className="break">
+							Go to source
+						</a>
+					</small>
 				</div>
 				<hr />
+				<div className="col-md-12 justify-content-center bg-success">
+					{!isInFolder ? (
+						<div className="row">
+							<div className="col-md-8">
+								<select
+									name=""
+									id=""
+									className="w-100"
+									onChange={(event) => handleChangeOnFolderSelect(event)}
+								>
+									<option value="">Select a folder</option>
+									{folders.map((folder, index) => {
+										return (
+											<option value={folder._id} key={index}>
+												{folder.name}
+											</option>
+										);
+									})}
+								</select>
+							</div>
+							<div className="col-md-4">
+								<button onClick={(event) => getNewsData(event, newsItem.title)}>
+									Save to a folder{" "}
+								</button>
+							</div>
+						</div>
+					) : null}
+				</div>
 			</div>
 		))
 	);
