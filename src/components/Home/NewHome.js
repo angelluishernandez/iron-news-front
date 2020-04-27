@@ -26,6 +26,7 @@ class NewHome extends React.Component {
 		currentPage: 1,
 		newsPerPage: 10,
 		currentNews: [],
+		articleSelected: "",
 	};
 
 	//----------------------component lifecycle----------------------//
@@ -145,9 +146,16 @@ class NewHome extends React.Component {
 		const articleSelected = this.state.data.news.filter(
 			(article) => article.title === articleFilter
 		);
-		this.setState({
-			articleSelected: { ...articleSelected },
-		});
+		console.log(articleSelected);
+		this.setState(() => ({
+			articleSelected,
+		}));
+	};
+
+	handleFolderSubmit = (event) => {
+		console.log("entra");
+		event.preventDefault();
+		console.log(this.state.selectedFolder);
 		if (this.state.selectedFolder) {
 			IronNewsService.addNewsToFolder(
 				this.state.articleSelected,
@@ -207,7 +215,7 @@ class NewHome extends React.Component {
 								folders={this.props.folders}
 								getNewsData={this.getNewsData}
 								handleChangeOnFolderSelect={this.handleChangeOnFolderSelect}
-								isInFolder={false}
+								handleFolderSubmit={this.handleFolderSubmit}
 							/>
 							<PaginationComponent
 								newsPerPage={this.state.newsPerPage}

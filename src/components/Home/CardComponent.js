@@ -9,12 +9,17 @@ const CardComponent = ({
 	getNewsData,
 	handleChangeOnFolderSelect,
 	isInFolder,
+	handleFolderSubmit,
 }) => {
 	return loading ? (
 		<Spinner />
 	) : (
 		news.map((newsItem, index) => (
-			<div className="row mt-3 pl-2 CardComponent" key={index}>
+			<div
+				className="row mt-3 pl-2 CardComponent"
+				key={index}
+				onClick={(event) => getNewsData(event, newsItem.title)}
+			>
 				<div className="col-md-3 p-3 text-center">
 					<img
 						src={newsItem.urlToImage}
@@ -42,14 +47,12 @@ const CardComponent = ({
 					</small>
 				</div>
 				<hr />
-				<div className="col-md-12 justify-content-center bg-success">
+				<div className="col-md-12 justify-content-center">
 					{!isInFolder ? (
 						<div className="row">
-							<div className="col-md-8">
+							<div className="col-md-10  form-group">
 								<select
-									name=""
-									id=""
-									className="w-100"
+									className="w-100 form-control"
 									onChange={(event) => handleChangeOnFolderSelect(event)}
 								>
 									<option value="">Select a folder</option>
@@ -62,9 +65,12 @@ const CardComponent = ({
 									})}
 								</select>
 							</div>
-							<div className="col-md-4">
-								<button onClick={(event) => getNewsData(event, newsItem.title)}>
-									Save to a folder{" "}
+							<div className="col-md-2  form-group">
+								<button
+									onClick={(event) => handleFolderSubmit(event)}
+									className="btn btn-success"
+								>
+									Save{" "}
 								</button>
 							</div>
 						</div>
