@@ -59,6 +59,7 @@ class Layout extends React.Component {
 	//----------------------render----------------------//
 
 	render() {
+		console.log(this.props.folders);
 		return (
 			<div className="Layout">
 				<NewNavbar

@@ -13,7 +13,6 @@ class FolderView extends React.Component {
 	};
 
 	deleteNewsInFolder = (newsId) => {
-		console.log(this.props.currentUser._id, newsId, this.props.folderId);
 		this.props.deleteNewsInFolder(
 			this.props.currentUser._id,
 			newsId,
@@ -22,8 +21,6 @@ class FolderView extends React.Component {
 	};
 
 	componentDidMount() {
-		console.log("These are the props", this.props);
-
 		this.props.fetchNewsInFolder(this.props.folderId);
 		this.setState({
 			loading: false,

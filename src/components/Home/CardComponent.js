@@ -37,9 +37,9 @@ const CardComponent = ({
 							<Moment format="YYYY/MM/DD HH:mm">{newsItem.publishedAt}</Moment>
 						</small>
 					</p>
-					<small className="text-muted">
+					{/* <small className="text-muted">
 						<p className="break">{newsItem.source.name}</p>
-					</small>
+					</small> */}
 					<small className="text-muted">
 						<a href={newsItem.url} target="blank" className="break">
 							Go to source

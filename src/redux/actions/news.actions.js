@@ -12,6 +12,7 @@ const fetchNewsInHome = (category) => {
 };
 
 const fetchNewsInFolder = (folderId) => {
+	console.log("entra", folderId);
 	return (dispatch) => {
 		IronNewsService.listNewsInFolder(folderId).then((news) => {
 			dispatch(getNewsInFolder(news));
