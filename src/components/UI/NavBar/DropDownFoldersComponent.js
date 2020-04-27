@@ -2,12 +2,14 @@ import React from "react";
 import { NavDropdown } from "react-bootstrap";
 
 const DropDownFoldersComponent = ({ folders, currentUserId }) => {
-	console.log(folders, currentUserId);
 	return (
 		<li>
 			{folders === undefined ? null : (
-				<NavDropdown title="Folders" id="basic-nav-dropdown">
-					<NavDropdown.Item href={`/folders/${currentUserId}/createfolder`}>
+				<NavDropdown title="Folders" id="basic-nav-dropdown" alignCenter>
+					<NavDropdown.Item
+						alignCenter
+						href={`/folders/${currentUserId}/createfolder`}
+					>
 						Add a new folder
 					</NavDropdown.Item>
 					{folders.map((folder, index) => (

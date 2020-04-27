@@ -67,28 +67,42 @@ class NewNavbar extends React.Component {
 						className={`collapse navbar-collapse w-100 ${show}`}
 						id="ironnews-navbar"
 					>
-						<ul className={`navbar-nav  w-100 ${isCollapsed}`}>
-							<li className={`nav-item ${isLiCollapsed}`}>
+						<div
+							className={`navbar-nav  w-100 ${isCollapsed} col-md-12	text-center`}
+						>
+							<div className={`nav-item  ${isLiCollapsed}`}>
 								<Link className="nav-link " to={`/${this.props.currentUserId}`}>
 									Home <span className="sr-only">(current)</span>
 								</Link>
-							</li>
-							<DropDownNews currentUserId={this.props.currentUserId} />
-							<DropDownSourcesComponent />
-							<DropDownFoldersComponent
-								folders={this.props.folders}
-								currentUserId={this.props.currentUserId}
-								className={`nav-item ${isLiCollapsed}`}
-							/>
+							</div>
+							<div className="nav-item">
+								{" "}
+								<DropDownNews
+									currentUserId={this.props.currentUserId}
+									className="nav-item"
+								/>
+							</div>
+							<div className="nav-item">
+								{" "}
+								<DropDownSourcesComponent />
+							</div>
+							<div className="nav-item">
+								{" "}
+								<DropDownFoldersComponent
+									folders={this.props.folders}
+									currentUserId={this.props.currentUserId}
+									className="nav-item"
+								/>
+							</div>
 
-							<li
+							<div
 								className={`nav-item ${isLiCollapsed} active`}
 								onClick={this.props.handleLogout}
 							>
 								<a className="nav-link" href="#">
 									Logout{" "}
 								</a>
-							</li>
+							</div>
 							{this.state.menu ? (
 								<li className={`nav-item ${isLiCollapsed} active`}>
 									<Link className={``} href={`/${this.props.currentUserId}`}>
@@ -100,7 +114,7 @@ class NewNavbar extends React.Component {
 									</Link>
 								</li>
 							) : null}
-						</ul>
+						</div>
 					</div>
 					{!this.state.menu ? (
 						<Link
