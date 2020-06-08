@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-	baseURL: "http://localhost:5000",
+	baseURL: process.env.REACT_APP_API_URL,
 	withCredentials: true,
 });
 
@@ -38,7 +38,7 @@ const createFolder = ({ name, description, tags }, userId) =>
 	http.post(`/folders/${userId}/newfolder`, { name, description, tags });
 const addSourcesToUser = (sources, userId) =>
 	http.post(`/sources/${userId}/addsources`, sources);
-	
+
 const deleteNewsItem = (id, newsId) =>
 	http.delete(`/news/${id}/${newsId}`, id, newsId);
 
