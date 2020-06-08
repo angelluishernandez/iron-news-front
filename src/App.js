@@ -7,16 +7,13 @@ import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
 import GetLatestNews from "./components/LatestNewsComponents/GetLatestNews";
 import Layout from "./components/UI/Layout";
-import { WithAuthConsumer } from "./contexts/AuthContext";
 import UserEdit from "./components/UserEdit/UserEdit";
 import AddFolder from "./components/Folders/AddFolder";
 import GetAllNews from "./components/GetAllNews/GetAllNews";
 import FolderView from "./components/UI/FolderView";
 import SearchForSources from "./components/SourcesComponents/SearchForSources";
-
 import AuthenticatedRoute from "./components/AuthRoute/AuthRoute";
 import { history } from "./helpers/history";
-import SourcesSelectDropDown from "./components/SourcesDropdown/SourcesSelectDropDown";
 import ViewSourcesComponent from "./components/ViewSources/ViewSourcesComponent";
 import FeatureNavigation from "./components/Home/FeatureNavigation";
 import NewHome from "./components/Home/NewHome";
