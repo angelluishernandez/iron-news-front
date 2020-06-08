@@ -122,7 +122,7 @@ class NewNavbar extends React.Component {
 							href={`/${this.props.currentUserId}`}
 						>
 							<img
-								src={require("/home/angel/Ironhack/final-project-front/src/images/IronnewsLogo.png")}
+								src={require("../../../images/IronnewsLogo.png")}
 								alt=""
 								style={{ maxHeight: "30px" }}
 							/>
